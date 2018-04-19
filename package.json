@@ -1,0 +1,48 @@
+{
+  "name": "akruthi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Raviteja",
+  "license": "MIT",
+  "scripts": {
+    "live-server": "live-server public",
+    "babel-build": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
+    "build": "webpack",
+    "dev-server": "webpack-dev-server"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.18.2",
+    "bootstrap": "^4.1.0",
+    "cookie-parser": "^1.4.3",
+    "css-loader": "^0.28.10",
+    "file-loader": "^1.1.11",
+    "file-system": "^2.2.2",
+    "live-server": "^1.2.0",
+    "node-sass": "^4.7.2",
+    "normalize.css": "^8.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "reactstrap": "^5.0.0-beta.3",
+    "redux": "^3.7.2",
+    "sass-loader": "^6.0.7",
+    "serve-favicon": "^2.5.0",
+    "style-loader": "^0.20.3",
+    "url-loader": "^1.0.1",
+    "uuid": "^3.2.1",
+    "validator": "^9.4.1",
+    "webpack": "^4.1.1",
+    "webpack-dev-server": "^3.1.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^2.0.11"
+  }
+}

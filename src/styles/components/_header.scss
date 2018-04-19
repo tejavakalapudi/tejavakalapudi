@@ -1,0 +1,50 @@
+.welcome-screen{
+    max-width: 100%;
+    height: auto;
+}
+
+.header {
+    //background: rgb(207, 209, 209);
+    //margin-bottom: $xl-size;
+    //background: rgb(34, 32, 32);
+    background: $off-black;
+    padding: $m-size 0;
+    color: white;
+}
+
+.header_container{
+    margin: 0 $xl-size;
+    display: flex;
+    justify-content: space-between;
+}
+
+//BEM - Block Element Modifier naming convention (getbem.com)
+.header__title {
+    font-size: $l-size;
+    margin: 0;
+    color:$parrot-green;
+    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+}
+
+.header__subtitle {
+    color: darken($color: $parrot-green, $amount: 5%);
+    font-size: $m-size;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: $s-size;
+    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+}
+
+.header__navlink {
+    color: white;
+}
+
+.header_navbar{
+
+}
+
+@media( min-width : $desktop-breakpoint ){
+    .header {
+        //margin-bottom: $xl-size;
+    }
+}
