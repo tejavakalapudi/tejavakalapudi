@@ -3,56 +3,89 @@ import ProjectItemWithInfo from "./ProjectItemWithInfo";
 import AddProject from "./AddProject";
 import { connect } from "react-redux";
 import CarouselComponent from "./Carousel";
-import { Container, Jumbotron, Card, CardTitle, CardText, CardDeck, CardHeader, Row, Col } from "reactstrap";
+import { 
+    Container, 
+    Jumbotron,
+    Row, 
+    Col,
+    Nav,
+    NavItem,
+    Navbar 
+} from "reactstrap";
+import { NavLink } from "react-router-dom"; 
 import ProjectsPage from "./ProjectsPage";
 import AboutUsPage from "./AboutUsPage";
+import GridComponent from "./Grid";
+import welcomeImage from "../../public/images/homepage7.png";
+import logoImage from "../../public/images/logo7.png";
 
+class HomePage extends React.Component {
 
-const HomePage = ( props ) => (
+    state = {
+        activeclass: ""
+    }
 
-    <Jumbotron className = "body-container" > 
-        <Container>
-            <AddProject/>
-            <CarouselComponent projects = { props.projects }/>
-        </Container>
+    toggle = () => {
+        
+        this.setState({
+            activeclass: "fade"
+        });
+    }
 
-        <div className = "col-10 mx-auto p-5 ">
-            <h2 className = "text-secondary border-bottom border-secondary p-3" align="center" > Our Principles: </h2>
-        </div>
+    render(){
 
-        <Row>
-            <Col lg="8" md = "8" sm = "10" xs = "10" className = "mx-auto">
-                <Row>
-                    <Card body outline color="dark">
-                        <CardTitle>Value</CardTitle>
-                        <CardText>Akruthi essential goal consists of constructing most gracious constructions with affordable monetary value. </CardText>
-                    </Card>
-                </Row>
-                <Row>
-                    <Card body outline color="dark">
-                        <CardTitle className="text-secondary" >Quality</CardTitle>
-                        <CardText className="text-secondary" >We work with a relentless focus on global level quality, production efficiency, ownership and accountability for our delivery. </CardText>
-                    </Card>
-                </Row>
-                <Row>
-                    <Card body outline color="dark">
-                        <CardTitle>Value Added Services</CardTitle>
-                        <CardText>Our customer centric services will always help our clientele to be at maximum satisfaction.</CardText>
-                    </Card>
-                </Row>
-                <Row>
-                    <Card body outline color="dark">
-                        <CardTitle className="text-secondary" >Prompt Delivery</CardTitle>
-                        <CardText className="text-secondary" >By employing the modernist technology, our extremely enthusiastic employees be sure that projects extradite on time. </CardText>
-                    </Card>
-                </Row>           
-            </Col>
-        </Row>
+        return (
+            <div>
 
-        <ProjectsPage />
-        <AboutUsPage />
-    </Jumbotron>
-); 
+                <div id = "welcomeImage" >
+                    <img src = {welcomeImage} className = {`welcome-screen ${this.state.activeclass}`} onClick = {this.toggle}></img>
+                </div>
+
+                <div className = "body-container">
+
+                    <Container fluid = "true">
+
+                        <div className = "row justify-content-center">
+
+                            <div className = "col-lg-2 col-md-11">
+                                <AboutUsPage />
+                            </div>
+        
+                            <div className = "home_grid col-lg-8 col-md-11">
+                                <GridComponent />
+                            </div>
+
+                            <div className = "col-lg-2 col-md-11">
+                                <Navbar color="faded" dark>
+                                    <Nav vertical>
+                                        <NavItem className = "home_navitem">
+                                            <NavLink to = "/projects" activeClassName = "is-active" exact={true} className = "navlink">PROJECTS</NavLink>
+                                        </NavItem>
+                                        <hr/>
+                                        <NavItem className = "home_navitem">
+                                            <NavLink to = "/buyersguide" activeClassName = "is-active" className = "navlink">BUYERS-GUIDE</NavLink>
+                                        </NavItem>
+                                        <hr/>
+                                        <NavItem className = "home_navitem">
+                                            <NavLink to = "/contactus" activeClassName = "is-active" className = "navlink" >CONTACT</NavLink>
+                                        </NavItem>
+                                        <hr/>
+                                    </Nav>
+                                </Navbar>
+                                <div className = "home_logo_div" >
+                                    <img src = {logoImage} className = "home_logo" ></img>
+                                </div>
+                            </div>
+
+                        </div> 
+
+                    </Container>
+
+                </div>
+            </div>
+        );
+    }
+}; 
 
 const mapStateToProps = ( store ) => {
     return { projects : store.projects };
@@ -61,28 +94,15 @@ const mapStateToProps = ( store ) => {
 export default connect( mapStateToProps )( HomePage );
 
 // https://github.com/rommguy/react-custom-scroll for scrollbar
-//className = "border-bottom border-dark pb-5 mb-5"
 
 /*
+        <Jumbotron className = "body-container" > 
+            <Container>
+                <AddProject/>
+                <CarouselComponent projects = { props.projects }/>
+            </Container>
+            <ProjectsPage />
+            <AboutUsPage />
+        </Jumbotron>
 
-
-        <CardDeck className = "col-12 ml-0" >
-            <Card body inverse color="secondary">
-                <CardHeader tag="h3">Value</CardHeader>
-                <CardText>Akruthi essential goal consists of constructing most gracious constructions with affordable monetary value.</CardText>
-            </Card>
-            <Card body inverse color="secondary">
-                <CardHeader tag="h3" >Quality</CardHeader>
-                <CardText>We work with a relentless focus on global level quality, production efficiency, ownership and accountability for our delivery.</CardText>
-            </Card>
-            <Card body inverse color="secondary">
-                <CardHeader tag="h3" >Value Added Services</CardHeader>
-                <CardText>Our customer centric services will always help our clientele to be at maximum satisfaction.</CardText>
-            </Card>
-            <Card body inverse color="secondary">
-                <CardHeader tag="h3" >Prompt Delivery</CardHeader>
-                <CardText>By employing the modernist technology, our extremely enthusiastic employees be sure that projects extradite on time.</CardText>
-            </Card>
-        </CardDeck>
-
-        */
+*/

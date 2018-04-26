@@ -96,6 +96,8 @@ class AddProject extends React.Component {
   
     };
 
+    
+
     render(){
 
         return( 
@@ -107,38 +109,38 @@ class AddProject extends React.Component {
                     </button> 
                 }
 
-            { this.state.showForm &&  
-                <Form onSubmit = { this.handleSubmit }>
-                <FormGroup>
-                    <Label for="projectTitle">Project Title:</Label>
-                    <Input type="text" name="name" id="projectTitle" placeholder="with a placeholder" onChange={ this.handleTitleChange }/>
-                </FormGroup>
-                <FormGroup>
-                    <Label for="projectSubtitle"> Project Subtitle:</Label>
-                    <Input type="text" name="subtitle" id="projectSubtitle" placeholder="password placeholder" onChange={ this.handleSubTitleChange }/>
-                </FormGroup>
-                <FormGroup>
-                    <Label for="projectOverview"> Project Overview:</Label>
-                    <Input type="textarea" name="projectOverview" id="projectOverview" placeholder="password placeholder" onChange={ this.handleOverviewChange }/>
-                </FormGroup>
-                <FormGroup>
-                    <Label for="projectImage">Image</Label>
-                    <Input type="file" name="projectImage" id="projectImage" onChange={ this.handleImageUpload }/>
-                    <FormText color="muted">
-                    This is some placeholder block-level help text for the above input.
-                    It's a bit lighter and easily wraps to a new line.
-                    </FormText>
-                </FormGroup>
-                <FormGroup>
-                    <Label for="projectStatus">Select</Label>
-                    <Input type="select" name="projectStatus" id="projectStatus" onChange = { this.handleStatusChange }>
-                        <option value = "completed" >Completed</option>
-                        <option value = "ongoing" >Ongoing</option>
-                    </Input>
-                </FormGroup>
-                <Button>Submit</Button>
-                </Form>
-            }
+                { this.state.showForm &&  
+                    <Form onSubmit = { this.handleSubmit }>
+                    <FormGroup>
+                        <Label for="projectTitle">Project Title:</Label>
+                        <Input type="text" name="name" id="projectTitle" placeholder="with a placeholder" onChange={ this.handleTitleChange }/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="projectSubtitle"> Project Subtitle:</Label>
+                        <Input type="text" name="subtitle" id="projectSubtitle" placeholder="password placeholder" onChange={ this.handleSubTitleChange }/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="projectOverview"> Project Overview:</Label>
+                        <Input type="textarea" name="projectOverview" id="projectOverview" placeholder="password placeholder" onChange={ this.handleOverviewChange }/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="projectImage">Image</Label>
+                        <Input type="file" name="projectImage" id="projectImage" onChange={ this.handleImageUpload }/>
+                        <FormText color="muted">
+                        This is some placeholder block-level help text for the above input.
+                        It's a bit lighter and easily wraps to a new line.
+                        </FormText>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="projectStatus">Select</Label>
+                        <Input type="select" name="projectStatus" id="projectStatus" onChange = { this.handleStatusChange }>
+                            <option value = "completed" >Completed</option>
+                            <option value = "ongoing" >Ongoing</option>
+                        </Input>
+                    </FormGroup>
+                    <Button>Submit</Button>
+                    </Form>
+                }
 
             </div>
 

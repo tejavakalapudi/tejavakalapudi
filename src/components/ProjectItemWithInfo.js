@@ -28,8 +28,7 @@ class ProjectItem extends React.Component {
 
         return (
 
-            <div className = "col-12" >
-
+            <div className = "col-12 body-container" >
                 <Row>
                     <div>
                         { this.props.project.title && 
@@ -45,7 +44,7 @@ class ProjectItem extends React.Component {
                             <Row>
                                 <Col xs="9">
                                     <img 
-                                        src= { this.props.project.imageLocation } 
+                                        src= { "../" + this.props.project.imageLocation } 
                                         alt= { this.props.project.title }
                                         className = "col-12" 
                                     />
@@ -127,10 +126,11 @@ class ProjectItem extends React.Component {
 
 }
 
-const mapStateToProps = ( store ) => {
+const mapStateToProps = ( store, props ) => {
 
     return {
-        authInfo : store.authInfo
+        authInfo : store.authInfo,
+        project : store.projects.find( ( project ) => project.id === props.match.params.id )
     }
 
 }

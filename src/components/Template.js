@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "./Header";
-import backGroundImage from "../../public/images/background.jpg"
 
 class AkruthiApp extends React.Component {
 

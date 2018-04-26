@@ -36,7 +36,7 @@ store.dispatch( addProject({
     title: "Venkatadri",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
     overview: "nizampet", 
-    status: "ongoing",
+    status: "completed",
     imageLocation: venkatadri,
     thumbnailLocation: venkatadriThumbnail 
 } ) );

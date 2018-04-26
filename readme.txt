@@ -39,7 +39,10 @@
 
 
 //Things to do:
-1. Project read more should take to a new projectListItem component
+1. Project read more should take to a new projectListItem component (Not modal but a seperate page)
 2. Have sticky header and apply z-index during scroll
-2. Buyers guide need to have seperate tabs
-3. Contact us (Review, Feedback, complaints, appointment)
+3. Buyers guide need to have seperate tabs
+4. Contact us (Review, Feedback, complaints, appointment, calender)
+5. Should toggle font size and background color
+6. Somehow set up a bot
+7. Location google maps

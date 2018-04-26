@@ -1,7 +1,14 @@
 .welcome-screen{
     max-width: 100%;
     height: auto;
+    
 }
+
+.fade {
+    transition: ease-in 0.30s;
+    transition-property: opacity, transform;
+//position: absolute;
+  }
 
 .header {
     //background: rgb(207, 209, 209);
@@ -10,6 +17,7 @@
     background: $off-black;
     padding: $m-size 0;
     color: white;
+    display: none;
 }
 
 .header_container{
