@@ -19,6 +19,8 @@ import { Provider } from "react-redux";
 //http://www.flintlockllc.com/ (Navbar style, testimonial section)
 //http://builtbybuffalo.com/
 //http://www.case-3d.com/projects/
+//https://www.styleshout.com/templates/preview/Infinity10/#portfolio
+//https://bootstrapmade.com/demo/Imperial/
 
 // Use normalize to have same styling format across cross browser
 // https://necolas.github.io/normalize.css/

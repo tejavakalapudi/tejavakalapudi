@@ -41,7 +41,7 @@ class HomePage extends React.Component {
                     <img src = {welcomeImage} className = {`welcome-screen ${this.state.activeclass}`} onClick = {this.toggle}></img>
                 </div>
 
-                <div className = "body-container">
+                <div className = "body-container mx-auto">
 
                     <Container fluid = "true">
 

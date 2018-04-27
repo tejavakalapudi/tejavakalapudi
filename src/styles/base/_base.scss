@@ -45,7 +45,8 @@ button:disabled{
     -moz-transform:scale(1.05); /* Firefox */
     -ms-transform:scale(1.05); /* IE 9 */
     -o-transform:scale(1.05); /* Opera */
-     transform:scale(1.05);
+    transform:scale(1.05);
+    cursor: pointer;
 }
 
 

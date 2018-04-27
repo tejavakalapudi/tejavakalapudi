@@ -60,14 +60,14 @@ class CarouselComponent extends React.Component {
                 onExited={this.onExited}
                 key={item.imageLocation}
               >
-                <img src={item.imageLocation} alt={item.title} className = "img-fluid rounded carousel_image" max-width = "100%" height = "auto" />
+                <img src={item.imageLocation} alt={item.title} className = "img-fluid rounded" max-width = "100%" height = "auto" />
                 <CarouselCaption captionText={item.title} captionHeader={item.title} />
               </CarouselItem>
             );
         });
 
         return (
-            <div className = "mx-auto img-thumbnail shadow-lg p-4 mb-5 bg-white" >
+            <div className = "mx-auto img-thumbnail shadow-lg " >
                 <Carousel
                     activeIndex={this.state.activeIndex}
                     next={this.next}

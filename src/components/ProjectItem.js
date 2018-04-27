@@ -19,7 +19,6 @@ const ProjectItem = ( props ) => (
                 <img 
                     src= { props.project.thumbnailLocation } 
                     alt= { props.project.title }
-                    className="img-thumbnail" 
                 />
             </div> 
         }
