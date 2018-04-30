@@ -7,7 +7,8 @@
   "scripts": {
     "live-server": "live-server public",
     "babel-build": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
-    "build": "webpack",
+    "build:dev": "webpack",
+    "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server"
   },
   "dependencies": {
@@ -22,6 +23,8 @@
     "bootstrap": "^4.1.0",
     "cookie-parser": "^1.4.3",
     "css-loader": "^0.28.10",
+    "express": "^4.16.3",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "file-system": "^2.2.2",
     "live-server": "^1.2.0",
