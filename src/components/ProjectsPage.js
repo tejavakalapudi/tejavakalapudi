@@ -7,6 +7,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Container
 import AddProject from "./AddProject";
 import CarouselComponent from "./Carousel";
 import logoImage from "../../public/images/logo7.png";
+import Header from "./HeaderNew";
 
 //http://www.flintlockllc.com/ refer for hover state
 
@@ -19,11 +20,30 @@ class ProjectsPage extends React.Component {
 
     renderProjectItem = ( project ) => {
         return (
-            <Col sm = "5" >
-                <ProjectItem project = { project } />
+            <Col 
+                lg= { project.status === "ongoing" ? "4" : "3" }
+                md= { project.status === "ongoing" ? "4" : "3" } 
+                sm="11"
+            >
+
+                <ProjectItem 
+                    project = { project }
+                    onClick = {
+                        () => {
+                            this.props.history.push( `/projectinfo/${project.id}` );
+                        }
+                    } 
+                />
+
+                {
+                    /*
                 <button> 
                     <NavLink to = {`/projectinfo/${project.id}`}> Read More! </ NavLink >
-                </button>                                    
+                </button> 
+                    */
+
+                }
+                                      
             </Col>
         );
     }
@@ -32,79 +52,86 @@ class ProjectsPage extends React.Component {
         return (
             <div>
                 <AddProject/>
-
-                <div className = "body-container mx-auto">
-
-                    <Container fluid = "true">
-                        <div className = "row justify-content-center">
-
-                            <div className = "home_grid col-lg-10 col-md-11">
-                                <CarouselComponent projects = { this.props.projects }/>
-                            </div>
-
-                            <div className = "col-lg-2 col-md-11">
-                                <Navbar color="faded" dark>
-                                    <Nav vertical>
-                                        <NavItem className = "home_navitem">
-                                            <NavLink to = "/" activeClassName = "is-active" exact={true} className = "navlink">HOME</NavLink>
-                                        </NavItem>
-                                        <hr/>
-                                        <NavItem className = "home_navitem">
-                                            <NavLink to = "/buyersguide" activeClassName = "is-active" className = "navlink">BUYERS-GUIDE</NavLink>
-                                        </NavItem>
-                                        <hr/>
-                                        <NavItem className = "home_navitem">
-                                            <NavLink to = "/contactus" activeClassName = "is-active" className = "navlink" >CONTACT</NavLink>
-                                        </NavItem>
-                                        <hr/>
-                                    </Nav>
-                                </Navbar>
-                                <div className = "home_logo_div" >
-                                    <img src = {logoImage} className = "home_logo" ></img>
-                                </div>
-                            </div>
-
-                        </div> 
-
-                        <div className = "home_grid col-lg-10 col-md-11">
-                            <div className = "col-10 mx-auto p-5 ">
-                                <h2 className = "text-secondary border-bottom border-secondary p-3" align="center" > Ongoing Ventures </h2>
-                            </div>
+                <div className = "projects-container mx-auto">
+                
+                    <Container>
                         
-                            <Row className = "justify-content-md-center">
-                            {   
-                                this.props.projects.map( ( project ) => {
+                        <Header activeTab = "projects"/>
 
-                                    if( project.status === "ongoing" ){
-
-                                        return this.renderProjectItem( project );
-                                        
-                                    }
-
-                                })
+                        <Row className = "justify-content-center projects_body">
+                            {
+                                /* 
+                                <div className = "col-lg-1" >
+                                    <h3 className = "about_title" > PROJECTS</h3>
+                                </div>                               
+                                */
                             }
-                            </Row>
 
-                            <div className = "col-10 mx-auto p-5 ">
-                                <h2 className = "text-secondary border-bottom border-secondary p-3" align="center" > Completed Ventures </h2>
+                            <div className = "col-lg-12 col-md-12">
+
+                                <div className = "projects_section">
+
+                                    <Row className = "justify-content-center">
+                                        <h3 className = "projects_statusfont"> Ongoing Projects</h3>
+                                    </Row>
+
+                                    <Row className = "justify-content-center">
+                                        <div>
+                                            <hr className = "projects_divider" />                               
+                                        </div>
+                                    </Row>
+                                    
+                                    <Row className = "justify-content-center">
+                                    
+                                        {   
+                                            this.props.projects.map( ( project ) => {
+
+                                                if( project.status === "ongoing" ){
+
+                                                    return this.renderProjectItem( project );
+                                                    
+                                                }
+
+                                            })
+                                        }
+                                
+                                    </Row>
+
+                                </div>
+
+                                <div className = "projects_section">
+                                    
+                                    <Row className = "justify-content-center">
+                                        <h3 className = "projects_statusfont"> Completed Projects</h3>
+                                    </Row>
+
+                                    <Row className = "justify-content-center">
+                                        <div>
+                                            <hr className = "projects_divider"/>                               
+                                        </div>
+                                    </Row>
+
+                                    <Row className = "justify-content-center">
+                                        { 
+                                            this.props.projects.map( ( project ) => {
+
+                                                if( project.status === "completed" ){
+
+                                                    return this.renderProjectItem( project );
+                                                            
+                                                }
+
+                                            })
+                                        }
+                                    </Row>
+                                
+                                </div>
+
                             </div>
 
-                            <Row className = "justify-content-md-center">
-                            { 
-                                this.props.projects.map( ( project ) => {
+                        </Row>
 
-                                    if( project.status === "completed" ){
-
-                                        return this.renderProjectItem( project );
-                                                
-                                    }
-
-                                })
-                            }
-                            </Row>
-                        </div>
-                    </Container>
-                            
+                    </Container>                            
                 </div>
 
             </div>

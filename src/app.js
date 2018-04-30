@@ -11,6 +11,11 @@ import venkatadri from "../public/images/VenkatadriTowers.jpg";
 import nandanavanamThumbnail from "../public/images/NandanavanamSquare.jpg";
 import venkatadriThumbnail from "../public/images/VenkatadriSquare.jpg";
 
+import srinivasamThumbnail from "../public/images/SrinivasamSquare.jpg";
+import brindavanamThumbnail from "../public/images/BrindavanamSquare.jpg";
+import anandaNilayamThumbnail from "../public/images/AnandaNilayam.jpg";
+import vishnuNivasThumbnail from "../public/images/VishnuNivasSquare.jpg";
+
 import { Provider } from "react-redux";
 
 //http://www.tgnickel.com/ (For Scroll bar and header) <3 <3
@@ -38,7 +43,7 @@ store.dispatch( addProject({
     title: "Venkatadri",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
     overview: "nizampet", 
-    status: "completed",
+    status: "ongoing",
     imageLocation: venkatadri,
     thumbnailLocation: venkatadriThumbnail 
 } ) );
@@ -57,6 +62,64 @@ store.dispatch( addProject({
         { "Plastering": "Two Coat plastering with sponge finish" }
     ] 
 }));
+
+store.dispatch( addProject({ 
+    title: "Srinivasam",
+    subTitle: "2 & 3 BHK, GHMC Approved Project",  
+    status: "ongoing",
+    thumbnailLocation: srinivasamThumbnail 
+} ) );
+
+store.dispatch( addProject({ 
+    title: "Srinivasam",
+    subTitle: "2 & 3 BHK, GHMC Approved Project",  
+    status: "completed",
+    thumbnailLocation: srinivasamThumbnail 
+} ) );
+store.dispatch( addProject({ 
+    title: "Brindavanam",
+    subTitle: "2 & 3 BHK, GHMC Approved Project",  
+    status: "completed",
+    thumbnailLocation: brindavanamThumbnail 
+} ) );
+store.dispatch( addProject({ 
+    title: "Ananda Nilayam",
+    subTitle: "2 & 3 BHK, GHMC Approved Project",  
+    status: "completed",
+    thumbnailLocation: anandaNilayamThumbnail 
+} ) );
+
+store.dispatch( addProject({ 
+    title: "Vishnu Nivas",
+    subTitle: "2 & 3 BHK, GHMC Approved Project",  
+    status: "completed",
+    thumbnailLocation: vishnuNivasThumbnail 
+} ) );
+store.dispatch( addProject({ 
+    title: "Vishnu Nivas",
+    subTitle: "2 & 3 BHK, GHMC Approved Project",  
+    status: "completed",
+    thumbnailLocation: vishnuNivasThumbnail 
+} ) );
+store.dispatch( addProject({ 
+    title: "Vishnu Nivas",
+    subTitle: "2 & 3 BHK, GHMC Approved Project",  
+    status: "completed",
+    thumbnailLocation: vishnuNivasThumbnail 
+} ) );
+store.dispatch( addProject({ 
+    title: "Brindavanam",
+    subTitle: "2 & 3 BHK, GHMC Approved Project",  
+    status: "completed",
+    thumbnailLocation: brindavanamThumbnail 
+} ) );
+store.dispatch( addProject({ 
+    title: "Ananda Nilayam",
+    subTitle: "2 & 3 BHK, GHMC Approved Project",  
+    status: "completed",
+    thumbnailLocation: anandaNilayamThumbnail 
+} ) );
+
 
 const state = store.getState();
 

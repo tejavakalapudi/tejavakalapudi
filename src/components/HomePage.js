@@ -41,7 +41,7 @@ class HomePage extends React.Component {
                     <img src = {welcomeImage} className = {`welcome-screen ${this.state.activeclass}`} onClick = {this.toggle}></img>
                 </div>
 
-                <div className = "body-container mx-auto">
+                <div className = "home-container mx-auto">
 
                     <Container fluid = "true">
 
@@ -51,7 +51,7 @@ class HomePage extends React.Component {
                                 <AboutUsPage />
                             </div>
         
-                            <div className = "home_grid col-lg-8 col-md-11">
+                            <div className = "col-lg-8 col-md-11">
                                 <GridComponent />
                             </div>
 
@@ -73,7 +73,7 @@ class HomePage extends React.Component {
                                     </Nav>
                                 </Navbar>
                                 <div className = "home_logo_div" >
-                                    <img src = {logoImage} className = "home_logo" ></img>
+                                    <img src = {logoImage} className = "logo" ></img>
                                 </div>
                             </div>
 

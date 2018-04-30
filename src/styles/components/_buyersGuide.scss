@@ -1,0 +1,55 @@
+.buyers-guide-container{
+    margin: 2rem 0;
+}
+
+.buyersguide_statusfont{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: bold;
+    color: $font-color;
+    font-size: 2rem;
+}
+
+.buyersguide_subtitle{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: bold;
+    color: $font-color;
+    font-size: 1.5rem;
+}
+
+.buyersguide_description{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 100;
+    color: $font-color;
+    font-size: 1.3rem;
+}
+
+.buyersguide_heading{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: bolder;
+    color: $font-color;
+    font-size: 1.3rem;
+    text-decoration: underline;
+}
+
+.buyersguide_box{
+    border: black 1px solid;
+}
+
+.buyersguide_sidebar{
+    background-color: $off-black;
+}
+.buyersguide_navbar{
+    width: 100%;
+}
+
+.buyerguide_navtab{
+    //border-bottom: #ffc107 solid;
+}
+
+.buyerguide_navlink{
+    text-align: center;
+    padding: 1rem 0;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 100;
+    //border-bottom: #ffc107 solid;
+}

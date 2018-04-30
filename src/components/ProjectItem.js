@@ -5,22 +5,31 @@ import { connect } from "react-redux";
 const ProjectItem = ( props ) => (
     
     <div> 
-        
-        { props.project.title && 
-            <h2 class="row justify-content-center" > { props.project.title } </h2> 
-        }
+        {
+            /*
+                { props.project.title && 
+                    <h2 class="row justify-content-center" > { props.project.title } </h2> 
+                }
 
-        { props.project.subTitle && 
-            <h3 class="row justify-content-center" > { props.project.subTitle } </h3> 
-        }
+                { props.project.subTitle && 
+                    <h3 class="row justify-content-center" > { props.project.subTitle } </h3> 
+                }
+            */
+
+        } 
+
 
         { props.project.thumbnailLocation &&
-            <div class="row justify-content-center">
+            
+            <div className = "row justify-content-center project_item_div">
                 <img 
                     src= { props.project.thumbnailLocation } 
                     alt= { props.project.title }
+                    width=  { props.project.status === "ongoing" ? "320px" : "272px" }  
+                    height= { props.project.status === "ongoing" ? "227px" : "193px" } 
+                    onClick = {props.onClick}
                 />
-            </div> 
+            </div>
         }
 
         { props.authInfo.isAuthorized && 

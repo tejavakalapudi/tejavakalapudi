@@ -1,0 +1,51 @@
+.projects-container{
+    margin: 2rem 0;
+}
+
+.projects_navitem{
+    
+}
+
+.projects_logo{
+    margin-top: 3rem;
+}
+
+.projects_statusfont{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: bold;
+    color: $font-color;
+    font-size: 1.8rem;
+}
+
+.projects_divider{
+    margin-bottom: 2rem;
+}
+
+.projects_section{
+    margin: 2rem 0;
+}
+
+.projects_body{
+    //border: 1px solid black;
+}
+
+.project_item_div{
+    margin-bottom: 1rem
+}
+
+.project_item_div img{
+    -webkit-transition: all 1s ease; /* Safari and Chrome */
+    -moz-transition: all 1s ease; /* Firefox */
+    -ms-transition: all 1s ease; /* IE 9 */
+    -o-transition: all 1s ease; /* Opera */
+    transition: all 1s ease;
+}
+
+.project_item_div:hover img{
+    -webkit-transform:scale(1.05); /* Safari and Chrome */
+    -moz-transform:scale(1.05); /* Firefox */
+    -ms-transform:scale(1.05); /* IE 9 */
+    -o-transform:scale(1.05); /* Opera */
+    transform:scale(1.05);
+    cursor: pointer;
+}

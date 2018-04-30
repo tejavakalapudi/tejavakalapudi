@@ -4,6 +4,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch , Link, NavLink } from "react-router-dom"; 
 
 import HomePage from "../components/HomePage";
+import HomePage1 from "../components/HomePage1";
 import AboutUsPage from "../components/AboutUsPage";
 import ProjectsPage from "../components/ProjectsPage";
 import ContactUsPage from "../components/ContactUsPage";
@@ -19,6 +20,7 @@ const AppRouter = () => (
             <AkurthiApp/>
             <Switch>
                 <Route path = "/" component = { HomePage } exact={true}/>
+                <Route path = "/home" component = { HomePage }/>
                 <Route path = "/aboutus" component = { AboutUsPage } />
                 <Route path = "/projects" component = { ProjectsPage } />
                 <Route path = "/projectinfo/:id" component = { ProjectItemWithInfo } />
