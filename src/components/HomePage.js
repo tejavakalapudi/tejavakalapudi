@@ -17,7 +17,7 @@ import ProjectsPage from "./ProjectsPage";
 import AboutUsPage from "./AboutUsPage";
 import GridComponent from "./Grid";
 import welcomeImage from "../../public/images/homepage7.png";
-import logoImage from "../../public/images/logo7.png";
+import logoImage from "../../public/images/Logo7.png";
 
 class HomePage extends React.Component {
 
