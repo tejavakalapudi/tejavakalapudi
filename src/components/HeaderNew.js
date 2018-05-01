@@ -35,9 +35,12 @@ const HeaderComponent = ( props ) => (
 
                 }
 
+                {
+                    props.activeTab !== "contact" && 
                 <NavItem className = "projects_navitem">
                     <NavLink to = "/contactus" activeClassName = "is-active" className = "navlink navlink-right" >CONTACT</NavLink>
                 </NavItem>
+                }
             </Nav>
         </Navbar>
 

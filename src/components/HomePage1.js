@@ -50,7 +50,7 @@ class HomePage extends React.Component {
 
                         <Row className = "justify-content-center">
                             <div className = "home_grid col-lg-10 col-md-11 mx-auto">
-                                <GridComponent />
+                                <GridComponent centerGrid = {true}/>
                             </div>
                         </Row>
                         

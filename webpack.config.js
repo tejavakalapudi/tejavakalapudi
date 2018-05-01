@@ -1,7 +1,7 @@
 const path = require( 'path' );
 // console.log( __dirname ); && node webpack.config.js for folder name
 // webpack.js.org
-const ExtractTextPlugin = require( "extract-text-webpack-plugin" );
+//const ExtractTextPlugin = require( "extract-text-webpack-plugin" );
 
 
 module.exports = ( env ) => {
