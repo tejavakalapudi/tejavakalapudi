@@ -1,6 +1,4 @@
 import React from "react";
-import logoImage from "../../public/images/logo7.png";
-import { NavLink } from "react-router-dom";
 import { 
     Button, 
     Row, 

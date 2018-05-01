@@ -6,7 +6,6 @@ import ProjectItem from "./ProjectItem";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Container, Jumbotron, Navbar, Nav, NavItem } from "reactstrap";
 import AddProject from "./AddProject";
 import CarouselComponent from "./Carousel";
-import logoImage from "../../public/images/logo7.png";
 import Header from "./HeaderNew";
 
 //http://www.flintlockllc.com/ refer for hover state
