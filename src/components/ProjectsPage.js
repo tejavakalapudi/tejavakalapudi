@@ -7,6 +7,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Container
 import AddProject from "./AddProject";
 import CarouselComponent from "./Carousel";
 import Header from "./HeaderNew";
+import backgroundImage from "../../public/images/background.jpg";
 
 //http://www.flintlockllc.com/ refer for hover state
 
@@ -51,88 +52,103 @@ class ProjectsPage extends React.Component {
         return (
             <div>
                 <AddProject/>
-                <div className = "projects-container mx-auto">
-                
-                    <Container>
-                        
-                        <Header activeTab = "projects"/>
+                {/*
+                    //To have background behind
+                    <div className = "background-container"> 
+                */}
+                    <div className = "projects-container mx-auto">
+                    
+                        <Container>
+                            
+                            <Header activeTab = "projects"/>
 
-                        <Row className = "justify-content-center projects_body">
-                            {
-                                /* 
-                                <div className = "col-lg-1" >
-                                    <h3 className = "about_title" > PROJECTS</h3>
-                                </div>                               
-                                */
-                            }
+                            <Row className = "justify-content-center projects_body">
+                                {
+                                    /* 
+                                    <div className = "col-lg-1" >
+                                        <h3 className = "about_title" > PROJECTS</h3>
+                                    </div>                               
+                                    */
+                                }
 
-                            <div className = "col-lg-12 col-md-12">
+                                <div className = "col-lg-12 col-md-12">
 
-                                <div className = "projects_section">
+                                    <div className = "projects_section">
 
-                                    <Row className = "justify-content-center">
-                                        <h3 className = "projects_statusfont"> Ongoing Projects</h3>
-                                    </Row>
+                                        <Row className = "justify-content-center">
+                                            <h3 className = "projects_statusfont"> Ongoing Projects</h3>
+                                        </Row>
 
-                                    <Row className = "justify-content-center">
-                                        <div>
-                                            <hr className = "projects_divider" />                               
-                                        </div>
-                                    </Row>
+                                        <Row className = "justify-content-center">
+                                            <div>
+                                                <hr className = "projects_divider" />                               
+                                            </div>
+                                        </Row>
+                                        
+                                        <Row className = "justify-content-center">
+                                        
+                                            {   
+                                                this.props.projects.map( ( project ) => {
+
+                                                    if( project.status === "ongoing" ){
+
+                                                        return this.renderProjectItem( project );
+                                                        
+                                                    }
+
+                                                })
+                                            }
                                     
-                                    <Row className = "justify-content-center">
+                                        </Row>
+
+                                    </div>
+
+                                    <div className = "projects_section">
+                                        
+                                        <Row className = "justify-content-center">
+                                            <h3 className = "projects_statusfont"> Completed Projects</h3>
+                                        </Row>
+
+                                        <Row className = "justify-content-center">
+                                            <div>
+                                                <hr className = "projects_divider"/>                               
+                                            </div>
+                                        </Row>
+
+                                        <Row className = "justify-content-center">
+                                            { 
+                                                this.props.projects.map( ( project ) => {
+
+                                                    if( project.status === "completed" ){
+
+                                                        return this.renderProjectItem( project );
+                                                                
+                                                    }
+
+                                                })
+                                            }
+                                        </Row>
                                     
-                                        {   
-                                            this.props.projects.map( ( project ) => {
-
-                                                if( project.status === "ongoing" ){
-
-                                                    return this.renderProjectItem( project );
-                                                    
-                                                }
-
-                                            })
-                                        }
-                                
-                                    </Row>
+                                    </div>
 
                                 </div>
 
-                                <div className = "projects_section">
-                                    
-                                    <Row className = "justify-content-center">
-                                        <h3 className = "projects_statusfont"> Completed Projects</h3>
-                                    </Row>
+                            </Row>
 
-                                    <Row className = "justify-content-center">
-                                        <div>
-                                            <hr className = "projects_divider"/>                               
-                                        </div>
-                                    </Row>
+                        </Container>                            
+                    </div>
 
-                                    <Row className = "justify-content-center">
-                                        { 
-                                            this.props.projects.map( ( project ) => {
 
-                                                if( project.status === "completed" ){
+                    {
+                        /*
+                        //To have background behind
+                        <div className = "background-image">
+                            <img src = {backgroundImage}></img>
+                        </div>
+                        */
+                    }
 
-                                                    return this.renderProjectItem( project );
-                                                            
-                                                }
-
-                                            })
-                                        }
-                                    </Row>
-                                
-                                </div>
-
-                            </div>
-
-                        </Row>
-
-                    </Container>                            
-                </div>
-
+                {/*</div>*/}
             </div>
         );
 
@@ -147,56 +163,3 @@ export default connect( mapStateToProps )( ProjectsPage );
 
 // https://github.com/MicheleBertoli/react-gmaps 
 // https://github.com/google-map-react/google-map-react for locations
-
-
-
-/* 
-this.state.showInfo && 
-<Modal isOpen = { this.state.showInfo } closeTimeoutMS = { 200 }>
-    <ProjectItem 
-        project = { project } 
-        isCompleted = { project.status === "completed" }
-        showInfo = { this.state.showInfo } 
-    />
-    <button onClick = { () => { this.setState( () => ( { showInfo : false } ) ) }} > Close </button>
-</Modal>
-
-
-<Row className = "justify-content-md-center">
-
-
-onClick = {
-() => {
-
-    this.setState( () => ({ 
-        showInfo : true,
-        expandedProject : project
-    }));
-
-}
-
-                                 
-<Modal isOpen={ this.state.showInfo } className = "modal-dialog modal-lg" >
-
-<ModalHeader>{ this.state.expandedProject.title }</ModalHeader>
-
-<ModalBody>
-    <ProjectItemWithInfo project = { this.state.expandedProject }/>
-</ModalBody>
-
-<ModalFooter>
-    <Button 
-        color="primary" 
-        onClick = {() => { 
-            this.setState( () => ({ 
-                showInfo : false, 
-                expandedProject : {} 
-            })) 
-        }}
-    >
-        Cancel
-    </Button>
-</ModalFooter>
-
-</Modal>
-*/

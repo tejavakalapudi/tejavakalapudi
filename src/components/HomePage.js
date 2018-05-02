@@ -19,6 +19,8 @@ import GridComponent from "./Grid";
 import welcomeImage from "../../public/images/homepage7.png";
 import logoImage from "../../public/images/Logo7.png";
 
+import backgroundImage from "../../public/images/background.jpg";
+
 class HomePage extends React.Component {
 
     state = {
@@ -40,48 +42,61 @@ class HomePage extends React.Component {
                 <div id = "welcomeImage" >
                     <img src = {welcomeImage} className = {`welcome-screen ${this.state.activeclass}`} onClick = {this.toggle}></img>
                 </div>
+                
+                {/*
+                    //To have background behind
+                    <div className = "background-container">
+                */}
 
-                <div className = "home-container mx-auto">
+                    <div className = "home-container mx-auto">
 
-                    <Container fluid = "true">
+                        <Container fluid = "true">
 
-                        <div className = "row justify-content-center">
+                            <div className = "row justify-content-center">
 
-                            <div className = "col-lg-2 col-md-11">
-                                <AboutUsPage />
-                            </div>
-        
-                            <div className = "col-lg-8 col-md-11">
-                                <GridComponent />
-                            </div>
-
-                            <div className = "col-lg-2 col-md-11">
-                                <Navbar color="faded" dark>
-                                    <Nav vertical>
-                                        <NavItem className = "home_navitem">
-                                            <NavLink to = "/projects" activeClassName = "is-active" exact={true} className = "navlink">PROJECTS</NavLink>
-                                        </NavItem>
-                                        <hr/>
-                                        <NavItem className = "home_navitem">
-                                            <NavLink to = "/buyersguide" activeClassName = "is-active" className = "navlink">BUYERS-GUIDE</NavLink>
-                                        </NavItem>
-                                        <hr/>
-                                        <NavItem className = "home_navitem">
-                                            <NavLink to = "/contactus" activeClassName = "is-active" className = "navlink" >CONTACT</NavLink>
-                                        </NavItem>
-                                        <hr/>
-                                    </Nav>
-                                </Navbar>
-                                <div className = "home_logo_div" >
-                                    <img src = {logoImage} className = "logo" ></img>
+                                <div className = "col-lg-2 col-md-11">
+                                    <AboutUsPage />
                                 </div>
-                            </div>
+            
+                                <div className = "col-lg-8 col-md-11">
+                                    <GridComponent />
+                                </div>
 
-                        </div> 
+                                <div className = "col-lg-2 col-md-11">
+                                    <Navbar color="faded" dark>
+                                        <Nav vertical>
+                                            <NavItem className = "home_navitem">
+                                                <NavLink to = "/projects" activeClassName = "is-active" exact={true} className = "navlink">PROJECTS</NavLink>
+                                            </NavItem>
+                                            <hr/>
+                                            <NavItem className = "home_navitem">
+                                                <NavLink to = "/buyersguide" activeClassName = "is-active" className = "navlink">BUYERS-GUIDE</NavLink>
+                                            </NavItem>
+                                            <hr/>
+                                            <NavItem className = "home_navitem">
+                                                <NavLink to = "/contactus" activeClassName = "is-active" className = "navlink" >CONTACT</NavLink>
+                                            </NavItem>
+                                            <hr/>
+                                        </Nav>
+                                    </Navbar>
+                                    <div className = "home_logo_div" >
+                                        <img src = {logoImage} className = "logo" ></img>
+                                    </div>
+                                </div>
 
-                    </Container>
+                            </div> 
 
-                </div>
+                        </Container>
+
+                    </div>
+
+                {/*
+                    //To have background behind
+                    <div className = "background-image">
+                        <img src = {backgroundImage}></img>
+                    </div>
+                    </div>
+                */}
             </div>
         );
     }

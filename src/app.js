@@ -8,6 +8,7 @@ import { setTextFilter } from "./actions/filters";
 import getVisibleExpenses from "./selectors/projects";
 import nandanavanam from "../public/images/Nandanavanam.jpg";
 import venkatadri from "../public/images/VenkatadriTowers.jpg";
+import venkatadriElevation from "../public/images/VenkatadriElevation.jpg";
 import nandanavanamThumbnail from "../public/images/NandanavanamSquare.jpg";
 import venkatadriThumbnail from "../public/images/VenkatadriSquare.jpg";
 
@@ -26,6 +27,7 @@ import { Provider } from "react-redux";
 //http://www.case-3d.com/projects/
 //https://www.styleshout.com/templates/preview/Infinity10/#portfolio
 //https://bootstrapmade.com/demo/Imperial/
+//https://www.badshahny.com/
 
 // Use normalize to have same styling format across cross browser
 // https://necolas.github.io/normalize.css/
@@ -40,20 +42,52 @@ import "./styles/styles.scss";
 const store = configureStore();
 
 store.dispatch( addProject({ 
-    title: "Venkatadri",
+    title: "Venkatadri Towers",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
-    overview: "nizampet", 
+    overview: "Akruti's Venkatadri Towers is an ongoing HMDA Approved Gated Community project by Akruthi Constructions & Developers in the locality of Reddy Avenues,Near By Nizampet Village Panchayati Office, Nizampet, Kukatpally, Hyderabad.",
     status: "ongoing",
-    imageLocation: venkatadri,
-    thumbnailLocation: venkatadriThumbnail 
-} ) );
+    amenities: [ 
+        "AC Gym", 
+        "Generator Backup", 
+        "Children play area and landscaped garden",
+        "Club House",
+        "24 hours Security with intercom facility",
+        "Solar fence all around the boundary"
+    ],
+    imageLocation: venkatadriElevation,
+    thumbnailLocation: venkatadriThumbnail,
+    specs: [
+        { "Structure":	"R.C.C Framed Structure" },
+        { "Super Structure":	"Red Brunt brick Walls in CM" },
+        { "Plastering": "Two Coat plastering with sponge finish" },
+        { "Finishing" : "Vitrified Tiles 2'2'" },
+        { "Main Doors" : "Modular Doors (or) Veneers Doors & Godrej Key" },
+        { "Internal Doors":	"Frames - Teak wood, Shutters - company made flush door along with necessary hardware and paint" },
+        { "Windows": "Aluminum Power Coated Window system with Opoque glass and safety grills" },
+        { "Paints" : "Plastic Emulsion & luppam finish / External as per Elevation" },
+        { "Electrical" :"Concealed PVC pipes and copper wiring with cable with ISI brand" },
+        { "Water Supply" : "Bore water will be supplied through sump and over head tank. And provision for manjeera water supply" },
+        { "Toilets" :	"Ceramic tiles cladding up 6' height and best quality sanitary fittings, flooring quality ceramic Tile one European Style, one Orissa pan Sanitary" },
+        { "Kitchen" :	"Cooking platform and sink with granitc stone with dado in glazed tiles to a height of 4' Feet" },
+        { "Lift":	"Standard Make" },
+        { "Generator": "In Hall one light, one fan only and lift and common areas all" },
+        { "Common Extra":"Generator, Transformer, Electricity meter, Panel Board, Drainage and Car Parking" }
+    ]  
+}));
 
 store.dispatch( addProject({ 
-    title: "Nandanavanam",
+    title: "Nandanavanam Towers",
     subTitle: "2 & 3 BHK, GHMC Approved Project", 
     overview: "Residential and commercial space in the ground floor while the other floors are exclusively residential. Airy spaces, modern fittings, beautiful views and attention to detail are some of the aspects that define this venture. Standing in the middle of the most sizzling location of the Hitech City MMTS, these apartments combine ultra modern architecture with uber chic designing concepts and prudent planning. Take your pick from the abundant choice.", 
     status : "ongoing", 
-    amenities: "Amenities of this project!",
+    amenities: [ 
+        "AC Gym", 
+        "Generator Backup", 
+        "Children play area and landscaped garden",
+        "Club House",
+        "24 hours Security with intercom facility",
+        "Solar fence all around the boundary"
+    ],
     imageLocation: nandanavanam,
     thumbnailLocation: nandanavanamThumbnail,
     specs: [

@@ -8,7 +8,7 @@ const HeaderComponent = ( props ) => (
     <div className = "row justify-content-between"> 
     
         <div className = "" >
-            <img src = {logoImage} className = "logo projects_logo" ></img>
+            <img src = { props.activeTab === "projectinfo" ? "../" + logoImage : logoImage } className = "logo projects_logo" ></img>
         </div>
 
         <Navbar color="faded" dark>
@@ -28,7 +28,7 @@ const HeaderComponent = ( props ) => (
                     </NavItem>
                 }
                 {
-                    props.activeTab !== "buyersguide" && 
+                    props.activeTab !== "buyersguide" && props.activeTab !== "projectinfo" &&
                     <NavItem className = "projects_navitem">
                         <NavLink to = "/buyersguide" activeClassName = "is-active" className = "navlink navlink-right">BUYERS GUIDE</NavLink>
                     </NavItem>

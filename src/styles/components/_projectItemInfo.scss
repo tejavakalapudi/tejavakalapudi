@@ -1,0 +1,76 @@
+.project-item_title{
+    text-align: center;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 100;
+    font-size: 3.6rem;
+}
+
+.project-item_imageContainer{
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.project-item_image{
+    width: 100%;
+}
+
+.project-item_subtitle{
+    text-align: center;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: bold;
+    font-size: 2.4rem;
+}
+
+.project-item_overview{
+    text-align: center;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 100;
+    font-size: 2.4rem;    
+}
+
+.project-item_navbar{
+    background-color: $off-black;
+    color: $bootstrap-warning;
+    padding: 2rem 0;
+    margin: 2rem 0 0;
+}
+
+.project-item_navbarTab{
+    text-align: center;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 100;
+    font-size: 2.4rem;
+    text-decoration: underline;
+}
+
+.project-item_amenities_section{
+    background-color: $off-white1;
+    color: $off-black;
+    padding: 2rem 0;
+    border-bottom: black solid 1px;  
+}
+
+.project-item_amenities{
+
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 100;
+    font-size: 2.4rem;
+
+}
+
+.project-item_locationSection{
+    margin-top: 4rem;
+}
+
+.project-item_contact{
+    margin: 5rem 0;
+}
+
+.project-item_specs_section{
+    background-color: #979797;
+    color: $off-white1;
+    padding: 2rem 0;
+    font-size: 1.2rem;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 100;
+}

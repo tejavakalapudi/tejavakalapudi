@@ -9,7 +9,7 @@ body {
     background: white;
 }
 
-button {
+button, a {
     cursor: pointer;
 }
 
@@ -23,9 +23,9 @@ button:disabled{
 }
 
 .modal-content {
-    //width: 1200px;
-    //height: 800px;
-    //margin-left: -200px;
+    width: 1200px;
+    height: 800px;
+    margin-left: -200px;
 }
 
 .background {
@@ -69,4 +69,15 @@ button:disabled{
 .cardBody{
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size: 1.7rem;
+}
+
+hr{
+    display: block;
+    height: 0.1rem;
+    width: 3rem;
+    color: black;
+    background-color: black;
+    margin-left: 0rem;
+    margin-top: 0.1rem;
+    margin-bottom: 0.3rem;
 }

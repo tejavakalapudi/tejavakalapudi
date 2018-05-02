@@ -1,5 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import { 
+    Row, 
+    Col,
+    Container,
+    Table
+} from 'reactstrap';
 
 class Specifications extends React.Component {
 
@@ -20,26 +26,37 @@ class Specifications extends React.Component {
 
     render(){
         return(
-            <div> 
-                <p>This is Specifications page</p>
+            <Col>
+                <Col lg ="11">
+                    <Table size="sm" hover>
+                        <tbody>
+                            { this.props.specs.length > 0 && 
+                                
+                                this.props.specs.map(( spec ) => {
+                                    
+                                    for( var key in spec ){
+                                        return (
+                                            <tr>
+                                                <td> { key } </td>
+                                                <td> : </td>
+                                                <td> { spec[ key ] } </td>
+                                            </tr>
+                                        );
 
-                <button onClick = { this.updateSpecs } disabled = { this.state.disabled }>Show Specs!</button>
-                
-                <ul>
-                { this.state.specifications.length > 0 && 
-                    this.state.specifications.map(( spec ) => {
-                        
-                        for( var key in spec ){
+                                    }
 
-                            return <li> { key } : { spec[ key ] }</li>
+                                })
+                            }
+                        </tbody>
+                    </Table>
 
-                        }
-
-                    })
-                }
-                </ul>
-
-            </div> 
+                    {
+                        /*
+                            <button onClick = { this.updateSpecs } disabled = { this.state.disabled }>Show Specs!</button>
+                        */
+                    }
+                </Col>
+            </Col> 
         );
     }
 
