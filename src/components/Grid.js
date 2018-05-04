@@ -27,7 +27,7 @@ const Grid = ( props ) => (
     <div >
         <CardColumns>
             <Card>
-                <CardImg top width="100%" src={srinivasam} alt="Card image cap" className = "zoomImage" />
+                <CardImg top width="320px" src={srinivasam} alt="Card image cap" className = "zoomImage" />
             </Card>
             <Card body className = { props.centerGrid && "cardBody" }>
                 <CardTitle>Value</CardTitle>
@@ -45,7 +45,7 @@ const Grid = ( props ) => (
             </Card>
 
             <Card>
-                <CardImg top width="100%" src={venkatadri} alt="Card image cap" className = "zoomImage" />
+                <CardImg top width="320px" src={venkatadri} alt="Card image cap" className = "zoomImage" />
             </Card>
 
             <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className = { props.centerGrid && "cardBody" }>
@@ -63,7 +63,7 @@ const Grid = ( props ) => (
             </Card>
 
             <Card>
-                <CardImg top width="100%" src={nandanavanam} alt="Card image cap" className = "zoomImage" />
+                <CardImg top width="320px" src={nandanavanam} alt="Card image cap" className = "zoomImage" />
             </Card>
 
             <Card body inverse color="danger" className = { props.centerGrid && "cardBody" }>

@@ -98,7 +98,7 @@ class ProjectsPage extends React.Component {
 
                                                 })
                                             }
-                                    
+                    
                                         </Row>
 
                                     </div>

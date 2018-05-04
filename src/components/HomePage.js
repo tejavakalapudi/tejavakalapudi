@@ -59,7 +59,7 @@ class HomePage extends React.Component {
                                 </div>
             
                                 <div className = "col-lg-8 col-md-11">
-                                    <GridComponent />
+                                    <GridComponent projects = {this.props.projects} />
                                 </div>
 
                                 <div className = "col-lg-2 col-md-11">

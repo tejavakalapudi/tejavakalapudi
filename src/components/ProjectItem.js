@@ -15,20 +15,29 @@ const ProjectItem = ( props ) => (
                     <h3 class="row justify-content-center" > { props.project.subTitle } </h3> 
                 }
             */
-
         } 
 
 
         { props.project.thumbnailLocation &&
             
-            <div className = "row justify-content-center project_item_div">
+            <div 
+                className = "row justify-content-center imageContainer"
+            >
                 <img 
                     src= { props.project.thumbnailLocation } 
                     alt= { props.project.title }
                     width=  { props.project.status === "ongoing" ? "320px" : "272px" }  
-                    height= { props.project.status === "ongoing" ? "227px" : "193px" } 
+                    height= { props.project.status === "ongoing" ? "227px" : "193px" }
                     onClick = {props.onClick}
+                    className = "project-item_image"
                 />
+                <div class="imageOverlay">
+                    <div class="overlayText">
+                        <p className="project-item_subtitle"> { props.project.title } </p>
+                        <p><a  onClick = {props.onClick} style={ {"text-decoration": "underline"} }> Learn More </a></p>
+                    </div>
+                </div>
+
             </div>
         }
 

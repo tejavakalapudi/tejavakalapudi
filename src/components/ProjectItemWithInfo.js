@@ -16,7 +16,7 @@ import { TabContent,
 } from 'reactstrap';
 import Specifications from "./Specifications";
 import Header from "./HeaderNew";
-import GoogleMap from "./GoogleMap";
+import GoogleMapComponent from "./GoogleMap";
 
 class ProjectItemWithInfo extends React.Component {
 
@@ -54,15 +54,15 @@ class ProjectItemWithInfo extends React.Component {
                                 </Row>
                                 
                                 <Row className = "justify-content-center">
-                                    <Col lg="10" className = "project-item_imageContainer">
+                                    <Col lg="10" className = "project-item-info_imageContainer">
                                         <img 
                                             src= { "../" + this.props.project.imageLocation } 
                                             alt= { this.props.project.title }
-                                            className = "project-item_image"
+                                            className = "project-item-info_image"
                                         />
                                     </Col>
 
-                                    <Col lg="11" className = "project-item_image">
+                                    <Col lg="11" className = "project-item-info_image">
                                         <p className = "project-item_subtitle"> 
                                             { this.props.project.subTitle }
                                         </p>
@@ -135,13 +135,23 @@ class ProjectItemWithInfo extends React.Component {
                                 </Row>
                             </div>
                         </Row>
-                        <GoogleMap 
-                            isMarkerShown
-                            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbmqWgEH7KiHfYC6DJMjScUbWlcPb1XME&v=3.exp&libraries=geometry,drawing,places"
-                            loadingElement={<div style={{ height: `100%` }} />}
-                            containerElement={<div style={{ height: `400px` }} />}
-                            mapElement={<div style={{ height: `100%` }} />}
+                        {
                             
+                            /*
+                            <GoogleMap 
+                                isMarkerShown
+                                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbmqWgEH7KiHfYC6DJMjScUbWlcPb1XME&v=3.exp&libraries=geometry,drawing,places"
+                                loadingElement={<div style={{ height: `100%` }} />}
+                                containerElement={<div style={{ height: `400px` }} />}
+                                mapElement={<div style={{ height: `100%` }} />}
+                                
+                            />                            
+                            */
+                        }
+                        
+                        <GoogleMapComponent 
+                            lat= {17.486014} 
+                            lng= {78.373993}
                         />
 
                         <Row className = "justify-content-center project-item_contact">

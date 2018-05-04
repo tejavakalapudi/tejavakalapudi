@@ -1,13 +1,42 @@
 import React from "react";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 
-const GoogleMaps = withScriptjs( withGoogleMap( ( props ) => ( 
-    <GoogleMap
-        defaultZoom={8}
-        defaultCenter={{ lat: 17.486014, lng: 78.373993 }}
-    >
-        {props.isMarkerShown && <Marker position={{ lat: 17.486014, lng: 78.373993 }} />}
-    </GoogleMap>
-)));
+const MapsComponent = ( localProps ) => {
 
-export default GoogleMaps;
+    const GoogleMaps = withScriptjs( withGoogleMap( ( props ) => ( 
+        <GoogleMap
+            defaultZoom={12}
+            defaultCenter={{ lat: localProps.lat, lng: localProps.lng }}
+        >
+    
+            {   props.isMarkerShown && 
+                <Marker 
+                    position={{ lat: localProps.lat, lng: localProps.lng }}
+                    onClick={ localProps.onClick } 
+                >
+                    {   
+                        //Should display address from localProps
+                        <InfoWindow>
+                            <div>Location Info</div>
+                        </InfoWindow>
+                    }
+                </Marker>
+            }
+    
+        </GoogleMap>
+    )));
+
+    return(
+        <GoogleMaps 
+            isMarkerShown
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbmqWgEH7KiHfYC6DJMjScUbWlcPb1XME&v=3.exp&libraries=geometry,drawing,places"
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `400px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+            
+        />
+    );
+
+}
+
+export default MapsComponent;
