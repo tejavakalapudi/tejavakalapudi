@@ -36,6 +36,22 @@ class WelcomeScreen extends React.Component{
                 <Container fluid = {true} className = "overlay-containter">
     
                     <Row className = "justify-content-center overlay-row">
+                        
+                        <div className = {`mobile__overlay ${this.state.activeClass}`}>
+                            <div className = "home-content-table" >
+
+                                <div className = "mobile-content-tablecell">
+
+                                    <Row className = "justify-content-center" >
+                                        <div className = "mobile__overlay-title" >Akruthi</div>
+                                        <div className = "mobile__overlay-subtitle" >BUILDING IT BETTER IN CONCRETE!</div>
+                                    </Row>
+
+                                </div>
+                                
+                            </div>
+                        </div>
+
                         <Col xs="4" className = {`columnText overlay-column1 ${this.state.activeClass}`}>
                         </Col>
 
@@ -57,6 +73,9 @@ class WelcomeScreen extends React.Component{
 
                         <Col xs="4" className = {`columnText overlay-column3 ${this.state.activeClass}`}>
                         </Col>
+
+
+
                     </Row>
     
                 </Container>
