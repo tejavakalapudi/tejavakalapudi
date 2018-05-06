@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header";
 
 class AkruthiApp extends React.Component {
 
@@ -11,7 +10,7 @@ class AkruthiApp extends React.Component {
 
         return(
             <div>
-                <Header/>
+                
             </div>
         );
     }

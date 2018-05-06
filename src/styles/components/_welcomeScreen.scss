@@ -1,0 +1,176 @@
+.welcome-image-div{
+    
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center 30%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 804px;
+    position: relative;
+    background-image: url(../../public/images/CementBG1.png);
+    transition: 1.8s ease;
+}
+
+.overlay-containter{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+}
+
+.overlay-row{
+    //height: 33.3%;;
+    height: 100%;
+}
+
+.overlay-column1{
+    border-right: white 1px solid;
+    height: 100%;
+    background-color: rgba(0, 123, 255, 0.24);
+    transition: 1.5s ease;
+}
+
+.overlay-column2{
+    border-right: white 1px solid;
+    border-left: white 1px solid;
+    height: 100%;
+    background-color: rgba(249, 249, 249, 0.24);
+    //display: flex;
+    //align-items: center;
+    //justify-content: center;
+    transition: 1s ease;
+}
+
+.overlay-column3{
+    border-left: white 1px solid;
+    height: 100%;
+    background-color: rgba(151, 146, 187, 0.24);
+    transition: 0.5s ease;
+}
+
+.columnText{
+    text-align: center;
+    //margin: 50rem 0;
+    //align-self: center;
+}
+
+.learn-more-button{
+    border: white 1px solid;
+    padding: 1rem;
+    background-color:rgba(253, 253, 251, 0.52);
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.learn-more-div{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    color: white;
+}
+
+.hide-welcome-screen{
+    height: 0%;
+    visibility: hidden;   
+}
+
+.welcome-image-div.hide-welcome-screen{
+    min-height: 0; 
+    visibility: hidden;
+}
+
+.learn-more-button.hide-welcome-screen{
+    //visibility: hidden;
+}
+
+.home-content-table{
+    width: 100%;
+    height: 100%;
+    display: table;
+    position: relative;
+    text-align: center;
+}
+
+.home-content-tablecell {
+    display: table-cell;
+    vertical-align: middle;
+    z-index: 500;
+
+}
+
+.home-content-tablecell .row {
+    position: relative;
+    padding-top: 25rem;
+    //padding-bottom: 15rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .columnText{
+        //margin: 53rem 0;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .columnText{
+        //margin: 40rem 0;
+    }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .columnText{
+        //margin: 45rem 0;
+    }
+
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .columnText{
+        //margin: 50rem 0;
+    }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .columnText{
+        //margin: 50rem 0;
+    }
+}

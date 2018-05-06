@@ -39,6 +39,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 
+// Company dimensions = [ 17.516247, 78.385560 ]
+
 const store = configureStore();
 
 store.dispatch( addProject({ 
@@ -72,7 +74,9 @@ store.dispatch( addProject({
         { "Lift":	"Standard Make" },
         { "Generator": "In Hall one light, one fan only and lift and common areas all" },
         { "Common Extra":"Generator, Transformer, Electricity meter, Panel Board, Drainage and Car Parking" }
-    ]  
+    ],
+    locationMapInfo : [17.516707, 78.385796],
+    address : "59, Blooming Dale Road, Madhura Nagar, Nizampet, Hyderabad, Telangana 500090, India"
 }));
 
 store.dispatch( addProject({ 
@@ -94,7 +98,9 @@ store.dispatch( addProject({
         { "Structure":	"R.C.C Framed Structure" },
         { "Super Structure":	"Red Brunt brick Walls in CM" },
         { "Plastering": "Two Coat plastering with sponge finish" }
-    ] 
+    ],
+    locationMapInfo : [ 17.486014, 78.373993 ],
+    address : "Gopalnagar Society, Hafeezpet, Hyderabad, Telangana 500085, India"
 }));
 
 store.dispatch( addProject({ 

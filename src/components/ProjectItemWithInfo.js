@@ -77,19 +77,19 @@ class ProjectItemWithInfo extends React.Component {
 
                     <Row className = "justify-content-center project-item_navbar">
                         <Col lg = "3" className = "project-item_navbarTab" >
-                            <a onClick = {this.toggleSpecs} > 
+                            <a onClick = {this.toggleSpecs} className = "project-item_navbarText"> 
                                 Specifications
                             </a> 
                         </Col>
 
                         <Col lg = "3" className = "project-item_navbarTab" >
-                            <a>
+                            <a className = "project-item_navbarText">
                                 Floor Plans 
                             </a>
                         </Col>
 
                         <Col lg = "3" className = "project-item_navbarTab" > 
-                            <a>
+                            <a className = "project-item_navbarText">
                                 Brochure
                             </a>   
                         </Col>
@@ -135,23 +135,12 @@ class ProjectItemWithInfo extends React.Component {
                                 </Row>
                             </div>
                         </Row>
-                        {
-                            
-                            /*
-                            <GoogleMap 
-                                isMarkerShown
-                                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbmqWgEH7KiHfYC6DJMjScUbWlcPb1XME&v=3.exp&libraries=geometry,drawing,places"
-                                loadingElement={<div style={{ height: `100%` }} />}
-                                containerElement={<div style={{ height: `400px` }} />}
-                                mapElement={<div style={{ height: `100%` }} />}
-                                
-                            />                            
-                            */
-                        }
-                        
+
                         <GoogleMapComponent 
-                            lat= {17.486014} 
-                            lng= {78.373993}
+                            lat= {this.props.project.locationMapInfo[ 0 ]} 
+                            lng= {this.props.project.locationMapInfo[ 1 ]}
+                            title =  { this.props.project.title }
+                            address = { this.props.project.address }
                         />
 
                         <Row className = "justify-content-center project-item_contact">

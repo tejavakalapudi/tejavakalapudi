@@ -2,7 +2,6 @@ import React from "react";
 import ProjectItemWithInfo from "./ProjectItemWithInfo";
 import AddProject from "./AddProject";
 import { connect } from "react-redux";
-import CarouselComponent from "./Carousel";
 import { 
     Container, 
     Jumbotron,
@@ -16,8 +15,11 @@ import { NavLink } from "react-router-dom";
 import ProjectsPage from "./ProjectsPage";
 import AboutUsPage from "./AboutUsPage1";
 import GridComponent from "./Grid";
-import welcomeImage from "../../public/images/homepage7.png";
+import welcomeImage from "../../public/images/CementBG2.png";
 import HeaderNew from "./HeaderNew";
+import Contact from "./ContactUsPage";
+import GoogleMapComponent from "./GoogleMap";
+import WelcomeScreen from "./WelcomeScreen";
 
 class HomePage extends React.Component {
 
@@ -28,19 +30,21 @@ class HomePage extends React.Component {
     toggle = () => {
         
         this.setState({
-            activeclass: "fade"
+            //activeclass: "fade"
         });
     }
 
     render(){
+        
+        window.addEventListener('resize', () =>{
+
+        }); 
 
         return (
             <div>
-
-                <div id = "welcomeImage" >
-                    <img src = {welcomeImage} className = {`welcome-screen ${this.state.activeclass}`} onClick = {this.toggle}></img>
-                </div>
-
+                
+                <WelcomeScreen />
+                
                 <div className = "buyers-guide-container mx-auto">
 
                     <Container>
@@ -53,18 +57,43 @@ class HomePage extends React.Component {
                             </div>
                         </Row>
                         
+                        <Jumbotron className = "home-aboutus_section">
+                            <div className = "row justify-content-center">
 
-                        <div className = "row justify-content-center">
-
-                            <div className = "col-lg-9 col-md-11 mx-auto">
-                                <AboutUsPage />
+                                <div className = "col-lg-11 col-md-11 mx-auto">
+                                    <AboutUsPage />
+                                </div>
+        
                             </div>
-    
-                        </div>     
+                        </Jumbotron>
+
+                        <Row className = "justify-content-center">
+                            <div className = "col-lg-12 col-md-12">
+                                <Row className = "justify-content-center project-item_locationSection">
+                                    <h3 className = "project-item_title"> Location </h3>
+                                </Row>
+                                <Row className = "justify-content-center">
+                                    <div>
+                                        <hr className = "projects_divider" />                               
+                                    </div>
+                                </Row>
+                            </div>
+                        </Row>
+
+                        <GoogleMapComponent 
+                            lat= {17.516247}
+                            lng= {78.385560}
+                            title =  "Akruthi Constructions & Developers"
+                            address = "59, Blooming Dale Road, Madhura Nagar, Nizampet, Hyderabad, Telangana 500090, India"
+                        />
+                        <div className = "home-section_divider" ></div>
+                        <Contact isHome = {true} />
 
                     </Container>
 
-                </div>
+
+                </div>                
+            
             </div>
         );
     }

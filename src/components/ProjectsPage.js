@@ -5,7 +5,6 @@ import ProjectItemWithInfo from "./ProjectItemWithInfo";
 import ProjectItem from "./ProjectItem";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Container, Jumbotron, Navbar, Nav, NavItem } from "reactstrap";
 import AddProject from "./AddProject";
-import CarouselComponent from "./Carousel";
 import Header from "./HeaderNew";
 import backgroundImage from "../../public/images/background.jpg";
 
@@ -34,15 +33,6 @@ class ProjectsPage extends React.Component {
                         }
                     } 
                 />
-
-                {
-                    /*
-                <button> 
-                    <NavLink to = {`/projectinfo/${project.id}`}> Read More! </ NavLink >
-                </button> 
-                    */
-
-                }
                                       
             </Col>
         );

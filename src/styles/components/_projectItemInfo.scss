@@ -69,7 +69,9 @@
 
 
 
-
+.project-item-info{
+    transition: 5s ease;
+}
 
 .project-item-info_imageContainer{
     text-align: center;
@@ -110,8 +112,14 @@
     text-decoration: underline;
 }
 
+.project-item_navbarText{
+    padding: 0 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #464444;
+}
+
 .project-item_amenities_section{
-    background-color: $off-white1;
+    background-color: #f7f7f2;
     color: $off-black;
     padding: 2rem 0;
     border-bottom: black solid 1px;  
@@ -135,8 +143,8 @@
 }
 
 .project-item_specs_section{
-    background-color: #979797;
-    color: $off-white1;
+    background-color: #dadac9;
+    color: $off-black;
     padding: 2rem 0;
     font-size: 1.2rem;
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;

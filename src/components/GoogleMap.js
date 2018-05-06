@@ -15,9 +15,11 @@ const MapsComponent = ( localProps ) => {
                     onClick={ localProps.onClick } 
                 >
                     {   
-                        //Should display address from localProps
                         <InfoWindow>
-                            <div>Location Info</div>
+                            <div>
+                                <p>{ localProps.title }</p>
+                                <p>{ localProps.address }</p>
+                            </div>
                         </InfoWindow>
                     }
                 </Marker>

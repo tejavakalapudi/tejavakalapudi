@@ -2,7 +2,6 @@ import React from "react";
 import ProjectItemWithInfo from "./ProjectItemWithInfo";
 import AddProject from "./AddProject";
 import { connect } from "react-redux";
-import CarouselComponent from "./Carousel";
 import { 
     Container, 
     Jumbotron,
@@ -19,7 +18,7 @@ import GridComponent from "./Grid";
 import welcomeImage from "../../public/images/homepage7.png";
 import logoImage from "../../public/images/Logo7.png";
 
-import backgroundImage from "../../public/images/background.jpg";
+import backgroundImage from "../../public/images/LanderImage.png";
 
 class HomePage extends React.Component {
 
@@ -30,7 +29,7 @@ class HomePage extends React.Component {
     toggle = () => {
         
         this.setState({
-            activeclass: "fade"
+            //activeclass: "fade"
         });
     }
 
@@ -39,16 +38,30 @@ class HomePage extends React.Component {
         return (
             <div>
 
-                <div id = "welcomeImage" >
-                    <img src = {welcomeImage} className = {`welcome-screen ${this.state.activeclass}`} onClick = {this.toggle}></img>
+                <div className = "welcome-image-div">
+
+                    {/*<img 
+                        
+                        className = {`welcome-screen ${this.state.activeclass}`} 
+                        onClick = {this.toggle}
+                    >
+                    </img>*/}
+
+                    {/*
+                    <div className = "overlay-text is-Responsive">
+                        <div className = "square">
+                            <a href="#middle" className = "content">Learn More</a>
+                        </div>
+                    </div>                    
+                    */}
+
                 </div>
-                
                 {/*
                     //To have background behind
                     <div className = "background-container">
                 */}
 
-                    <div className = "home-container mx-auto">
+                    <div id = "homeScreen" className = "home-container mx-auto">
 
                         <Container fluid = "true">
 
@@ -109,15 +122,3 @@ const mapStateToProps = ( store ) => {
 export default connect( mapStateToProps )( HomePage );
 
 // https://github.com/rommguy/react-custom-scroll for scrollbar
-
-/*
-        <Jumbotron className = "body-container" > 
-            <Container>
-                <AddProject/>
-                <CarouselComponent projects = { props.projects }/>
-            </Container>
-            <ProjectsPage />
-            <AboutUsPage />
-        </Jumbotron>
-
-*/

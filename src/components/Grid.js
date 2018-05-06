@@ -55,10 +55,21 @@ const Grid = ( props ) => (
 
             <Card>
                 <CardText>
-                    <FaFacebook size={40} color="#3B5998" />
-                    <FaTwitter size={40} color="#1DA1F2" />
-                    <FaLinkedin size={40} color="#0077B5" />
-                    <FaInstagram size={40} color="#262626" />
+                    <a target="_blank" href="https://www.facebook.com/akruthiconstructions/">
+                        <FaFacebook size={40} color="#3B5998" />
+                    </a>
+
+                    <a target="_blank" href="https://twitter.com/VakalapudiRavi1">
+                        <FaTwitter size={40} color="#1DA1F2" />
+                    </a>
+
+                    <a target="_blank" href="https://www.linkedin.com/in/akruthi-constructions-developers-a6b58491/">
+                        <FaLinkedin size={40} color="#0077B5" />
+                    </a>
+
+                    <a target="_blank" href="https://www.instagram.com/vakalapudiravikiran/">
+                        <FaInstagram size={40} color="#262626" />
+                    </a>
                 </CardText>
             </Card>
 

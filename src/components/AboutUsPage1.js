@@ -6,10 +6,10 @@ const AboutUsPage1 = () => (
         <Row>
 
                 <Col>
-                    <h3 className = "about_title1" > ABOUTUS</h3>
+                    <h3 className = "about_title1" > ABOUT US</h3>
                         
                     <Row className = "justify-content-center">
-                        <h3 className = "about_subtitle"> Company Profile</h3>
+                        <h3 className = "about_subtitle1"> Company Profile</h3>
                     </Row>
 
                     <Row className = "justify-content-center">

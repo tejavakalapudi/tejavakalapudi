@@ -19,7 +19,7 @@ const AppRouter = () => (
         <div>
             <AkurthiApp/>
             <Switch>
-                <Route path = "/" component = { HomePage } exact={true}/>
+                <Route path = "/" component = { HomePage1 } exact={true}/>
                 <Route path = "/home" component = { HomePage1 }/>
                 <Route path = "/aboutus" component = { AboutUsPage } />
                 <Route path = "/projects" component = { ProjectsPage } />

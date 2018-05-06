@@ -33,14 +33,18 @@ class ContactUsPage extends React.Component {
                                 
                         <Container>
                             
-                            <Header activeTab = "contact"/>
+                            {
+                                this.props.isHome !== true &&
+                                <Header activeTab = "contact"/>
 
+                            }
+                            
                             <Row className = "justify-content-center">
         
                                 <div className = "col-lg-12 col-md-12">
         
                                     <Row className = "justify-content-center">
-                                        <h3 className = "buyersguide_statusfont"> Contact Us</h3>
+                                        <h3 className = "project-item_title"> Contact Us</h3>
                                     </Row>
         
                                     <Row className = "justify-content-center">
