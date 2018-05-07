@@ -3,14 +3,22 @@ import {
     Container, 
     Jumbotron,
     Row, 
-    Col
+    Col,
+    Button, 
+    Modal, 
+    ModalHeader, 
+    ModalBody, 
+    ModalFooter
 } from "reactstrap";
+
+import welcomeModal from "../../public/images/WelcomeModal.png"
 
 class WelcomeScreen extends React.Component{
 
     state = {
 
-        activeClass : ""
+        activeClass : "",
+        isOpen : false
 
     }
 
@@ -26,6 +34,17 @@ class WelcomeScreen extends React.Component{
 
     }
 
+    toggleModal = () => {
+
+        this.setState( {
+            isOpen : !this.state.isOpen
+        });
+
+    }
+
+    componentDidMount() {
+        this.toggleModal();
+    }
     
     render(){
 
@@ -74,9 +93,20 @@ class WelcomeScreen extends React.Component{
                         <Col xs="4" className = {`columnText overlay-column3 ${this.state.activeClass}`}>
                         </Col>
 
-
-
                     </Row>
+
+                    <Modal isOpen={ this.state.isOpen } toggle={ this.toggleModal } className = "modal-dialog" size="lg">
+                        <ModalBody className = "mx-auto" >
+                            <img 
+                                src= { welcomeModal } 
+                                alt= "welcome-modal"
+                                style={{width : "100%"}}
+                            />
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="primary" onClick={ this.toggleModal }>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
     
                 </Container>
         
