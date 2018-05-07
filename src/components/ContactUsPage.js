@@ -78,7 +78,7 @@ class ContactUsPage extends React.Component {
                                                     <FormText color="warning" className="contact_text_format" >
                                                         Name:
                                                     </FormText>
-                                                    <Input type="email" name="email" id="examplename" placeholder="John Doe" className = "contact_input" />
+                                                    <Input type="text" name="text" id="examplename" placeholder="John Doe" className = "contact_input" />
                                                 </FormGroup>
                                                 <FormGroup>
                                                     <FormText color="warning" className="contact_text_format" >
@@ -90,7 +90,7 @@ class ContactUsPage extends React.Component {
                                                     <FormText color="warning" className="contact_text_format" >
                                                         Contact No:
                                                     </FormText>
-                                                    <Input type="password" name="password" id="examplePassword" placeholder="+91-0000000000" className = "contact_input"/>
+                                                    <Input type="text" name="text" id="examplePassword" placeholder="+91-0000000000" className = "contact_input"/>
                                                 </FormGroup>
                                                 <FormGroup>
                                                     <FormText color="warning" className="contact_text_format" >
@@ -128,10 +128,21 @@ class ContactUsPage extends React.Component {
                                             </Col>
 
                                             <Col className = "icon_div">
-                                                <FaFacebook size={40} color="#3B5998" />
-                                                <FaTwitter size={40} color="#1DA1F2" />
-                                                <FaLinkedin size={40} color="#0077B5" />
-                                                <FaInstagram size={40} color="#4c68d7" />
+                                                <a target="_blank" href="https://www.facebook.com/akruthiconstructions/">
+                                                    <FaFacebook size={40} color="#3B5998" />
+                                                </a>
+                            
+                                                <a target="_blank" href="https://twitter.com/VakalapudiRavi1">
+                                                    <FaTwitter size={40} color="#1DA1F2" />
+                                                </a>
+                            
+                                                <a target="_blank" href="https://www.linkedin.com/in/akruthi-constructions-developers-a6b58491/">
+                                                    <FaLinkedin size={40} color="#0077B5" />
+                                                </a>
+                            
+                                                <a target="_blank" href="https://www.instagram.com/vakalapudiravikiran/">
+                                                    <FaInstagram size={40} color="#4c68d7" />
+                                                </a>
                                             </Col>
                                         </Col>     
                                     </Row>

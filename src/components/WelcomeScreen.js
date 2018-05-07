@@ -18,7 +18,8 @@ class WelcomeScreen extends React.Component{
     state = {
 
         activeClass : "",
-        isOpen : false
+        isOpen : false,
+        hideWelcomeImageClass : ""
 
     }
 
@@ -31,6 +32,12 @@ class WelcomeScreen extends React.Component{
         this.setState( {
             activeClass : "hide-welcome-screen"
         });
+
+        setTimeout( () => {
+            this.setState( {
+                hideWelcomeImageClass : "hide-welcome-screen"
+            });
+        }, 500);
 
     }
 
@@ -50,7 +57,7 @@ class WelcomeScreen extends React.Component{
 
         return(
 
-            <div className = {`welcome-image-div ${this.state.activeClass}`}>
+            <div className = {`welcome-image-div ${this.state.hideWelcomeImageClass}`}>
         
                 <Container fluid = {true} className = "overlay-containter">
     
@@ -81,7 +88,7 @@ class WelcomeScreen extends React.Component{
                                 <div className = "home-content-tablecell">
 
                                     <Row className = "justify-content-center learn-more-div" >
-                                        <a className = "learn-more-button" onClick = {this.toggleDisplay} >Learn More</a>
+                                        <a className = {`learn-more-button ${this.state.activeClass}`} onClick = {this.toggleDisplay} >Learn More</a>
                                     </Row>
 
                                 </div>
