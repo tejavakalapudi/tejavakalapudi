@@ -38,107 +38,108 @@ class ProjectsPage extends React.Component {
         );
     }
 
+    addProject = () =>{
+
+        this.props.history.push( "/addProject" );
+
+    }
+
     render(){
         return (
             <div>
-                <AddProject/>
-                {/*
-                    //To have background behind
-                    <div className = "background-container"> 
-                */}
-                    <div className = "projects-container mx-auto">
-                    
-                        <Container>
-                            
-                            <Header activeTab = "projects"/>
+                <div className = "projects-container mx-auto">
+                
+                    <Container>
+                        
+                        <Header activeTab = "projects"/>
 
-                            <Row className = "justify-content-center projects_body">
-                                {
-                                    /* 
-                                    <div className = "col-lg-1" >
-                                        <h3 className = "about_title" > PROJECTS</h3>
-                                    </div>                               
-                                    */
-                                }
+                        <Row className = "justify-content-center projects_body">
+   
+                            <div className = "col-lg-12 col-md-12">
 
-                                <div className = "col-lg-12 col-md-12">
+                                <div className = "projects_section">
 
-                                    <div className = "projects_section">
+                                    {this.props.authInfo.isAuthorized &&
+                                        <Row className = "justify-content-center"> 
+                                            <button onClick = { this.addProject }> 
+                                                Add Project 
+                                            </button>
+                                        </Row> 
+                                    }
 
-                                        <Row className = "justify-content-center">
-                                            <h3 className = "projects_statusfont"> Ongoing Projects</h3>
-                                        </Row>
+                                    <Row className = "justify-content-center">
+                                        <h3 className = "projects_statusfont"> Ongoing Projects</h3>
+                                    </Row>
 
-                                        <Row className = "justify-content-center">
-                                            <div>
-                                                <hr className = "projects_divider" />                               
-                                            </div>
-                                        </Row>
-                                        
-                                        <Row className = "justify-content-center">
-                                        
-                                            {   
-                                                this.props.projects.map( ( project ) => {
-
-                                                    if( project.status === "ongoing" ){
-
-                                                        return this.renderProjectItem( project );
-                                                        
-                                                    }
-
-                                                })
-                                            }
-                    
-                                        </Row>
-
-                                    </div>
-
-                                    <div className = "projects_section">
-                                        
-                                        <Row className = "justify-content-center">
-                                            <h3 className = "projects_statusfont"> Completed Projects</h3>
-                                        </Row>
-
-                                        <Row className = "justify-content-center">
-                                            <div>
-                                                <hr className = "projects_divider"/>                               
-                                            </div>
-                                        </Row>
-
-                                        <Row className = "justify-content-center">
-                                            { 
-                                                this.props.projects.map( ( project ) => {
-
-                                                    if( project.status === "completed" ){
-
-                                                        return this.renderProjectItem( project );
-                                                                
-                                                    }
-
-                                                })
-                                            }
-                                        </Row>
+                                    <Row className = "justify-content-center">
+                                        <div>
+                                            <hr className = "projects_divider" />                               
+                                        </div>
+                                    </Row>
                                     
-                                    </div>
+                                    <Row className = "justify-content-center">
+                                    
+                                        {   
+                                            this.props.projects.map( ( project ) => {
+
+                                                if( project.status === "ongoing" ){
+
+                                                    return this.renderProjectItem( project );
+                                                    
+                                                }
+
+                                            })
+                                        }
+                
+                                    </Row>
 
                                 </div>
 
-                            </Row>
+                                <div className = "projects_section">
+                                    
+                                    <Row className = "justify-content-center">
+                                        <h3 className = "projects_statusfont"> Completed Projects</h3>
+                                    </Row>
 
-                        </Container>                            
+                                    <Row className = "justify-content-center">
+                                        <div>
+                                            <hr className = "projects_divider"/>                               
+                                        </div>
+                                    </Row>
+
+                                    <Row className = "justify-content-center">
+                                        { 
+                                            this.props.projects.map( ( project ) => {
+
+                                                if( project.status === "completed" ){
+
+                                                    return this.renderProjectItem( project );
+                                                            
+                                                }
+
+                                            })
+                                        }
+                                    </Row>
+                                
+                                </div>
+
+                            </div>
+
+                        </Row>
+
+                    </Container>                            
+                </div>
+
+                {
+                    /*
+                    //To have background behind
+                    <div className = "background-image">
+                        <img src = {backgroundImage}></img>
                     </div>
+                    */
+                }
 
-
-                    {
-                        /*
-                        //To have background behind
-                        <div className = "background-image">
-                            <img src = {backgroundImage}></img>
-                        </div>
-                        */
-                    }
-
-                {/*</div>*/}
+            {/*</div>*/}
             </div>
         );
 
@@ -146,7 +147,10 @@ class ProjectsPage extends React.Component {
 };
 
 const mapStateToProps = ( store ) => {
-    return { projects : store.projects };
+    return { 
+        projects : store.projects,
+        authInfo : store.authInfo
+    };
 };
 
 export default connect( mapStateToProps )( ProjectsPage );

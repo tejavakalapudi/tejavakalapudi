@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import AppRouter from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
-import { addProject } from "./actions/projects";
+import { startAddProject, startSetProjects } from "./actions/projects";
 import { checkUserAuth } from "./actions/auth";
 import { setTextFilter } from "./actions/filters";
 import getVisibleExpenses from "./selectors/projects";
@@ -30,20 +30,22 @@ import { Provider } from "react-redux";
 //https://www.badshahny.com/
 
 // Use normalize to have same styling format across cross browser
-// https://necolas.github.io/normalize.css/
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 //https://reactstrap.github.io/
 
+// https://necolas.github.io/normalize.css/
 //styles.scss should be imported after bootstrap styles to have our custom styling
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 
+import "./firebase/firebase";
+
 // Company dimensions = [ 17.516247, 78.385560 ]
 
 const store = configureStore();
-
-store.dispatch( addProject({ 
+/*
+store.dispatch( startAddProject({ 
     title: "Venkatadri Towers",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
     overview: "Akruti's Venkatadri Towers is an ongoing HMDA Approved Gated Community project by Akruthi Constructions & Developers in the locality of Reddy Avenues,Near By Nizampet Village Panchayati Office, Nizampet, Kukatpally, Hyderabad.",
@@ -79,7 +81,7 @@ store.dispatch( addProject({
     address : "59, Blooming Dale Road, Madhura Nagar, Nizampet, Hyderabad, Telangana 500090, India"
 }));
 
-store.dispatch( addProject({ 
+store.dispatch( startAddProject({ 
     title: "Nandanavanam Towers",
     subTitle: "2 & 3 BHK, GHMC Approved Project", 
     overview: "Residential and commercial space in the ground floor while the other floors are exclusively residential. Airy spaces, modern fittings, beautiful views and attention to detail are some of the aspects that define this venture. Standing in the middle of the most sizzling location of the Hitech City MMTS, these apartments combine ultra modern architecture with uber chic designing concepts and prudent planning. Take your pick from the abundant choice.", 
@@ -103,63 +105,63 @@ store.dispatch( addProject({
     address : "Gopalnagar Society, Hafeezpet, Hyderabad, Telangana 500085, India"
 }));
 
-store.dispatch( addProject({ 
+store.dispatch( startAddProject({ 
     title: "Srinivasam",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
     status: "ongoing",
     thumbnailLocation: srinivasamThumbnail 
 } ) );
 
-store.dispatch( addProject({ 
+store.dispatch( startAddProject({ 
     title: "Srinivasam",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
     status: "completed",
     thumbnailLocation: srinivasamThumbnail 
 } ) );
-store.dispatch( addProject({ 
+store.dispatch( startAddProject({ 
     title: "Brindavanam",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
     status: "completed",
     thumbnailLocation: brindavanamThumbnail 
 } ) );
-store.dispatch( addProject({ 
+store.dispatch( startAddProject({ 
     title: "Ananda Nilayam",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
     status: "completed",
     thumbnailLocation: anandaNilayamThumbnail 
 } ) );
 
-store.dispatch( addProject({ 
+store.dispatch( startAddProject({ 
     title: "Vishnu Nivas",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
     status: "completed",
     thumbnailLocation: vishnuNivasThumbnail 
 } ) );
-store.dispatch( addProject({ 
+store.dispatch( startAddProject({ 
     title: "Vishnu Nivas",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
     status: "completed",
     thumbnailLocation: vishnuNivasThumbnail 
 } ) );
-store.dispatch( addProject({ 
+store.dispatch( startAddProject({ 
     title: "Vishnu Nivas",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
     status: "completed",
     thumbnailLocation: vishnuNivasThumbnail 
 } ) );
-store.dispatch( addProject({ 
+store.dispatch( startAddProject({ 
     title: "Brindavanam",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
     status: "completed",
     thumbnailLocation: brindavanamThumbnail 
 } ) );
-store.dispatch( addProject({ 
+store.dispatch( startAddProject({ 
     title: "Ananda Nilayam",
     subTitle: "2 & 3 BHK, GHMC Approved Project",  
     status: "completed",
     thumbnailLocation: anandaNilayamThumbnail 
 } ) );
-
+*/
 
 const state = store.getState();
 
@@ -170,5 +172,8 @@ const jsx = (
             </Provider>
         </div>
 );
-   
-ReactDOM.render( jsx, document.getElementById("app") );
+
+store.dispatch( startSetProjects() ).then(() => {
+    ReactDOM.render( jsx, document.getElementById("app") );
+});
+

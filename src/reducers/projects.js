@@ -14,16 +14,20 @@ export default ( state = projectsDefault, action ) => {
 
         case "EDIT_PROJECT" : {
 
-            return state.map( ( expense ) => {
+            return state.map( ( project ) => {
 
-                if( expense.id === action.id ){
+                if( project.id === project.id ){
 
-                    return { ...expense, ...action.expense };
+                    return { ...project, ...action.project };
 
                 }
 
                 return state;
             });
+        }
+
+        case "SET_PROJECTS" : {
+            return action.projects;
         }
 
         default:

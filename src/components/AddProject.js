@@ -1,13 +1,13 @@
 
 import React from "react";
-import { addProject } from "../actions/projects";
+import { startAddProject } from "../actions/projects";
 import { connect } from "react-redux";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Row, Container, Col } from 'reactstrap';
+import Header from "./HeaderNew";
 
 class AddProject extends React.Component {
 
     state = {
-        showForm : false,
         image: "",
         imageUrl: "",
         status: "completed",
@@ -39,18 +39,17 @@ class AddProject extends React.Component {
         e.preventDefault();
 
         this.props.dispatch( 
-            addProject( { 
+            startAddProject( { 
                 title: this.state.title, 
                 subTitle: this.state.subTitle,
                 overview: this.state.overview,
-                imageLocation: this.state.imageUrl,
+                thumbnailLocation: this.state.imageUrl,
                 status: this.state.status 
             }) 
         );
 
         //e.target.children.name.value = e.target.children.subtitle.value = e.target.children.overview.value = "";
         this.setState( () => ({ 
-            showForm : false, 
             imageUrl : "",
             title: "",
             subTitle: "",
@@ -103,62 +102,146 @@ class AddProject extends React.Component {
         return( 
 
             <div>
-                { this.props.authInfo.isAuthorized && 
-                    <button onClick = { () => { this.setState( () => ( { showForm : true } ) ); }}> 
-                        Add Project 
-                    </button> 
-                }
 
-                { this.state.showForm &&  
-                    <Form onSubmit = { this.handleSubmit }>
-                    <FormGroup>
-                        <Label for="projectTitle">Project Title:</Label>
-                        <Input type="text" name="name" id="projectTitle" placeholder="with a placeholder" onChange={ this.handleTitleChange }/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="projectSubtitle"> Project Subtitle:</Label>
-                        <Input type="text" name="subtitle" id="projectSubtitle" placeholder="password placeholder" onChange={ this.handleSubTitleChange }/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="projectOverview"> Project Overview:</Label>
-                        <Input type="textarea" name="projectOverview" id="projectOverview" placeholder="password placeholder" onChange={ this.handleOverviewChange }/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="projectImage">Image</Label>
-                        <Input type="file" name="projectImage" id="projectImage" onChange={ this.handleImageUpload }/>
-                        <FormText color="muted">
-                        This is some placeholder block-level help text for the above input.
-                        It's a bit lighter and easily wraps to a new line.
-                        </FormText>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="projectStatus">Select</Label>
-                        <Input type="select" name="projectStatus" id="projectStatus" onChange = { this.handleStatusChange }>
-                            <option value = "completed" >Completed</option>
-                            <option value = "ongoing" >Ongoing</option>
-                        </Input>
-                    </FormGroup>
-                    <Button>Submit</Button>
-                    </Form>
-                }
+                <div className = "buyers-guide-container mx-auto">
+                                    
+                    <Container>
+                        
+                        <Header activeTab = "buyersguide"/>
+                        
+                        <Row className = "justify-content-center">
 
+                            <div className = "col-lg-12 col-md-12">
+
+                                <Row className = "justify-content-center">
+                                    <h3 className = "project-item_title"> Add a New Project</h3>
+                                </Row>
+
+                                <Row className = "justify-content-center">
+                                    <div>
+                                        <hr className = "projects_divider" />                               
+                                    </div>
+                                </Row>
+                                
+                                <Row className = "justify-content-center buyersguide_box contact_form_div">
+                                    <Col xs="10" >
+                                        <Form onSubmit = { this.handleSubmit }>
+
+                                            <FormGroup>
+                                                <FormText 
+                                                    for="projectTitle" 
+                                                    color="warning" 
+                                                    className="contact_text_format" 
+                                                >
+                                                    Project Title:
+                                                </FormText>
+                                                <Input 
+                                                    type="text" 
+                                                    name="name" 
+                                                    id="projectTitle" 
+                                                    placeholder="with a placeholder" 
+                                                    onChange={ this.handleTitleChange } 
+                                                    className = "contact_input"
+                                                />
+                                            </FormGroup>
+
+                                            <FormGroup>
+                                                <FormText 
+                                                    for="projectSubtitle" 
+                                                    color="warning" 
+                                                    className="contact_text_format"
+                                                > 
+                                                    Project Subtitle:
+                                                </FormText>
+                                                <Input 
+                                                    type="text" 
+                                                    name="subtitle" 
+                                                    id="projectSubtitle" 
+                                                    placeholder="password placeholder" 
+                                                    onChange={ this.handleSubTitleChange } 
+                                                    className = "contact_input"
+                                                />
+                                            </FormGroup>
+
+                                            <FormGroup>
+                                                <FormText 
+                                                    for="projectOverview" 
+                                                    color="warning" 
+                                                    className="contact_text_format"
+                                                > 
+                                                    Project Overview:
+                                                </FormText>
+                                                <Input 
+                                                    type="textarea" 
+                                                    name="projectOverview" 
+                                                    id="projectOverview" 
+                                                    placeholder="password placeholder" 
+                                                    onChange={ this.handleOverviewChange } 
+                                                    className = "contact_input"
+                                                />
+                                            </FormGroup>
+
+                                            <FormGroup>
+                                                <FormText 
+                                                    for="projectImage" 
+                                                    color="warning" 
+                                                    className="contact_text_format" 
+                                                >
+                                                    Image:
+                                                </FormText>
+
+                                                <Button color="dark" size="lg" className="contact_text_format disabled" >
+                                                    <Input 
+                                                        type="file" 
+                                                        name="projectImage" 
+                                                        id="projectImage" 
+                                                        onChange={ this.handleImageUpload } 
+                                                    />
+                                                </Button>
+                                                <FormText color="muted">
+                                                    This is some placeholder block-level help text for the above input.
+                                                </FormText>
+                                            </FormGroup>
+
+                                            <FormGroup>
+                                                <FormText 
+                                                    for="projectStatus" 
+                                                    color="warning" 
+                                                    className="contact_text_format" 
+                                                >
+                                                    Project Status:
+                                                </FormText>
+                                                <Input 
+                                                    type="select" 
+                                                    name="projectStatus" 
+                                                    id="projectStatus" 
+                                                    onChange = { this.handleStatusChange } 
+                                                    className = "contact_input"
+                                                >
+                                                    <option value = "completed" >Completed</option>
+                                                    <option value = "ongoing" >Ongoing</option>
+                                                </Input>
+                                            </FormGroup>
+
+                                            <Button color="danger" size="lg" className="contact_text_format" >Submit</Button>
+                                        </Form>
+                                    </Col>
+                                </Row>
+
+                            </div>
+
+                        </Row>
+                    </Container>
+                </div>
             </div>
 
         );
         
     };
 
-
 };
-const mapStateToProps = ( store ) => {
 
-    return {
-        authInfo : store.authInfo
-    }
-
-}
-
-export default connect( mapStateToProps )( AddProject );
+export default connect()( AddProject );
 
 // Use https://github.com/jsdir/react-ladda for upload button
 // https://github.com/instructure-react/react-select-box for select box

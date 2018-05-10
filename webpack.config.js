@@ -1,13 +1,13 @@
 const path = require( 'path' );
 // console.log( __dirname ); && node webpack.config.js for folder name
 // webpack.js.org
-//const ExtractTextPlugin = require( "extract-text-webpack-plugin" );
+const ExtractTextPlugin = require( "extract-text-webpack-plugin" );
 
 
 module.exports = ( env ) => {
 
     const isProduction = env === "production";
-    //const CSSExtract = new ExtractTextPlugin( "styles.css" );
+    const CSSExtract = new ExtractTextPlugin( "styles.css" );
 
     return {
         entry : './src/app.js',
@@ -22,25 +22,7 @@ module.exports = ( env ) => {
                 exclude: /node_modules/
             },{
                 test: /\.s?css$/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    "sass-loader"
-                ]
-            },{
-                test: /\.(png|jp(e*)g|svg)$/,  
-                use: [{
-                    loader: 'url-loader',
-                    options: { 
-                        limit: 8000, // Convert images < 8kb to base64 strings
-                        name: 'images/[hash]-[name].[ext]'
-                    } 
-                }]
-            }]
-        },
-        /*
-        CSSExtract.extract({
-
+                use: CSSExtract.extract({
                     fallback: "style-loader",
                     use : [
                         //Order should be accurate
@@ -58,12 +40,21 @@ module.exports = ( env ) => {
                         }
                     ]
                 })
-
+            },{
+                test: /\.(png|jp(e*)g|svg)$/,  
+                use: [{
+                    loader: 'url-loader',
+                    options: { 
+                        limit: 8000, // Convert images < 8kb to base64 strings
+                        name: 'images/[hash]-[name].[ext]'
+                    } 
+                }]
+            }]
+        },
         plugins:[
             CSSExtract
         ],
-        */
-        devtool: isProduction ? "source-map" : "cheap-module-eval-source-map", //cheap-module-eval-source-map //inline-source-map(seperate css)
+        devtool: isProduction ? "source-map" : "inline-source-map", //cheap-module-eval-source-map //inline-source-map(seperate css)
         devServer:{
             contentBase: path.join( __dirname, "public" ),
             compress: true,

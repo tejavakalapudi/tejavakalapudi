@@ -39,10 +39,14 @@
 
 
 //Things to do:
-1. Project read more should take to a new projectListItem component (Not modal but a seperate page)
-2. Have sticky header and apply z-index during scroll
-3. Buyers guide need to have seperate tabs
-4. Contact us (Review, Feedback, complaints, appointment, calender)
-5. Should toggle font size and background color
-6. Somehow set up a bot
-7. Location google maps
+##IMPORTANT : CONSISTENTLY CHECKING IF THERE"S A WAY TO BUNDLE BOOTSTRAP BEFORE CUSTOM CSS THROUGH WEBPACK ##
+1. Have sticky header and apply z-index during scroll
+2. Contact us (Clicking on icons should dynamically modify the contact us form)
+3. Should toggle font size and background color
+4. Somehow set up a bot
+5. Learn tests section and have library test driven
+6. Make sure we watch test related videos in firebase-with-redux section
+7. Also test database section
+8. Page should load from top always
+9. Transparent black background behind header nav bar 
+
