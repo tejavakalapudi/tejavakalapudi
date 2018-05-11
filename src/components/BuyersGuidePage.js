@@ -14,7 +14,7 @@ import {
 import HomeLoansTab from "./HomeLoans";
 import VastuTab from "./VastuSection";
 import NriLoansTab from "./NRILoans";
-import Header from "./HeaderNew";
+import Header from "./Header";
 
 class BuyersGuidePage extends React.Component {
     

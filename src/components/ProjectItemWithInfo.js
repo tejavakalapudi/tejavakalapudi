@@ -15,7 +15,7 @@ import { TabContent,
     ModalHeader
 } from 'reactstrap';
 import Specifications from "./Specifications";
-import Header from "./HeaderNew";
+import Header from "./Header";
 import GoogleMapComponent from "./GoogleMap";
 
 class ProjectItemWithInfo extends React.Component {

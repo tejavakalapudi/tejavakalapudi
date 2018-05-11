@@ -3,20 +3,26 @@ import React from "react";
 import { startAddProject } from "../actions/projects";
 import { connect } from "react-redux";
 import { Button, Form, FormGroup, Label, Input, FormText, Row, Container, Col } from 'reactstrap';
-import Header from "./HeaderNew";
+import Header from "./Header";
 
 class AddProject extends React.Component {
 
     state = {
-        image: "",
-        imageUrl: "",
-        status: "completed",
         title: "",
         subTitle: "",
-        overview: ""
+        overview: "",
+        address : "",
+        locationMapInfo: [ 17.516247, 78.385560 ],
+        specs : "",
+        amenities : "",
+        brochure : "",
+        createdOn : 0,
+        thumbnailImageUrl : "",
+        landscapeImageUrl : "",
+        status: "ongoing"
     };
 
-    handleImageUpload = (e) => {
+    handleThumbnailImgUpload = (e) => {
 
         e.preventDefault();
         const reader = new FileReader();
@@ -24,8 +30,24 @@ class AddProject extends React.Component {
     
         reader.onloadend = () => {
           this.setState({
-            image,
-            imageUrl: reader.result
+            thumbnailImageUrl: reader.result
+          });
+
+        }
+
+        reader.readAsDataURL( image );
+
+    };
+
+    handleLandscapeImgUpload = (e) => {
+
+        e.preventDefault();
+        const reader = new FileReader();
+        const image = e.target.files[0];
+    
+        reader.onloadend = () => {
+          this.setState({
+            landscapeImageUrl: reader.result
           });
 
         }
@@ -43,8 +65,11 @@ class AddProject extends React.Component {
                 title: this.state.title, 
                 subTitle: this.state.subTitle,
                 overview: this.state.overview,
-                thumbnailLocation: this.state.imageUrl,
-                status: this.state.status 
+                thumbnailLocation: this.state.thumbnailImageUrl,
+                imageLocation: this.state.landscapeImageUrl,
+                status: this.state.status,
+                address: this.state.address,
+                createdOn: Date.now()
             }) 
         );
 
@@ -95,7 +120,25 @@ class AddProject extends React.Component {
   
     };
 
-    
+    handleAddressChange = ( e ) => {
+        
+        e.preventDefault();
+        e.persist();
+       
+        this.setState( () => ( { address : e.target.value } ) );
+  
+    };
+
+    handleSpecsChange = ( e ) => {
+        
+        e.preventDefault();
+        e.persist();
+
+        console.log( "Ravi", e );
+       
+        //this.setState( () => ( { address : e.target.value } ) );
+  
+    };
 
     render(){
 
@@ -126,7 +169,7 @@ class AddProject extends React.Component {
                                 <Row className = "justify-content-center buyersguide_box contact_form_div">
                                     <Col xs="10" >
                                         <Form onSubmit = { this.handleSubmit }>
-
+                                        
                                             <FormGroup>
                                                 <FormText 
                                                     for="projectTitle" 
@@ -139,7 +182,7 @@ class AddProject extends React.Component {
                                                     type="text" 
                                                     name="name" 
                                                     id="projectTitle" 
-                                                    placeholder="with a placeholder" 
+                                                    placeholder="Ex: Nandanavanam" 
                                                     onChange={ this.handleTitleChange } 
                                                     className = "contact_input"
                                                 />
@@ -157,7 +200,7 @@ class AddProject extends React.Component {
                                                     type="text" 
                                                     name="subtitle" 
                                                     id="projectSubtitle" 
-                                                    placeholder="password placeholder" 
+                                                    placeholder="Ex: 2 & 3 BHK, GHMC Approved Project"
                                                     onChange={ this.handleSubTitleChange } 
                                                     className = "contact_input"
                                                 />
@@ -175,7 +218,7 @@ class AddProject extends React.Component {
                                                     type="textarea" 
                                                     name="projectOverview" 
                                                     id="projectOverview" 
-                                                    placeholder="password placeholder" 
+                                                    placeholder="Overview" 
                                                     onChange={ this.handleOverviewChange } 
                                                     className = "contact_input"
                                                 />
@@ -183,23 +226,81 @@ class AddProject extends React.Component {
 
                                             <FormGroup>
                                                 <FormText 
-                                                    for="projectImage" 
+                                                    for="projectAddress" 
+                                                    color="warning" 
+                                                    className="contact_text_format"
+                                                > 
+                                                    Address:
+                                                </FormText>
+                                                <Input 
+                                                    type="text" 
+                                                    name="address" 
+                                                    id="projectAddress" 
+                                                    placeholder="Ex: 59, Blooming Dale Road, Madhura Nagar, Nizampet, Hyderabad, Telangana 500090, India" 
+                                                    onChange={ this.handleAddressChange } 
+                                                    className = "contact_input"
+                                                />
+                                            </FormGroup>
+
+                                            <FormGroup>
+                                                <FormText 
+                                                    for="projectSpecs" 
+                                                    color="warning" 
+                                                    className="contact_text_format"
+                                                > 
+                                                    Specifications:
+                                                </FormText>
+                                                <Input multiple
+                                                    type="tags" 
+                                                    name="specs" 
+                                                    id="projectSpecs" 
+                                                    placeholder="Ex: 59, Blooming Dale Road, Madhura Nagar, Nizampet, Hyderabad, Telangana 500090, India" 
+                                                    onChange={ this.handleSpecsChange } 
+                                                    className = "contact_input"
+                                                />
+                                            </FormGroup>
+
+                                            <FormGroup>
+                                                <FormText 
+                                                    for="projectThumbnailImage" 
                                                     color="warning" 
                                                     className="contact_text_format" 
                                                 >
-                                                    Image:
+                                                    Project's Thumbnail Image:
                                                 </FormText>
 
                                                 <Button color="dark" size="lg" className="contact_text_format disabled" >
                                                     <Input 
                                                         type="file" 
-                                                        name="projectImage" 
-                                                        id="projectImage" 
-                                                        onChange={ this.handleImageUpload } 
+                                                        name="projectThumbnailImage" 
+                                                        id="projectThumbnailImage" 
+                                                        onChange={ this.handleThumbnailImgUpload } 
                                                     />
                                                 </Button>
                                                 <FormText color="muted">
-                                                    This is some placeholder block-level help text for the above input.
+                                                    This image is used to display on "Projects" tab.
+                                                </FormText>
+                                            </FormGroup>
+
+                                            <FormGroup>
+                                                <FormText 
+                                                    for="projectLandscapeImage" 
+                                                    color="warning" 
+                                                    className="contact_text_format" 
+                                                >
+                                                    Project's Landscape Image:
+                                                </FormText>
+
+                                                <Button color="dark" size="lg" className="contact_text_format disabled" >
+                                                    <Input 
+                                                        type="file" 
+                                                        name="projectLandscapeImage" 
+                                                        id="projectLandscapeImage" 
+                                                        onChange={ this.handleLandscapeImgUpload } 
+                                                    />
+                                                </Button>
+                                                <FormText color="muted">
+                                                    This image is used to as a landscape image in Project's info.
                                                 </FormText>
                                             </FormGroup>
 
@@ -247,30 +348,3 @@ export default connect()( AddProject );
 // https://github.com/instructure-react/react-select-box for select box
 // https://github.com/andreypopp/react-textarea-autosize for text area
 // https://github.com/alexkuz/react-input-enhancements for input enhancements
-
-/*                
-                { this.state.showForm &&  
-                    <form onSubmit = { this.handleSubmit }>
-                        <div> Project Title : </div>
-                        <input type = "text" name = "name"/>
-
-                        <div> Project Subtitle : </div>
-                        <input type = "text" name = "subtitle"/>
-                
-                        <div> Project Overview : </div>
-                        <textarea name = "overview"/>
-
-                        <br />
-                        <input type="file" onChange={ this.handleImageUpload } name = "projectImage" />
-                        
-                        <div> Project Status : </div>
-                        <select value = "completed" onChange = { this.handleStatusChange } >
-                            <option value = "completed" >Completed</option>
-                            <option value = "ongoing" >Ongoing</option>
-                        </select>
-
-                        <br />
-                        <button>Submit</button>
-                    </form>  
-                }
-*/

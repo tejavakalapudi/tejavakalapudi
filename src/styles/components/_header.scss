@@ -8,36 +8,7 @@
     display: none;
 }
 
-.header_container{
-    margin: 0 $xl-size;
-    display: flex;
-    justify-content: space-between;
-}
-
 //BEM - Block Element Modifier naming convention (getbem.com)
-.header__title {
-    font-size: $l-size;
-    margin: 0;
-    color:$parrot-green;
-    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
-}
-
-.header__subtitle {
-    color: darken($color: $parrot-green, $amount: 5%);
-    font-size: $m-size;
-    font-weight: 500;
-    margin: 0;
-    margin-bottom: $s-size;
-    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
-}
-
-.header__navlink {
-    color: white;
-}
-
-.header_navbar{
-
-}
 
 @media( min-width : $desktop-breakpoint ){
     .header {

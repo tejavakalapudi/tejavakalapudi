@@ -15,10 +15,11 @@ import { NavLink } from "react-router-dom";
 import ProjectsPage from "./ProjectsPage";
 import AboutUsPage from "./AboutUsPage";
 import GridComponent from "./Grid";
-import welcomeImage from "../../public/images/homepage7.png";
-import logoImage from "../../public/images/Logo7.png";
-
-import backgroundImage from "../../public/images/LanderImage.png";
+import welcomeImage from "../../public/images/CementBG2.png";
+import Header from "./Header";
+import Contact from "./ContactUsPage";
+import GoogleMapComponent from "./GoogleMap";
+import WelcomeScreen from "./WelcomeScreen";
 
 class HomePage extends React.Component {
 
@@ -34,82 +35,65 @@ class HomePage extends React.Component {
     }
 
     render(){
+        
+        window.addEventListener('resize', () =>{
+
+        }); 
 
         return (
             <div>
+                
+                <WelcomeScreen />
+                
+                <div className = "buyers-guide-container mx-auto">
 
-                <div className = "welcome-image-div">
+                    <Container>
 
-                    {/*<img 
+                        <Header activeTab = "home"/>
+
+                        <Row className = "justify-content-center">
+                            <div className = "home_grid col-lg-10 col-md-11 mx-auto">
+                                <GridComponent centerGrid = {true}/>
+                            </div>
+                        </Row>
                         
-                        className = {`welcome-screen ${this.state.activeclass}`} 
-                        onClick = {this.toggle}
-                    >
-                    </img>*/}
-
-                    {/*
-                    <div className = "overlay-text is-Responsive">
-                        <div className = "square">
-                            <a href="#middle" className = "content">Learn More</a>
-                        </div>
-                    </div>                    
-                    */}
-
-                </div>
-                {/*
-                    //To have background behind
-                    <div className = "background-container">
-                */}
-
-                    <div id = "homeScreen" className = "home-container mx-auto">
-
-                        <Container fluid = "true">
-
+                        <Jumbotron className = "home-aboutus_section">
                             <div className = "row justify-content-center">
 
-                                <div className = "col-lg-2 col-md-11">
+                                <div className = "col-lg-11 col-md-11 mx-auto">
                                     <AboutUsPage />
                                 </div>
-            
-                                <div className = "col-lg-8 col-md-11">
-                                    <GridComponent projects = {this.props.projects} />
-                                </div>
+        
+                            </div>
+                        </Jumbotron>
 
-                                <div className = "col-lg-2 col-md-11">
-                                    <Navbar color="faded" dark>
-                                        <Nav vertical>
-                                            <NavItem className = "home_navitem">
-                                                <NavLink to = "/projects" activeClassName = "is-active" exact={true} className = "navlink">PROJECTS</NavLink>
-                                            </NavItem>
-                                            <hr/>
-                                            <NavItem className = "home_navitem">
-                                                <NavLink to = "/buyersguide" activeClassName = "is-active" className = "navlink">BUYERS-GUIDE</NavLink>
-                                            </NavItem>
-                                            <hr/>
-                                            <NavItem className = "home_navitem">
-                                                <NavLink to = "/contactus" activeClassName = "is-active" className = "navlink" >CONTACT</NavLink>
-                                            </NavItem>
-                                            <hr/>
-                                        </Nav>
-                                    </Navbar>
-                                    <div className = "home_logo_div" >
-                                        <img src = {logoImage} className = "logo" ></img>
+                        <Row className = "justify-content-center">
+                            <div className = "col-lg-12 col-md-12">
+                                <Row className = "justify-content-center project-item_locationSection">
+                                    <h3 className = "project-item_title"> Location </h3>
+                                </Row>
+                                <Row className = "justify-content-center">
+                                    <div>
+                                        <hr className = "projects_divider" />                               
                                     </div>
-                                </div>
+                                </Row>
+                            </div>
+                        </Row>
 
-                            </div> 
+                        <GoogleMapComponent 
+                            lat= {17.516247}
+                            lng= {78.385560}
+                            title =  "Akruthi Constructions & Developers"
+                            address = "59, Blooming Dale Road, Madhura Nagar, Nizampet, Hyderabad, Telangana 500090, India"
+                        />
+                        <div className = "home-section_divider" ></div>
+                        <Contact isHome = {true} />
 
-                        </Container>
+                    </Container>
 
-                    </div>
 
-                {/*
-                    //To have background behind
-                    <div className = "background-image">
-                        <img src = {backgroundImage}></img>
-                    </div>
-                    </div>
-                */}
+                </div>                
+            
             </div>
         );
     }
@@ -120,5 +104,3 @@ const mapStateToProps = ( store ) => {
 };
 
 export default connect( mapStateToProps )( HomePage );
-
-// https://github.com/rommguy/react-custom-scroll for scrollbar

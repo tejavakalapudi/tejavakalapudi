@@ -11,7 +11,7 @@ import {
     Label,
     FormText 
 } from "reactstrap";
-import Header from "./HeaderNew";
+import Header from "./Header";
 
 import { MdRateReview, MdInfo, MdBusinessCenter, MdEventAvailable, MdEmail, MdLocationOn, MdLocalPhone } from "react-icons/lib/md";
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/lib/fa";

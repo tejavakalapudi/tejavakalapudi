@@ -5,7 +5,7 @@ import ProjectItemWithInfo from "./ProjectItemWithInfo";
 import ProjectItem from "./ProjectItem";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Container, Jumbotron, Navbar, Nav, NavItem } from "reactstrap";
 import AddProject from "./AddProject";
-import Header from "./HeaderNew";
+import Header from "./Header";
 import backgroundImage from "../../public/images/background.jpg";
 
 //http://www.flintlockllc.com/ refer for hover state

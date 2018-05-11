@@ -4,7 +4,6 @@ import React from "react";
 import { BrowserRouter, Route, Switch , Link, NavLink } from "react-router-dom"; 
 
 import HomePage from "../components/HomePage";
-import HomePage1 from "../components/HomePage1";
 import AboutUsPage from "../components/AboutUsPage";
 import ProjectsPage from "../components/ProjectsPage";
 import ContactUsPage from "../components/ContactUsPage";
@@ -14,14 +13,15 @@ import AdminPage from "../components/AdminPage";
 import NotFound from "../components/NotFoundPage";
 import ProjectItemWithInfo from "../components/ProjectItemWithInfo";
 import AddProjectPage from "../components/AddProject";
+import Footer from "../components/Footer";
 
 const AppRouter = () => (
     <BrowserRouter>
         <div>
             <AkurthiApp/>
             <Switch>
-                <Route path = "/" component = { HomePage1 } exact={true}/>
-                <Route path = "/home" component = { HomePage1 }/>
+                <Route path = "/" component = { HomePage } exact={true}/>
+                <Route path = "/home" component = { HomePage }/>
                 <Route path = "/aboutus" component = { AboutUsPage } />
                 <Route path = "/projects" component = { ProjectsPage } />
                 <Route path = "/projectinfo/:id" component = { ProjectItemWithInfo } />
@@ -31,6 +31,7 @@ const AppRouter = () => (
                 <Route path = "/admin" component = { AdminPage } /> 
                 <Route component = { NotFound } />
             </Switch>
+            <Footer/>
         </div>
     </BrowserRouter>
 );

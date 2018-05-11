@@ -5,19 +5,6 @@ import { connect } from "react-redux";
 const ProjectItem = ( props ) => (
     
     <div> 
-        {
-            /*
-                { props.project.title && 
-                    <h2 class="row justify-content-center" > { props.project.title } </h2> 
-                }
-
-                { props.project.subTitle && 
-                    <h3 class="row justify-content-center" > { props.project.subTitle } </h3> 
-                }
-            */
-        } 
-
-
         { props.project.thumbnailLocation &&
             
             <div 
