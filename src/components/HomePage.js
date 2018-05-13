@@ -50,13 +50,10 @@ class HomePage extends React.Component {
                     <Container>
 
                         <Header activeTab = "home"/>
-
-                        <Row className = "justify-content-center">
-                            <div className = "home_grid col-lg-10 col-md-11 mx-auto">
-                                <GridComponent centerGrid = {true}/>
-                            </div>
-                        </Row>
                         
+                        <GridComponent centerGrid = {true}/>
+                        <div className = "home-section_divider" ></div>
+
                         <Jumbotron className = "home-aboutus_section">
                             <div className = "row justify-content-center">
 

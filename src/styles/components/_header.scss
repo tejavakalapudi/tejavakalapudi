@@ -1,11 +1,9 @@
 .header {
-    //background: rgb(207, 209, 209);
-    //margin-bottom: $xl-size;
-    //background: rgb(34, 32, 32);
-    background: $off-black;
-    padding: $m-size 0;
-    color: white;
-    display: none;
+    
+}
+
+.header__navbar{
+    padding-right: 0;
 }
 
 //BEM - Block Element Modifier naming convention (getbem.com)

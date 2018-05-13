@@ -5,16 +5,9 @@
     font-size: 3.6rem;
 }
 
-
-
-
-
-
-
-
 .imageContainer{
     position: relative;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .project-item_image{
@@ -23,7 +16,6 @@
     transition: .5s ease;
     backface-visibility: hidden;
 }
-
 
 .imageOverlay {
     transition: 1.5s ease;
@@ -59,14 +51,6 @@
 .imageContainer:hover .imageOverlay {
     opacity: 1;
 }
-
-
-
-
-
-
-
-
 
 
 .project-item-info{

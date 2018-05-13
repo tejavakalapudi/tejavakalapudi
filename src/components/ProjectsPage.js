@@ -7,6 +7,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Container
 import AddProject from "./AddProject";
 import Header from "./Header";
 import backgroundImage from "../../public/images/background.jpg";
+import { FaPlusSquare } from "react-icons/lib/fa";
 
 //http://www.flintlockllc.com/ refer for hover state
 
@@ -23,6 +24,7 @@ class ProjectsPage extends React.Component {
                 lg= { project.status === "ongoing" ? "4" : "3" }
                 md= { project.status === "ongoing" ? "4" : "3" } 
                 sm="11"
+                className = "project__item"
             >
 
                 <ProjectItem 
@@ -60,10 +62,11 @@ class ProjectsPage extends React.Component {
                                 <div className = "projects_section">
 
                                     {this.props.authInfo.isAuthorized &&
-                                        <Row className = "justify-content-center"> 
-                                            <button onClick = { this.addProject }> 
-                                                Add Project 
-                                            </button>
+                                        
+                                        <Row className = "justify-content-center">
+                                            <Button color="info" onClick = { this.addProject } > 
+                                                <FaPlusSquare size={50} />
+                                            </Button>
                                         </Row> 
                                     }
 

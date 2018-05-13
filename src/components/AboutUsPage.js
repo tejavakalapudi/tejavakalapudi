@@ -5,7 +5,7 @@ const AboutUsPage = () => (
     <div> 
         <Row>
             <Col>
-                <h3 className = "about_title" > About Us</h3>
+                <h3 className = "project-item_title" > About Us</h3>
                 <Row className = "justify-content-center">
                     <div>
                         <hr className = "projects_divider" />                               

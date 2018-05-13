@@ -13,7 +13,7 @@ class AddProject extends React.Component {
         overview: "",
         address : "",
         locationMapInfo: [ 17.516247, 78.385560 ],
-        specs : "",
+        specs : [],
         amenities : "",
         brochure : "",
         createdOn : 0,
@@ -21,6 +21,8 @@ class AddProject extends React.Component {
         landscapeImageUrl : "",
         status: "ongoing"
     };
+
+    localSpecs = [];
 
     handleThumbnailImgUpload = (e) => {
 
@@ -60,18 +62,22 @@ class AddProject extends React.Component {
 
         e.preventDefault();
 
-        this.props.dispatch( 
-            startAddProject( { 
-                title: this.state.title, 
-                subTitle: this.state.subTitle,
-                overview: this.state.overview,
-                thumbnailLocation: this.state.thumbnailImageUrl,
-                imageLocation: this.state.landscapeImageUrl,
-                status: this.state.status,
-                address: this.state.address,
-                createdOn: Date.now()
-            }) 
-        );
+        if( this.state.title.length !== 0 ){
+            this.props.dispatch( 
+                startAddProject( { 
+                    title: this.state.title, 
+                    subTitle: this.state.subTitle,
+                    overview: this.state.overview,
+                    thumbnailLocation: this.state.thumbnailImageUrl,
+                    imageLocation: this.state.landscapeImageUrl,
+                    status: this.state.status,
+                    address: this.state.address,
+                    createdOn: Date.now(),
+                    specs: this.state.specs
+                    
+                }) 
+            );
+        }
 
         //e.target.children.name.value = e.target.children.subtitle.value = e.target.children.overview.value = "";
         this.setState( () => ({ 
@@ -129,15 +135,44 @@ class AddProject extends React.Component {
   
     };
 
-    handleSpecsChange = ( e ) => {
-        
+    keyUpEvent = ( e ) => {
+        // Cancel the default action, if needed
         e.preventDefault();
-        e.persist();
+        // Number 13 is the "Enter" key on the keyboard
+        if ( e.keyCode === 13 ) {
+          // Trigger the button element with a click
+          this.updateSpecs( e );
 
-        console.log( "Ravi", e );
-       
-        //this.setState( () => ( { address : e.target.value } ) );
-  
+        }
+
+    };
+
+    updateSpecs = ( e ) => {
+
+        e.preventDefault();
+
+        if( e.target && e.target.value ){
+
+            const inputStringSplit = e.target.value.split( ":" );
+            const newSpecObj = {};
+            newSpecObj[ inputStringSplit[ 0 ][ 0 ].toUpperCase() + inputStringSplit[ 0 ].substr( 1 ) ] = inputStringSplit[ 1 ].trim();
+
+            this.setState({
+                specs : [ ...this.state.specs, newSpecObj ]
+            });
+
+            const specInputDiv = document.getElementById( "specInput" );
+
+            specInputDiv.removeEventListener("keyup", this.keyUpEvent );
+            specInputDiv.value = "";
+        }
+
+    };
+
+    addEventListener = () => {
+
+        document.getElementById( "specInput" ).addEventListener("keyup", this.keyUpEvent );
+
     };
 
     render(){
@@ -157,7 +192,7 @@ class AddProject extends React.Component {
                             <div className = "col-lg-12 col-md-12">
 
                                 <Row className = "justify-content-center">
-                                    <h3 className = "project-item_title"> Add a New Project</h3>
+                                    <h3 className = "project-item_title"> New Project</h3>
                                 </Row>
 
                                 <Row className = "justify-content-center">
@@ -168,8 +203,9 @@ class AddProject extends React.Component {
                                 
                                 <Row className = "justify-content-center buyersguide_box contact_form_div">
                                     <Col xs="10" >
-                                        <Form onSubmit = { this.handleSubmit }>
-                                        
+                                        <Form onSubmit = { (e) => { e.preventDefault(); } }>
+
+                                            {/* Title Section */}
                                             <FormGroup>
                                                 <FormText 
                                                     for="projectTitle" 
@@ -188,6 +224,7 @@ class AddProject extends React.Component {
                                                 />
                                             </FormGroup>
 
+                                            {/* SubTitle Section */}
                                             <FormGroup>
                                                 <FormText 
                                                     for="projectSubtitle" 
@@ -206,6 +243,7 @@ class AddProject extends React.Component {
                                                 />
                                             </FormGroup>
 
+                                            {/* Overview Section */}
                                             <FormGroup>
                                                 <FormText 
                                                     for="projectOverview" 
@@ -224,6 +262,7 @@ class AddProject extends React.Component {
                                                 />
                                             </FormGroup>
 
+                                            {/* Address Section */}
                                             <FormGroup>
                                                 <FormText 
                                                     for="projectAddress" 
@@ -242,6 +281,7 @@ class AddProject extends React.Component {
                                                 />
                                             </FormGroup>
 
+                                            {/* Specifications Section */}
                                             <FormGroup>
                                                 <FormText 
                                                     for="projectSpecs" 
@@ -250,16 +290,32 @@ class AddProject extends React.Component {
                                                 > 
                                                     Specifications:
                                                 </FormText>
-                                                <Input multiple
-                                                    type="tags" 
-                                                    name="specs" 
-                                                    id="projectSpecs" 
-                                                    placeholder="Ex: 59, Blooming Dale Road, Madhura Nagar, Nizampet, Hyderabad, Telangana 500090, India" 
-                                                    onChange={ this.handleSpecsChange } 
+
+                                                <Input
+                                                    type="text" 
+                                                    name="spec" 
+                                                    id="specInput"
+                                                    placeholder="Specification Name : Specification Detail" 
                                                     className = "contact_input"
+                                                    onChange = { this.addEventListener }
                                                 />
+
+                                                <FormText color="muted">
+                                                    Enter each specification in given format and click "Enter"
+                                                </FormText>
+
+                                                {
+                                                    this.state.specs.map( ( spec ) => {
+                                                        
+                                                        return ( <span class="badge badge-secondary">{JSON.stringify(spec)}</span> );
+
+                                                    })
+
+                                                }
+
                                             </FormGroup>
 
+                                            {/* Thumbnail Image Section */}
                                             <FormGroup>
                                                 <FormText 
                                                     for="projectThumbnailImage" 
@@ -282,6 +338,7 @@ class AddProject extends React.Component {
                                                 </FormText>
                                             </FormGroup>
 
+                                            {/* Landscape Image Section */}
                                             <FormGroup>
                                                 <FormText 
                                                     for="projectLandscapeImage" 
@@ -304,6 +361,7 @@ class AddProject extends React.Component {
                                                 </FormText>
                                             </FormGroup>
 
+                                            {/* Status Section */}
                                             <FormGroup>
                                                 <FormText 
                                                     for="projectStatus" 
@@ -324,7 +382,7 @@ class AddProject extends React.Component {
                                                 </Input>
                                             </FormGroup>
 
-                                            <Button color="danger" size="lg" className="contact_text_format" >Submit</Button>
+                                            <Button color="danger" size="lg" className="contact_text_format" onClick = { this.handleSubmit } >Submit</Button>
                                         </Form>
                                     </Col>
                                 </Row>

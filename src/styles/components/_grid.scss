@@ -15,6 +15,7 @@
     -ms-transition: all 1s ease; /* IE 9 */
     -o-transition: all 1s ease; /* Opera */
     transition: all 1s ease;
+    border: 0px;
 }
 
 .card__zoom:hover {
@@ -27,4 +28,23 @@
     img{
         cursor: pointer; 
     }
+}
+
+.card__social{
+    text-align: center;
+}
+
+.grid__container{
+    background-color: #484646;
+    margin-top: 2rem;
+}
+
+.home__grid {
+    //margin-right: -10rem;
+    //padding-right: 10rem;
+    //margin: 0rem;
+    //padding-left: 0rem;
+    margin: 2rem 0;
+
+    // For background-color #484646
 }

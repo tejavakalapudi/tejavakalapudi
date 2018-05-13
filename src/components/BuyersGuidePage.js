@@ -60,7 +60,7 @@ class BuyersGuidePage extends React.Component {
                             <div className = "col-lg-12 col-md-12">
     
                                 <Row className = "justify-content-center">
-                                    <h3 className = "project-item_title"> BUYERS GUIDE</h3>
+                                    <h3 className = "project-item_title"> Buyers Guide</h3>
                                 </Row>
     
                                 <Row className = "justify-content-center">
