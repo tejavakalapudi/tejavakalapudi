@@ -1,5 +1,5 @@
 import React from "react";
-import { Jumbotron, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
 const AboutUsPage = () => ( 
     <div> 

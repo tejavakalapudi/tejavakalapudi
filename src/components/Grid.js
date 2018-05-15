@@ -1,15 +1,11 @@
 import React from "react";
 import {
     Container, 
-    Jumbotron,
     Card, 
     CardTitle, 
     CardText, 
-    CardDeck, 
-    CardHeader, 
     CardImg,
     CardColumns,
-    CardSubtitle, 
     CardBody,
     Row, 
     Col 

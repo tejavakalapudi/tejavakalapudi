@@ -68,11 +68,13 @@ class WelcomeScreen extends React.Component{
 
                                 <div className = "mobile-content-tablecell">
 
-                                    <Row className = "justify-content-center" >
-                                        <div className = "mobile__overlay-title" >Akruthi</div>
-                                        <div className = "mobile__overlay-subtitle" >BUILDING IT BETTER IN CONCRETE!</div>
-                                    </Row>
-
+                                    <Container>
+                                        <Row className = "justify-content-center" >
+                                            <Col xs = "12" className = "mobile__overlay-title" >Akruthi</Col>
+                                            <Col xs = "12" className = "mobile__overlay-subtitle" >BUILDING IT BETTER IN CONCRETE!</Col>
+                                        </Row>
+                                    </Container>
+                                    
                                 </div>
                                 
                             </div>

@@ -19,20 +19,20 @@ const HeaderComponent = ( props ) => (
                     {
                         props.activeTab !== "home" &&
                         <NavItem className = "projects_navitem">
-                            <NavLink to = "/" activeClassName = "is-active" exact={true} className = "navlink navlink-right">Home</NavLink>
+                            <NavLink to = "/" exact={true} className = "navlink navlink-right">Home</NavLink>
                         </NavItem>
                     }
 
                     {
                         props.activeTab !== "projects" &&
                         <NavItem className = "projects_navitem">
-                            <NavLink to = "/projects" activeClassName = "is-active" className = "navlink navlink-right">Projects</NavLink>
+                            <NavLink to = "/projects" className = "navlink navlink-right">Projects</NavLink>
                         </NavItem>
                     }
                     {
                         props.activeTab !== "buyersguide" && props.activeTab !== "projectinfo" &&
                         <NavItem className = "projects_navitem">
-                            <NavLink to = "/buyersguide" activeClassName = "is-active" className = "navlink navlink-right">Buyers Guide</NavLink>
+                            <NavLink to = "/buyersguide" className = "navlink navlink-right">Buyers Guide</NavLink>
                         </NavItem>
 
                     }
@@ -40,7 +40,7 @@ const HeaderComponent = ( props ) => (
                     {
                         props.activeTab !== "contact" && 
                     <NavItem className = "projects_navitem">
-                        <NavLink to = "/contactus" activeClassName = "is-active" className = "navlink navlink-right" >Contact</NavLink>
+                        <NavLink to = "/contactus" className = "navlink navlink-right" >Contact</NavLink>
                     </NavItem>
                     }
                 </Nav>
