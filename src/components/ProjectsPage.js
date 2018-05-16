@@ -21,8 +21,9 @@ class ProjectsPage extends React.Component {
     renderProjectItem = ( project ) => {
         return (
             <Col 
-                lg= { project.status === "ongoing" ? "4" : "3" }
-                md= { project.status === "ongoing" ? "4" : "3" } 
+                xl= { project.status === "ongoing" ? "4" : "3" }
+                lg= { project.status === "ongoing" ? "5" : "4" } 
+                md= { project.status === "ongoing" ? "6" : "5" } 
                 sm="11"
                 className = "project__item"
             >
