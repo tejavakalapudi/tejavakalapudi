@@ -1,5 +1,5 @@
 import React from "react";
-import { removeProject } from "../actions/projects";
+import { startRemoveProject } from "../actions/projects";
 import { connect } from "react-redux";
 import { TabContent, 
     TabPane, 
@@ -17,12 +17,15 @@ import { TabContent,
 import Specifications from "./Specifications";
 import Header from "./Header";
 import GoogleMapComponent from "./GoogleMap";
+import { FaMinusSquare, FaEdit } from "react-icons/lib/fa";
 
 class ProjectItemWithInfo extends React.Component {
 
     state = {
         activeTab: "1",
-        showSpecs : false
+        showSpecs : false, 
+        showBrochure : false,
+        brochureDiv : {}
     }
 
     toggle( tab ) {
@@ -33,10 +36,44 @@ class ProjectItemWithInfo extends React.Component {
         }
     }
 
-    toggleSpecs = () =>{
+    toggleNavbar = ( activeTile ) =>{
         this.setState({
-            showSpecs: !this.state.showSpecs
+            showSpecs: activeTile === "specs",
+            showBrochure: activeTile === "brochure"
         });        
+    }
+
+    convertBase64ToBlob = () =>{
+
+        if( this.props.project.brochure ){
+
+            const byteString = atob( this.props.project.brochure );
+
+            // Convert that text into a byte array.
+            const ab = new ArrayBuffer( byteString.length );
+            const ia = new Uint8Array(ab);
+    
+            for ( let i = 0; i < byteString.length; i++ ) {
+    
+                ia[ i ] = byteString.charCodeAt( i );
+    
+            }
+    
+            // Blob for saving.
+            const blob = new Blob( [ ia ], { type: "application/pdf" } );
+
+            this.setState({
+                brochureDiv: {
+                    __html: `<object data=${ window.URL.createObjectURL( blob ) } width="100%" height="100%" type="application/pdf" ></object>`
+                }
+            }); 
+    
+        }
+
+    }
+
+    componentDidMount() {
+        this.convertBase64ToBlob();
     }
 
     render(){
@@ -47,7 +84,40 @@ class ProjectItemWithInfo extends React.Component {
 
                     <Container>
                         <Header activeTab = "projectinfo"/>
+
+                        { this.props.authInfo.isAuthorized && 
+
+                            <Row className = "justify-content-between"> 
+                                <Button 
+                                    onClick = { 
+                                        ( e ) => {
+                                            props.dispatch( 
+                                                startRemoveProject( { id : props.project.id } ) 
+                                            ) 
+                                        } 
+                                    }
+                                    
+                                > 
+                                    <FaMinusSquare size={30} />
+                                </Button>
+            
+                                <Button 
+                                    onClick = { 
+                                        ( e ) => {
+                                            props.dispatch( 
+                                                startRemoveProject( { id : props.project.id } ) 
+                                            ) 
+                                        } 
+                                    }
+                                    
+                                > 
+                                    <FaEdit size={30} />
+                                </Button>
+                            </Row>
+                        }
+
                         <Row className = "justify-content-center">
+
                             <div className = "col-lg-12 col-md-12">
                                 <Row className = "justify-content-center">
                                     <h3 className = "project-item_title"> { this.props.project.title } </h3>
@@ -77,7 +147,7 @@ class ProjectItemWithInfo extends React.Component {
 
                     <Row className = "justify-content-center project-item_navbar">
                         <Col lg = "3" className = "project-item_navbarTab" >
-                            <a onClick = {this.toggleSpecs} className = "project-item_navbarText"> 
+                            <a onClick = { () => { this.toggleNavbar( "specs" ) } } className = "project-item_navbarText"> 
                                 Specifications
                             </a> 
                         </Col>
@@ -89,7 +159,7 @@ class ProjectItemWithInfo extends React.Component {
                         </Col>
 
                         <Col lg = "3" className = "project-item_navbarTab" > 
-                            <a className = "project-item_navbarText">
+                            <a onClick = { () => { this.toggleNavbar( "brochure" ) } } className = "project-item_navbarText">
                                 Brochure
                             </a>   
                         </Col>
@@ -97,9 +167,19 @@ class ProjectItemWithInfo extends React.Component {
 
                     {this.state.showSpecs && 
                         <Row className = "justify-content-center project-item_specs_section" >
-                            <Col lg = "11">
+                            <Col xs = "12">
                                 <Collapse isOpen={ this.state.showSpecs }>
                                     <Specifications specs = { this.props.project.specs }/>
+                                </Collapse>
+                            </Col>
+                        </Row>
+                    }
+
+                    {this.state.showBrochure && this.props.project.brochure &&
+                        <Row className = "justify-content-center project-item_specs_section" >
+                            <Col xs = "12">
+                                <Collapse isOpen={ this.state.showBrochure } >
+                                    <div dangerouslySetInnerHTML={ this.state.brochureDiv } className = "project-item_brochure"/>
                                 </Collapse>
                             </Col>
                         </Row>
@@ -154,20 +234,6 @@ class ProjectItemWithInfo extends React.Component {
                             </div>
                         </Row>
                     </Container>
-                
-                    { this.props.authInfo.isAuthorized && 
-
-                        <button onClick = { 
-                            ( e ) => {
-                                this.props.dispatch( 
-                                    removeProject( this.props.project ) 
-                                ) 
-                            } 
-                        }> 
-                            Remove Project 
-                        </button>
-                    
-                    }
                     
                 </div>
             </div> 

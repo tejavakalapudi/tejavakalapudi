@@ -58,6 +58,23 @@ class AddProject extends React.Component {
 
     };
 
+    handleBrochureUpload = (e) => {
+
+        e.preventDefault();
+        const reader = new FileReader();
+        const pdfFile = e.target.files[0];
+    
+        reader.onload = () => {
+            const base64 = reader.result.replace(/^[^,]*,/, '');
+            this.setState({
+                brochure: base64
+            });
+        }
+
+        reader.readAsDataURL( pdfFile );
+
+    };
+
     handleSubmit = (e) =>  {
 
         e.preventDefault();
@@ -70,6 +87,7 @@ class AddProject extends React.Component {
                     overview: this.state.overview,
                     thumbnailLocation: this.state.thumbnailImageUrl,
                     imageLocation: this.state.landscapeImageUrl,
+                    brochure: this.state.brochure,
                     status: this.state.status,
                     address: this.state.address,
                     createdOn: Date.now(),
@@ -78,6 +96,8 @@ class AddProject extends React.Component {
                 }) 
             );
         }
+
+        //https://pdfobject.com/static.html
 
         //e.target.children.name.value = e.target.children.subtitle.value = e.target.children.overview.value = "";
         this.setState( () => ({ 
@@ -360,6 +380,29 @@ class AddProject extends React.Component {
                                                     This image is used to as a landscape image in Project's info.
                                                 </FormText>
                                             </FormGroup>
+
+                                            {/* Brochure PDF Section */}
+                                            <FormGroup>
+                                                <FormText 
+                                                    for="projectBrochure" 
+                                                    color="warning" 
+                                                    className="contact_text_format" 
+                                                >
+                                                    Project's Brochure:
+                                                </FormText>
+
+                                                <Button color="dark" size="lg" className="contact_text_format disabled" >
+                                                    <Input 
+                                                        type="file" 
+                                                        name="projectBrochure" 
+                                                        id="projectBrochure" 
+                                                        onChange={ this.handleBrochureUpload } 
+                                                    />
+                                                </Button>
+                                                <FormText color="muted">
+                                                    This pdf file is used to display brochure in project info section.
+                                                </FormText>
+                                            </FormGroup>                                            
 
                                             {/* Status Section */}
                                             <FormGroup>

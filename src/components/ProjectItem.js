@@ -1,8 +1,8 @@
 import React from "react";
-import { removeProject } from "../actions/projects";
+import { startRemoveProject } from "../actions/projects";
 import { connect } from "react-redux";
-import { FaMinusSquare } from "react-icons/lib/fa";
-import { Row, Button } from "reactstrap";
+import { FaMinusSquare, FaEdit } from "react-icons/lib/fa";
+import { Row, Button, Container } from "reactstrap";
 
 const ProjectItem = ( props ) => (
     
@@ -32,20 +32,22 @@ const ProjectItem = ( props ) => (
 
         { props.authInfo.isAuthorized && 
             
-            <Row className = "justify-content-center"> 
-                <Button 
-                    onClick = { 
-                        ( e ) => {
-                            props.dispatch( 
-                                removeProject( props.project ) 
-                            ) 
-                        } 
-                    }
-                    color="danger"
-                > 
-                    <FaMinusSquare size={20} />
-                </Button>
-            </Row>
+            <Container>
+                <Row className = "justify-content-center"> 
+                    <Button 
+                        onClick = { 
+                            ( e ) => {
+                                props.dispatch( 
+                                    startRemoveProject( { id : props.project.id } ) 
+                                ) 
+                            } 
+                        }
+                        
+                    > 
+                        <FaMinusSquare size={20} />
+                    </Button>
+                </Row>
+            </Container>
         
         }
         

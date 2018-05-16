@@ -24,14 +24,14 @@ export const startAddProject = ( projectData = {} ) => {
             imageLocation = "",
             thumbnailLocation = "",
             status = "" 
-        } = projectData;;
+        } = projectData;
 
         return database.ref( "projects" ).push( projectData ).then((ref) => {
             dispatch( addProject({
                 id : ref.key,
                 ...projectData
             }));
-        })
+        });
     }
 };
 
@@ -39,6 +39,29 @@ export const removeProject= ( { id } = {} ) => ({
     type : "REMOVE_PROJECT",
     id    
 });
+
+export const startRemoveProject = ( { id } = {} ) => {
+
+    return ( dispatch ) => {
+
+        return database.ref( `projects/${id}` ).remove().then(() => {
+
+            console.log("Successfully removed a project");
+
+            dispatch( removeProject({ id }));
+            
+        })
+        .catch( (error) => {
+
+            console.log("Remove failed: " + error.message);
+
+        });
+
+    }
+
+};
+
+
 
 export const editProject = ( id, project ) => ({
     type : "EDIT_PROJECT",

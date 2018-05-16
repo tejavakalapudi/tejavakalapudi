@@ -143,7 +143,7 @@
 @media only screen and (max-width: 600px) {
     .welcome-image-div{
         background-image: url(../../public/images/CementBG.png);
-        min-height: 628px;
+        min-height: 823px;
         background-attachment: local;
     }
 
@@ -164,7 +164,7 @@
 @media only screen and (min-width: 600px) {
     .welcome-image-div{
         background-image: url(../../public/images/CementBG.png);
-        min-height: 628px;
+        min-height: 1024px;
         background-attachment: local;
     }
     .mobile__overlay{
@@ -183,7 +183,7 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .welcome-image-div{
-        min-height: 804px;
+        min-height: 1024px;
         background-image: url(../../public/images/CementBG1.png);
         background-attachment: fixed;
     }
@@ -201,7 +201,7 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .welcome-image-div{
-        min-height: 804px;
+        min-height: 768px;
         background-image: url(../../public/images/CementBG1.png);
         background-attachment: fixed;
     }
@@ -218,7 +218,7 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     .welcome-image-div{
-        min-height: 804px;
+        min-height: 726px;
         background-image: url(../../public/images/CementBG1.png);
         background-attachment: fixed;
     }
