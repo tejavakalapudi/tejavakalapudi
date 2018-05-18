@@ -25,6 +25,7 @@ class ProjectItemWithInfo extends React.Component {
         activeTab: "1",
         showSpecs : false, 
         showBrochure : false,
+        showFloorPlans : false,
         brochureDiv : {}
     }
 
@@ -39,7 +40,8 @@ class ProjectItemWithInfo extends React.Component {
     toggleNavbar = ( activeTile ) =>{
         this.setState({
             showSpecs: activeTile === "specs",
-            showBrochure: activeTile === "brochure"
+            showBrochure: activeTile === "brochure",
+            showFloorPlans: activeTile === "floorplans"
         });        
     }
 
@@ -153,7 +155,7 @@ class ProjectItemWithInfo extends React.Component {
                         </Col>
 
                         <Col lg = "3" className = "project-item_navbarTab" >
-                            <a className = "project-item_navbarText">
+                            <a onClick = { () => { this.toggleNavbar( "floorplans" ) } } className = "project-item_navbarText">
                                 Floor Plans 
                             </a>
                         </Col>
@@ -169,7 +171,10 @@ class ProjectItemWithInfo extends React.Component {
                         <Row className = "justify-content-center project-item_specs_section" >
                             <Col xs = "12">
                                 <Collapse isOpen={ this.state.showSpecs }>
-                                    <Specifications specs = { this.props.project.specs }/>
+                                    {
+                                        this.props.project.specs &&
+                                        <Specifications specs = { this.props.project.specs }/>
+                                    }
                                 </Collapse>
                             </Col>
                         </Row>
@@ -185,24 +190,52 @@ class ProjectItemWithInfo extends React.Component {
                         </Row>
                     }
 
-                    <Row className = "justify-content-center project-item_amenities_section">
-                        <Col lg = "7" className = "project-item_amenities" >
-                            <Col lg ="11">
-                                <p>  Amenities </p>
-                                <ul>
-                                    { this.props.project.amenities.length > 0 && 
-                                        this.props.project.amenities.map(( amenity ) => {
+
+                    { this.state.showFloorPlans &&
+                        <Row className = "justify-content-center project-item_specs_section" >
+                            <Col xs = "12">
+                                <Collapse isOpen={ this.state.showFloorPlans } >
+                                    {
+                                        this.props.project.floorPlans && this.props.project.floorPlans.map( ( image ) => {
                                             
-                                            return <li> { amenity }</li>
-                    
+                                            return(                                             
+                                                <img 
+                                                    src= { image } 
+                                                    alt= "Floor plans"
+                                                    className = "project-item-info_image"
+                                                />  
+                                            );
+                                           
                                         })
                                     }
-                                </ul>
+                                </Collapse>
                             </Col>
-                        </Col>
-                    </Row>
+                        </Row>
+                    }
+                    
+                    {
+                        this.props.project.amenities && 
+                        
+                        <Row className = "justify-content-center project-item_amenities_section">
+                            <Col lg = "7" className = "project-item_amenities" >
+                                <Col lg ="11">
+                                    <p>  Amenities </p>
+                                    <ul>
+                                        { this.props.project.amenities.length > 0 && 
+                                            this.props.project.amenities.map(( amenity ) => {
+                                                
+                                                return <li> { amenity }</li>
+                        
+                                            })
+                                        }
+                                    </ul>
+                                </Col>
+                            </Col>
+                        </Row>
+                    }
 
                     <Container>
+                        
                         <Row className = "justify-content-center">
                             <div className = "col-lg-12 col-md-12">
                                 <Row className = "justify-content-center project-item_locationSection">
@@ -216,12 +249,14 @@ class ProjectItemWithInfo extends React.Component {
                             </div>
                         </Row>
 
-                        <GoogleMapComponent 
-                            lat= {this.props.project.locationMapInfo[ 0 ]} 
-                            lng= {this.props.project.locationMapInfo[ 1 ]}
-                            title =  { this.props.project.title }
-                            address = { this.props.project.address }
-                        />
+                        { this.props.project.locationMapInfo && 
+                            <GoogleMapComponent 
+                                lat= {this.props.project.locationMapInfo[ 0 ]} 
+                                lng= {this.props.project.locationMapInfo[ 1 ]}
+                                title =  { this.props.project.title }
+                                address = { this.props.project.address }
+                            />                       
+                        }            
 
                         <Row className = "justify-content-center project-item_contact">
                             <div className = "col-lg-12 col-md-12">

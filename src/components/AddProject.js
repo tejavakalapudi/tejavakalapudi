@@ -14,7 +14,8 @@ class AddProject extends React.Component {
         address : "",
         locationMapInfo: [ 17.516247, 78.385560 ],
         specs : [],
-        amenities : "",
+        amenities : [],
+        floorPlans : [],
         brochure : "",
         createdOn : 0,
         thumbnailImageUrl : "",
@@ -44,8 +45,9 @@ class AddProject extends React.Component {
     handleLandscapeImgUpload = (e) => {
 
         e.preventDefault();
-        const reader = new FileReader();
         const image = e.target.files[0];
+
+        const reader = new FileReader();
     
         reader.onloadend = () => {
           this.setState({
@@ -57,6 +59,33 @@ class AddProject extends React.Component {
         reader.readAsDataURL( image );
 
     };
+
+    handleFloorPlansUpload = ( e ) => {
+
+        e.preventDefault();
+        const files = e.target.files;
+
+        for ( const file in files ){
+
+            if ( /\.(jpe?g|png|gif)$/i.test( files[ file ].name ) ) {
+                
+                const reader = new FileReader();
+
+                reader.onloadend = () => {
+
+                    this.setState({
+                        floorPlans : [ ...this.state.floorPlans, reader.result ]
+                    });
+          
+                }
+          
+                reader.readAsDataURL( files[ file ] );
+
+            } 
+
+        }
+
+    }
 
     handleBrochureUpload = (e) => {
 
@@ -91,8 +120,9 @@ class AddProject extends React.Component {
                     status: this.state.status,
                     address: this.state.address,
                     createdOn: Date.now(),
-                    specs: this.state.specs
-                    
+                    specs: this.state.specs,
+                    locationMapInfo: this.state.locationMapInfo,
+                    floorPlans: this.state.floorPlans
                 }) 
             );
         }
@@ -155,13 +185,33 @@ class AddProject extends React.Component {
   
     };
 
+    handleMapLocationChange = ( e ) => {
+        
+        e.preventDefault();
+        e.persist();
+       
+        this.setState( () => ( { locationMapInfo : e.target.value } ) );
+  
+    };
+
     keyUpEvent = ( e ) => {
         // Cancel the default action, if needed
+        debugger;
         e.preventDefault();
         // Number 13 is the "Enter" key on the keyboard
         if ( e.keyCode === 13 ) {
           // Trigger the button element with a click
-          this.updateSpecs( e );
+            if( e.target && e.target.id === "specInput" ){
+
+                this.updateSpecs( e );
+
+            }
+
+            if( e.target && e.target.id === "amenityInput" ){
+
+                this.updateAmenities( e );
+
+            }
 
         }
 
@@ -169,9 +219,7 @@ class AddProject extends React.Component {
 
     updateSpecs = ( e ) => {
 
-        e.preventDefault();
-
-        if( e.target && e.target.value ){
+        if( e.target.value ){
 
             const inputStringSplit = e.target.value.split( ":" );
             const newSpecObj = {};
@@ -183,15 +231,32 @@ class AddProject extends React.Component {
 
             const specInputDiv = document.getElementById( "specInput" );
 
-            specInputDiv.removeEventListener("keyup", this.keyUpEvent );
+            specInputDiv.removeEventListener( "keyup", this.keyUpEvent );
             specInputDiv.value = "";
+        }
+
+    };
+
+    updateAmenities = ( e ) => {
+
+        if( e.target.value ){
+
+            this.setState({
+                amenities : [ ...this.state.amenities, e.target.value ]
+            });
+
+            const amenityInputDiv = document.getElementById( "amenityInput" );
+
+            amenityInputDiv.removeEventListener( "keyup", this.keyUpEvent );
+            amenityInputDiv.value = "";
         }
 
     };
 
     addEventListener = () => {
 
-        document.getElementById( "specInput" ).addEventListener("keyup", this.keyUpEvent );
+        document.getElementById( "specInput" ).addEventListener( "keyup", this.keyUpEvent );
+        document.getElementById( "amenityInput" ).addEventListener( "keyup", this.keyUpEvent );
 
     };
 
@@ -301,6 +366,28 @@ class AddProject extends React.Component {
                                                 />
                                             </FormGroup>
 
+                                            {/* Location Co-Ordinates Section */}
+                                            <FormGroup>
+                                                <FormText 
+                                                    for="mapCoOrdinates" 
+                                                    color="warning" 
+                                                    className="contact_text_format"
+                                                > 
+                                                    Map Co-Ordinates:
+                                                </FormText>
+                                                <Input 
+                                                    type="text" 
+                                                    name="locationMapInfo" 
+                                                    id="mapCoOrdinates" 
+                                                    placeholder="[ 17.516247, 78.385560 ]"
+                                                    onChange={ this.handleMapLocationChange } 
+                                                    className = "contact_input"
+                                                />
+                                                <FormText color="muted">
+                                                    Use Google Maps to select a location. Right click on the location to click 'whats here'. It should show you co-ordinates in the bottom.
+                                                </FormText>
+                                            </FormGroup>                                            
+
                                             {/* Specifications Section */}
                                             <FormGroup>
                                                 <FormText 
@@ -328,6 +415,40 @@ class AddProject extends React.Component {
                                                     this.state.specs.map( ( spec ) => {
                                                         
                                                         return ( <span class="badge badge-secondary">{JSON.stringify(spec)}</span> );
+
+                                                    })
+
+                                                }
+
+                                            </FormGroup>
+
+                                            {/* Amenities Section */}
+                                            <FormGroup>
+                                                <FormText 
+                                                    for="projectAmenities" 
+                                                    color="warning" 
+                                                    className="contact_text_format"
+                                                > 
+                                                    Amenities:
+                                                </FormText>
+
+                                                <Input
+                                                    type="text" 
+                                                    name="amenity" 
+                                                    id="amenityInput"
+                                                    placeholder="Amenity name" 
+                                                    className = "contact_input"
+                                                    onChange = { this.addEventListener }
+                                                />
+
+                                                <FormText color="muted">
+                                                    Enter each Amenity name and click "Enter"
+                                                </FormText>
+
+                                                {
+                                                    this.state.amenities.map( ( amenity ) => {
+                                                        
+                                                        return ( <span class="badge badge-secondary">{ JSON.stringify( amenity ) }</span> );
 
                                                     })
 
@@ -378,6 +499,30 @@ class AddProject extends React.Component {
                                                 </Button>
                                                 <FormText color="muted">
                                                     This image is used to as a landscape image in Project's info.
+                                                </FormText>
+                                            </FormGroup>
+
+                                            {/* Floor Plans Section */}
+                                            <FormGroup>
+                                                <FormText 
+                                                    for="projectFloorPlans" 
+                                                    color="warning" 
+                                                    className="contact_text_format" 
+                                                >
+                                                    Floor Plans:
+                                                </FormText>
+
+                                                <Button color="dark" size="lg" className="contact_text_format disabled" >
+                                                    <Input 
+                                                        type="file" 
+                                                        name="projectFloorPlans" 
+                                                        id="projectFloorPlans" 
+                                                        onChange={ this.handleFloorPlansUpload } 
+                                                        multiple
+                                                    />
+                                                </Button>
+                                                <FormText color="muted">
+                                                    These images are used to display in 'Floor Plans' section in each project info.
                                                 </FormText>
                                             </FormGroup>
 

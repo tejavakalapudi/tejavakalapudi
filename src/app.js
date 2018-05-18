@@ -77,6 +77,7 @@ store.dispatch( startAddProject({
         { "Generator": "In Hall one light, one fan only and lift and common areas all" },
         { "Common Extra":"Generator, Transformer, Electricity meter, Panel Board, Drainage and Car Parking" }
     ],
+    
     locationMapInfo : [17.516707, 78.385796],
     address : "59, Blooming Dale Road, Madhura Nagar, Nizampet, Hyderabad, Telangana 500090, India"
 }));

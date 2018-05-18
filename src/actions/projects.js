@@ -14,7 +14,7 @@ export const startAddProject = ( projectData = {} ) => {
             title = "",
             subTitle = "",
             overview = "", 
-            floorPlan = "",  
+            floorPlans = "",  
             locationMapInfo = "",
             address = "",  
             specs = "",
