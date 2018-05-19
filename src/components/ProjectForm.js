@@ -1,29 +1,51 @@
 
 import React from "react";
-import { startAddProject } from "../actions/projects";
-import { connect } from "react-redux";
 import { Button, Form, FormGroup, Label, Input, FormText, Row, Container, Col } from 'reactstrap';
 import Header from "./Header";
+import uuid from "uuid";
 
-class AddProject extends React.Component {
+class ProjectForm extends React.Component {
 
     state = {
-        title: "",
-        subTitle: "",
-        overview: "",
-        address : "",
-        locationMapInfo: [ 17.516247, 78.385560 ],
-        specs : [],
-        amenities : [],
-        floorPlans : [],
-        brochure : "",
-        createdOn : 0,
-        thumbnailImageUrl : "",
-        landscapeImageUrl : "",
-        status: "ongoing"
+        title: this.props.project && this.props.project.title ? this.props.project.title : "",
+        subTitle: this.props.project && this.props.project.subTitle ? this.props.project.subTitle : "",
+        overview: this.props.project && this.props.project.overview ? this.props.project.overview : "",
+        address : this.props.project && this.props.project.address ? this.props.project.address : "",
+        locationMapInfo: this.props.project && this.props.project.locationMapInfo ? this.props.project.locationMapInfo : [ 17.516247, 78.385560 ],
+        specs : this.props.project && this.props.project.specs ? this.props.project.specs : [],
+        amenities : this.props.project && this.props.project.amenities ? this.props.project.amenities : [],
+        floorPlans : this.props.project && this.props.project.floorPlans ? this.props.project.floorPlans : [],
+        brochure : this.props.project && this.props.project.brochure ? this.props.project.brochure : "",
+        createdOn : this.props.project && this.props.project.createdOn ? this.props.project.createdOn : 0,
+        thumbnailLocation : this.props.project && this.props.project.thumbnailLocation ? this.props.project.thumbnailLocation : "",
+        imageLocation : this.props.project && this.props.project.imageLocation ? this.props.project.imageLocation : "",
+        status: this.props.project && this.props.project.status ? this.props.project.status : "ongoing"
     };
 
-    localSpecs = [];
+    handleSubmit = ( e ) =>  {
+
+        e.preventDefault();
+
+        if( this.state.title.length !== 0 ){
+            this.props.onSubmit({ 
+                title: this.state.title, 
+                subTitle: this.state.subTitle,
+                overview: this.state.overview,
+                thumbnailLocation: this.state.thumbnailLocation,
+                imageLocation: this.state.imageLocation,
+                brochure: this.state.brochure,
+                status: this.state.status,
+                address: this.state.address,
+                createdOn: Date.now(),
+                specs: this.state.specs,
+                locationMapInfo: this.state.locationMapInfo,
+                floorPlans: this.state.floorPlans
+            });
+        }
+
+        //https://pdfobject.com/static.html        
+
+    };
 
     handleThumbnailImgUpload = (e) => {
 
@@ -32,9 +54,10 @@ class AddProject extends React.Component {
         const image = e.target.files[0];
     
         reader.onloadend = () => {
-          this.setState({
-            thumbnailImageUrl: reader.result
-          });
+
+            this.setState({
+                thumbnailLocation: reader.result
+            });
 
         }
 
@@ -51,7 +74,7 @@ class AddProject extends React.Component {
     
         reader.onloadend = () => {
           this.setState({
-            landscapeImageUrl: reader.result
+            imageLocation : reader.result
           });
 
         }
@@ -73,8 +96,10 @@ class AddProject extends React.Component {
 
                 reader.onloadend = () => {
 
+                    const floorPlanObj = { floorPlanImg : reader.result, id : uuid() }
+
                     this.setState({
-                        floorPlans : [ ...this.state.floorPlans, reader.result ]
+                        floorPlans : [ ...this.state.floorPlans, floorPlanObj ]
                     });
           
                 }
@@ -84,6 +109,14 @@ class AddProject extends React.Component {
             } 
 
         }
+
+    };
+
+    deleteImage = ( id ) => {
+
+        this.setState({
+            floorPlans : this.state.floorPlans.filter( obj  =>  obj.id !== id )
+        });
 
     }
 
@@ -101,42 +134,6 @@ class AddProject extends React.Component {
         }
 
         reader.readAsDataURL( pdfFile );
-
-    };
-
-    handleSubmit = (e) =>  {
-
-        e.preventDefault();
-
-        if( this.state.title.length !== 0 ){
-            this.props.dispatch( 
-                startAddProject( { 
-                    title: this.state.title, 
-                    subTitle: this.state.subTitle,
-                    overview: this.state.overview,
-                    thumbnailLocation: this.state.thumbnailImageUrl,
-                    imageLocation: this.state.landscapeImageUrl,
-                    brochure: this.state.brochure,
-                    status: this.state.status,
-                    address: this.state.address,
-                    createdOn: Date.now(),
-                    specs: this.state.specs,
-                    locationMapInfo: this.state.locationMapInfo,
-                    floorPlans: this.state.floorPlans
-                }) 
-            );
-        }
-
-        //https://pdfobject.com/static.html
-
-        //e.target.children.name.value = e.target.children.subtitle.value = e.target.children.overview.value = "";
-        this.setState( () => ({ 
-            imageUrl : "",
-            title: "",
-            subTitle: "",
-            overview: "" 
-        }));
-        
 
     };
 
@@ -270,7 +267,7 @@ class AddProject extends React.Component {
                                     
                     <Container>
                         
-                        <Header activeTab = "buyersguide"/>
+                        <Header activeTab = { this.props.project ? "projectinfo" : "buyersguide" }/>
                         
                         <Row className = "justify-content-center">
 
@@ -302,7 +299,8 @@ class AddProject extends React.Component {
                                                 <Input 
                                                     type="text" 
                                                     name="name" 
-                                                    id="projectTitle" 
+                                                    id="projectTitle"
+                                                    value = { this.state.title } 
                                                     placeholder="Ex: Nandanavanam" 
                                                     onChange={ this.handleTitleChange } 
                                                     className = "contact_input"
@@ -477,6 +475,17 @@ class AddProject extends React.Component {
                                                 <FormText color="muted">
                                                     This image is used to display on "Projects" tab.
                                                 </FormText>
+
+                                                {
+                                                    this.state.thumbnailLocation.length !== 0 && 
+                                                    <img 
+                                                        src= { this.state.thumbnailLocation } 
+                                                        alt= "Thumbnail Image"
+                                                        width=  "80px" 
+                                                        height= "70px"
+                                                    />
+                                                }
+
                                             </FormGroup>
 
                                             {/* Landscape Image Section */}
@@ -500,6 +509,17 @@ class AddProject extends React.Component {
                                                 <FormText color="muted">
                                                     This image is used to as a landscape image in Project's info.
                                                 </FormText>
+
+                                                {
+                                                    this.state.imageLocation.length !== 0 && 
+                                                    <img 
+                                                        src= { this.state.imageLocation } 
+                                                        alt= "Landscape Image"
+                                                        width=  "100px" 
+                                                        height= "70px"
+                                                    />
+                                                }
+
                                             </FormGroup>
 
                                             {/* Floor Plans Section */}
@@ -524,6 +544,35 @@ class AddProject extends React.Component {
                                                 <FormText color="muted">
                                                     These images are used to display in 'Floor Plans' section in each project info.
                                                 </FormText>
+                                                <Container>
+                                                <Row>
+                                                {
+                                                    this.state.floorPlans.length !== 0 && this.state.floorPlans.map( ( floorPlanObj ) => {
+                                                        
+                                                        return(
+                                                            <div>                                             
+                                                                <img 
+                                                                    src= { floorPlanObj.floorPlanImg } 
+                                                                    alt= "Floor plans"
+                                                                    width=  "70px" 
+                                                                    height= "100px"
+                                                                />
+                                                                <button 
+                                                                    type="button" 
+                                                                    class="close" 
+                                                                    aria-label="Close" 
+                                                                    onClick = { () => { this.deleteImage( floorPlanObj.id ) } } 
+                                                                    style = {{ color : "white", padding: "0 0.2rem"}}
+                                                                >
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>  
+                                                        );
+                                                       
+                                                    })
+                                                }
+                                                </Row>
+                                                </Container>
                                             </FormGroup>
 
                                             {/* Brochure PDF Section */}
@@ -565,8 +614,8 @@ class AddProject extends React.Component {
                                                     onChange = { this.handleStatusChange } 
                                                     className = "contact_input"
                                                 >
-                                                    <option value = "completed" >Completed</option>
                                                     <option value = "ongoing" >Ongoing</option>
+                                                    <option value = "completed" >Completed</option>
                                                 </Input>
                                             </FormGroup>
 
@@ -588,7 +637,7 @@ class AddProject extends React.Component {
 
 };
 
-export default connect()( AddProject );
+export default ProjectForm;
 
 // Use https://github.com/jsdir/react-ladda for upload button
 // https://github.com/instructure-react/react-select-box for select box

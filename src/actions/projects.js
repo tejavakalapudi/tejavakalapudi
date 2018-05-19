@@ -7,7 +7,7 @@ export const addProject = ( project ) => ({
 });
 
 export const startAddProject = ( projectData = {} ) => {
-
+    
     return ( dispatch ) => {
         const {
             id = "", 
@@ -61,13 +61,30 @@ export const startRemoveProject = ( { id } = {} ) => {
 
 };
 
-
-
 export const editProject = ( id, project ) => ({
     type : "EDIT_PROJECT",
     id,
     project    
 });
+
+export const startEditProject = ( id, project ) => {
+
+    return ( dispatch ) => {
+
+        return database.ref( `projects/${ id }` ).update( project ).then( () => {
+
+            dispatch( editProject( id, project ) );
+
+        })
+        .catch( ( error ) => {
+
+            console.log( "Edit failed: " + error.message );
+
+        });
+
+    }
+
+};
 
 // SET_PROJECTS
 export const setProjects = ( projects = [] ) => ({

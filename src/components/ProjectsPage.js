@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import ProjectItemWithInfo from "./ProjectItemWithInfo";
 import ProjectItem from "./ProjectItem";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Container, Jumbotron, Navbar, Nav, NavItem } from "reactstrap";
-import AddProject from "./AddProject";
 import Header from "./Header";
 import backgroundImage from "../../public/images/background.jpg";
 import { FaPlusSquare } from "react-icons/lib/fa";
@@ -19,6 +18,7 @@ class ProjectsPage extends React.Component {
     };
 
     renderProjectItem = ( project ) => {
+
         return (
             <Col 
                 xl= { project.status === "ongoing" ? "4" : "3" }
@@ -43,7 +43,7 @@ class ProjectsPage extends React.Component {
 
     addProject = () =>{
 
-        this.props.history.push( "/addProject" );
+        this.props.history.push( "/addproject" );
 
     }
 
@@ -66,7 +66,7 @@ class ProjectsPage extends React.Component {
                                         
                                         <Row className = "justify-content-center">
                                             <Button color="info" onClick = { this.addProject } > 
-                                                <FaPlusSquare size={50} />
+                                                <FaPlusSquare size = { 50 } />
                                             </Button>
                                         </Row> 
                                     }

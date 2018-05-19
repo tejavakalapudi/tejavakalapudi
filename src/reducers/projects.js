@@ -16,13 +16,13 @@ export default ( state = projectsDefault, action ) => {
 
             return state.map( ( project ) => {
 
-                if( project.id === project.id ){
+                if( project.id === action.id ){
 
                     return { ...project, ...action.project };
 
                 }
 
-                return state;
+                return project;
             });
         }
 

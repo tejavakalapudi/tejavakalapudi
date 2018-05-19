@@ -93,8 +93,8 @@ class ProjectItemWithInfo extends React.Component {
                                 <Button 
                                     onClick = { 
                                         ( e ) => {
-                                            props.dispatch( 
-                                                startRemoveProject( { id : props.project.id } ) 
+                                            this.props.dispatch( 
+                                                startRemoveProject( { id : this.props.project.id } ) 
                                             ) 
                                         } 
                                     }
@@ -106,12 +106,9 @@ class ProjectItemWithInfo extends React.Component {
                                 <Button 
                                     onClick = { 
                                         ( e ) => {
-                                            props.dispatch( 
-                                                startRemoveProject( { id : props.project.id } ) 
-                                            ) 
+                                            this.props.history.push( `/editproject/${ this.props.project.id }` )
                                         } 
-                                    }
-                                    
+                                    }                                    
                                 > 
                                     <FaEdit size={30} />
                                 </Button>
@@ -196,11 +193,11 @@ class ProjectItemWithInfo extends React.Component {
                             <Col xs = "12">
                                 <Collapse isOpen={ this.state.showFloorPlans } >
                                     {
-                                        this.props.project.floorPlans && this.props.project.floorPlans.map( ( image ) => {
+                                        this.props.project.floorPlans && this.props.project.floorPlans.map( ( floorPlanObj ) => {
                                             
                                             return(                                             
                                                 <img 
-                                                    src= { image } 
+                                                    src= { floorPlanObj.floorPlanImg } 
                                                     alt= "Floor plans"
                                                     className = "project-item-info_image"
                                                 />  

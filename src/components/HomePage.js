@@ -1,6 +1,4 @@
 import React from "react";
-import ProjectItemWithInfo from "./ProjectItemWithInfo";
-import AddProject from "./AddProject";
 import { connect } from "react-redux";
 import { 
     Container, 
@@ -12,7 +10,6 @@ import {
     Navbar 
 } from "reactstrap";
 import { NavLink } from "react-router-dom"; 
-import ProjectsPage from "./ProjectsPage";
 import AboutUsPage from "./AboutUsPage";
 import GridComponent from "./Grid";
 import welcomeImage from "../../public/images/CementBG2.png";
