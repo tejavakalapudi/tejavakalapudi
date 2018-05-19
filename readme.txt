@@ -40,6 +40,15 @@
 
 //Things to do:
 ##IMPORTANT : CONSISTENTLY CHECKING IF THERE"S A WAY TO BUNDLE BOOTSTRAP BEFORE CUSTOM CSS THROUGH WEBPACK ##
+a. Should generate latest 3 projects in home grid
+b. Ongoing projects should change size based on projects Count.
+c. Customize Admin Page
+d. Restrict editPage and addPage for only admin access
+e. Change min-width of website to support all screen sizes.
+f. edit project should have 'EDIT PROJECT' as title.
+e. Improve buyer's guide
+f. Setup cookie for welcome screen and admin access
+
 1. Have sticky header and apply z-index during scroll
 2. Contact us (Clicking on icons should dynamically modify the contact us form)
 3. Should toggle font size and background color
@@ -49,4 +58,5 @@
 7. Also test database section
 8. Page should load from top always
 9. Transparent black background behind header nav bar 
+
 

@@ -1,26 +1,8 @@
-export default ( expenses, { text, sort, startDate, endDate } ) => {
+export default ( projects ) => {
 
-    return expenses.filter( ( expense ) => {
+    return projects.sort( ( a, b ) => {
 
-        const startDateMatch = typeof startDate !== "number" || startDate >= expense.createdOn,
-        endDateMatch = typeof endDate !== "number" || endDate <= expense.createdOn,
-        textMatch =  expense.description.toLowerCase().includes( text.toLowerCase() ) ;
-
-        return startDateMatch && endDateMatch && textMatch;
-
-    }).sort( ( a, b ) => {
-
-        if( sort === "date" ){
-            
-            return a.createdOn < b.createdOn ? 1 : -1
-
-        }
-
-        if( sort === "amount" ){
-
-            return a.amount > b.amount ? 1 : -1
-
-        }
+        return a.createdOn < b.createdOn ? 1 : -1;
 
     });
 

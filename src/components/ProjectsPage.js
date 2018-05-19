@@ -6,6 +6,7 @@ import ProjectItem from "./ProjectItem";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Container, Jumbotron, Navbar, Nav, NavItem } from "reactstrap";
 import Header from "./Header";
 import { FaPlusSquare } from "react-icons/lib/fa";
+import sortProjectsByOrder from "../selectors/projects";
 
 //http://www.flintlockllc.com/ refer for hover state
 
@@ -151,7 +152,7 @@ class ProjectsPage extends React.Component {
 
 const mapStateToProps = ( store ) => {
     return { 
-        projects : store.projects,
+        projects : sortProjectsByOrder( store.projects ),
         authInfo : store.authInfo
     };
 };
