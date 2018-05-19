@@ -5,7 +5,6 @@ import ProjectItemWithInfo from "./ProjectItemWithInfo";
 import ProjectItem from "./ProjectItem";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Container, Jumbotron, Navbar, Nav, NavItem } from "reactstrap";
 import Header from "./Header";
-import backgroundImage from "../../public/images/background.jpg";
 import { FaPlusSquare } from "react-icons/lib/fa";
 
 //http://www.flintlockllc.com/ refer for hover state
@@ -32,7 +31,7 @@ class ProjectsPage extends React.Component {
                     project = { project }
                     onClick = {
                         () => {
-                            this.props.history.push( `/projectinfo/${project.id}` );
+                            this.props.history.push( `/projectinfo/${ project.id }` );
                         }
                     } 
                 />

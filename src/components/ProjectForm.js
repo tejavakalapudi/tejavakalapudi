@@ -186,8 +186,10 @@ class ProjectForm extends React.Component {
         
         e.preventDefault();
         e.persist();
-       
-        this.setState( () => ( { locationMapInfo : e.target.value } ) );
+
+        const locationSplit = e.target.value.split( "," );
+        
+        this.setState( () => ( { locationMapInfo : [ Number( locationSplit[ 0 ] ), Number( locationSplit[ 1 ] ) ] } ) );
   
     };
 
@@ -319,7 +321,8 @@ class ProjectForm extends React.Component {
                                                 <Input 
                                                     type="text" 
                                                     name="subtitle" 
-                                                    id="projectSubtitle" 
+                                                    id="projectSubtitle"
+                                                    value = { this.state.subTitle }  
                                                     placeholder="Ex: 2 & 3 BHK, GHMC Approved Project"
                                                     onChange={ this.handleSubTitleChange } 
                                                     className = "contact_input"
@@ -338,7 +341,8 @@ class ProjectForm extends React.Component {
                                                 <Input 
                                                     type="textarea" 
                                                     name="projectOverview" 
-                                                    id="projectOverview" 
+                                                    id="projectOverview"
+                                                    value = { this.state.overview }  
                                                     placeholder="Overview" 
                                                     onChange={ this.handleOverviewChange } 
                                                     className = "contact_input"
@@ -357,7 +361,8 @@ class ProjectForm extends React.Component {
                                                 <Input 
                                                     type="text" 
                                                     name="address" 
-                                                    id="projectAddress" 
+                                                    id="projectAddress"
+                                                    value = { this.state.address }  
                                                     placeholder="Ex: 59, Blooming Dale Road, Madhura Nagar, Nizampet, Hyderabad, Telangana 500090, India" 
                                                     onChange={ this.handleAddressChange } 
                                                     className = "contact_input"
@@ -376,8 +381,9 @@ class ProjectForm extends React.Component {
                                                 <Input 
                                                     type="text" 
                                                     name="locationMapInfo" 
-                                                    id="mapCoOrdinates" 
-                                                    placeholder="[ 17.516247, 78.385560 ]"
+                                                    id="mapCoOrdinates"
+                                                    value = { this.state.locationMapInfo[ 0 ].toString() + " , " + this.state.locationMapInfo[ 1 ].toString() }  
+                                                    placeholder="17.516247, 78.385560 "
                                                     onChange={ this.handleMapLocationChange } 
                                                     className = "contact_input"
                                                 />
@@ -610,7 +616,8 @@ class ProjectForm extends React.Component {
                                                 <Input 
                                                     type="select" 
                                                     name="projectStatus" 
-                                                    id="projectStatus" 
+                                                    id="projectStatus"
+                                                    value = { this.state.status }  
                                                     onChange = { this.handleStatusChange } 
                                                     className = "contact_input"
                                                 >

@@ -125,7 +125,7 @@ class ProjectItemWithInfo extends React.Component {
                                 <Row className = "justify-content-center">
                                     <Col lg="10" className = "project-item-info_imageContainer">
                                         <img 
-                                            src= { "../" + this.props.project.imageLocation } 
+                                            src= { this.props.project.imageLocation || this.props.project.thumbnailLocation } 
                                             alt= { this.props.project.title }
                                             className = "project-item-info_image"
                                         />
@@ -145,26 +145,33 @@ class ProjectItemWithInfo extends React.Component {
                     </Container>
 
                     <Row className = "justify-content-center project-item_navbar">
-                        <Col lg = "3" className = "project-item_navbarTab" >
-                            <a onClick = { () => { this.toggleNavbar( "specs" ) } } className = "project-item_navbarText"> 
-                                Specifications
-                            </a> 
-                        </Col>
 
-                        <Col lg = "3" className = "project-item_navbarTab" >
-                            <a onClick = { () => { this.toggleNavbar( "floorplans" ) } } className = "project-item_navbarText">
-                                Floor Plans 
-                            </a>
-                        </Col>
+                        { this.props.project.specs && this.props.project.specs.length !== 0 &&
+                            <Col lg = "3" className = "project-item_navbarTab" >
+                                <a onClick = { () => { this.toggleNavbar( "specs" ) } } className = "project-item_navbarText"> 
+                                    Specifications
+                                </a> 
+                            </Col>                       
+                        }
 
-                        <Col lg = "3" className = "project-item_navbarTab" > 
-                            <a onClick = { () => { this.toggleNavbar( "brochure" ) } } className = "project-item_navbarText">
-                                Brochure
-                            </a>   
-                        </Col>
+                        { this.props.project.floorPlans && this.props.project.floorPlans.length !== 0 &&
+                            <Col lg = "3" className = "project-item_navbarTab" >
+                                <a onClick = { () => { this.toggleNavbar( "floorplans" ) } } className = "project-item_navbarText">
+                                    Floor Plans 
+                                </a>
+                            </Col>
+                        }
+
+                        { this.props.project.brochure && this.props.project.brochure.length !== 0 &&
+                            <Col lg = "3" className = "project-item_navbarTab" > 
+                                <a onClick = { () => { this.toggleNavbar( "brochure" ) } } className = "project-item_navbarText">
+                                    Brochure
+                                </a>   
+                            </Col>
+                        }
                     </Row>
 
-                    {this.state.showSpecs && 
+                    { this.state.showSpecs && 
                         <Row className = "justify-content-center project-item_specs_section" >
                             <Col xs = "12">
                                 <Collapse isOpen={ this.state.showSpecs }>
@@ -177,7 +184,7 @@ class ProjectItemWithInfo extends React.Component {
                         </Row>
                     }
 
-                    {this.state.showBrochure && this.props.project.brochure &&
+                    { this.state.showBrochure && this.props.project.brochure &&
                         <Row className = "justify-content-center project-item_specs_section" >
                             <Col xs = "12">
                                 <Collapse isOpen={ this.state.showBrochure } >
@@ -186,7 +193,6 @@ class ProjectItemWithInfo extends React.Component {
                             </Col>
                         </Row>
                     }
-
 
                     { this.state.showFloorPlans &&
                         <Row className = "justify-content-center project-item_specs_section" >
@@ -232,19 +238,21 @@ class ProjectItemWithInfo extends React.Component {
                     }
 
                     <Container>
-                        
-                        <Row className = "justify-content-center">
-                            <div className = "col-lg-12 col-md-12">
-                                <Row className = "justify-content-center project-item_locationSection">
-                                    <h3 className = "project-item_title"> Location </h3>
-                                </Row>
-                                <Row className = "justify-content-center">
-                                    <div>
-                                        <hr className = "projects_divider" />                               
-                                    </div>
-                                </Row>
-                            </div>
-                        </Row>
+
+                        { this.props.project.locationMapInfo &&                        
+                            <Row className = "justify-content-center">
+                                <div className = "col-lg-12 col-md-12">
+                                    <Row className = "justify-content-center project-item_locationSection">
+                                        <h3 className = "project-item_title"> Location </h3>
+                                    </Row>
+                                    <Row className = "justify-content-center">
+                                        <div>
+                                            <hr className = "projects_divider" />                               
+                                        </div>
+                                    </Row>
+                                </div>
+                            </Row>
+                        }
 
                         { this.props.project.locationMapInfo && 
                             <GoogleMapComponent 
@@ -265,6 +273,7 @@ class ProjectItemWithInfo extends React.Component {
                                 </Row>
                             </div>
                         </Row>
+                        
                     </Container>
                     
                 </div>

@@ -12,8 +12,7 @@ import {
 } from "reactstrap";
 import venkatadri from "../../public/images/VenkatadriSquare.jpg";
 import nandanavanam from "../../public/images/NandanavanamSquare.jpg";
-import backgroundImg from "../../public/images/background.jpg";
-import srinivasam from "../../public/images/SrinivasamSquare.jpg"
+import srinivasam from "../../public/images/SrinivasamSquare.jpg";
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/lib/fa";
 
 //http://shoelace.io/ for bootstrap

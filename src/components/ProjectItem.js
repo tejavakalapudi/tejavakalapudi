@@ -23,7 +23,12 @@ const ProjectItem = ( props ) => (
                 <div class="imageOverlay">
                     <div class="overlayText">
                         <p className="project-item_subtitle"> { props.project.title } </p>
-                        <p><a  onClick = { props.onClick } style={ { "text-decoration": "underline" } }> Learn More </a></p>
+                        {
+                            props.project.status === "ongoing" ? 
+                            <p> <a onClick = { props.onClick } style={ { "text-decoration": "underline" } }> Learn More </a></p>
+                            : 
+                            <p>  { props.project.address } </p>
+                        }  
                     </div>
                 </div>
 

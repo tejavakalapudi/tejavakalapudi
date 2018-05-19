@@ -12,7 +12,6 @@ import {
 import { NavLink } from "react-router-dom"; 
 import AboutUsPage from "./AboutUsPage";
 import GridComponent from "./Grid";
-import welcomeImage from "../../public/images/CementBG2.png";
 import Header from "./Header";
 import Contact from "./ContactUsPage";
 import GoogleMapComponent from "./GoogleMap";

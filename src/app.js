@@ -6,16 +6,6 @@ import { startAddProject, startSetProjects } from "./actions/projects";
 import { checkUserAuth } from "./actions/auth";
 import { setTextFilter } from "./actions/filters";
 import getVisibleExpenses from "./selectors/projects";
-import nandanavanam from "../public/images/Nandanavanam.jpg";
-import venkatadri from "../public/images/VenkatadriTowers.jpg";
-import venkatadriElevation from "../public/images/VenkatadriElevation.jpg";
-import nandanavanamThumbnail from "../public/images/NandanavanamSquare.jpg";
-import venkatadriThumbnail from "../public/images/VenkatadriSquare.jpg";
-
-import srinivasamThumbnail from "../public/images/SrinivasamSquare.jpg";
-import brindavanamThumbnail from "../public/images/BrindavanamSquare.jpg";
-import anandaNilayamThumbnail from "../public/images/AnandaNilayam.jpg";
-import vishnuNivasThumbnail from "../public/images/VishnuNivasSquare.jpg";
 
 import { Provider } from "react-redux";
 
