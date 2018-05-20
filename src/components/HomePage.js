@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import { 
     Container, 
     Jumbotron,
@@ -47,7 +46,7 @@ class HomePage extends React.Component {
 
                         <Header activeTab = "home"/>
                         
-                        <GridComponent centerGrid = {true}/>
+                        <GridComponent centerGrid = {true} push = { this.props.history.push }/>
                         <div className = "home-section_divider" ></div>
 
                         <Jumbotron className = "home-aboutus_section">
@@ -92,8 +91,5 @@ class HomePage extends React.Component {
     }
 }; 
 
-const mapStateToProps = ( store ) => {
-    return { projects : store.projects };
-};
 
-export default connect( mapStateToProps )( HomePage );
+export default HomePage;

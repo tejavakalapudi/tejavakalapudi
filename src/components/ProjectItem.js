@@ -8,7 +8,7 @@ const ProjectItem = ( props ) => (
     
     <div> 
         { props.project.thumbnailLocation &&
-            
+         
             <div 
                 className = "row justify-content-center imageContainer"
             >

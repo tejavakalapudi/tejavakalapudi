@@ -7,12 +7,17 @@
 
 .imageContainer{
     position: relative;
-    margin-bottom: 0.5rem;
+
+    -webkit-transition: all 1s ease; /* Safari and Chrome */
+    -moz-transition: all 1s ease; /* Firefox */
+    -ms-transition: all 1s ease; /* IE 9 */
+    -o-transition: all 1s ease; /* Opera */
+    transition: all 1s ease;
+    border: 0px;
 }
 
 .project-item_image{
     opacity: 1;
-    display: block;
     transition: .5s ease;
     backface-visibility: hidden;
 }
@@ -40,7 +45,13 @@
 }
 
 .imageContainer:hover .project-item_image {
+
     opacity: 0.3;
+
+    &.grid_overlay{
+        opacity: 1;
+    }
+
     -webkit-transform:scale(1.05); /* Safari and Chrome */
     -moz-transform:scale(1.05); /* Firefox */
     -ms-transform:scale(1.05); /* IE 9 */
@@ -48,10 +59,9 @@
     transform:scale(1.05);
 }
   
-.imageContainer:hover .imageOverlay {
+.imageContainer:hover .imageOverlay{
     opacity: 1;
 }
-
 
 .project-item-info{
     transition: 5s ease;
@@ -72,6 +82,10 @@
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-weight: bold;
     font-size: 2.4rem;
+    
+    &.grid_overlay{
+        font-size: 1.5rem;
+    }
 }
 
 .project-item_overview{
