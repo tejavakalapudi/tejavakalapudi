@@ -118,7 +118,7 @@ class WelcomeScreen extends React.Component{
                     </Modal>
     
                 </Container>
-        
+                
             </div>
         
         );

@@ -98,8 +98,17 @@ export const startSetProjects = () => {
     
     return( dispatch ) => {
 
+        var event = new Date();
+
+        console.log( "Request projects from database at ", event.toTimeString());
+
         return database.ref( "projects" ).once( "value")
+
             .then(( snapshot ) => {
+
+                    var event = new Date();
+
+                    console.log( "Reorganizing projects from database response at ", event.toTimeString() );
 
                     const projects = [];
             
@@ -117,7 +126,9 @@ export const startSetProjects = () => {
                 }
             )
             .catch( ( e ) => {
+
                 console.log( "Fetching projects data has failed with error ", e );
+                
             });
     };
 

@@ -4,10 +4,9 @@ import AppRouter from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import { startAddProject, startSetProjects } from "./actions/projects";
 import { checkUserAuth } from "./actions/auth";
-import { setTextFilter } from "./actions/filters";
-import getVisibleExpenses from "./selectors/projects";
 
 import { Provider } from "react-redux";
+import LoadingScreen from "./components/LoadingPage";
 
 //http://www.tgnickel.com/ (For Scroll bar and header) <3 <3
 //http://moncon.com/#projects (For Projects single page)
@@ -157,14 +156,19 @@ store.dispatch( startAddProject({
 const state = store.getState();
 
 const jsx = (
-        <div>
-            <Provider store = { store } >
-                <AppRouter/>
-            </Provider>
-        </div>
+    <div>
+        <Provider store = { store } >
+            <AppRouter/>
+        </Provider>
+    </div>
 );
 
 store.dispatch( startSetProjects() ).then(() => {
+
     ReactDOM.render( jsx, document.getElementById("app") );
+    
 });
+
+ReactDOM.render( <LoadingScreen />, document.getElementById("app") );
+
 

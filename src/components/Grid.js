@@ -25,12 +25,12 @@ class Grid extends React.Component {
     render(){
         return (
             <Container className = "grid__container">
+            { this.props.projects.length > 0 &&
                 <Row className = "justify-content-center">
                     <div className = "home__grid col-lg-10 col-md-11 mx-auto">
                         <CardColumns>
-
                             <Card className = "imageContainer" >
-                                <CardImg top width="320px" src={this.props.projects[ 0 ].thumbnailLocation} alt="Card image cap" className="project-item_image grid_overlay"/>
+                                <CardImg top width="320px" src={ this.props.projects[ 0 ].thumbnailLocation} alt="Card image cap" className="project-item_image grid_overlay"/>
                                 <div class="imageOverlay">
                                     <div class="overlayText">
                                         <p className="project-item_subtitle grid_overlay"> { this.props.projects[ 0 ].title } </p>
@@ -110,7 +110,9 @@ class Grid extends React.Component {
                         </CardColumns>
                     </div>
                 </Row>
+            }
             </Container>
+
         );
     }
 
