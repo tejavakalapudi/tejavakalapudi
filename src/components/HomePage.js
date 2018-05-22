@@ -30,10 +30,6 @@ class HomePage extends React.Component {
     }
 
     render(){
-        
-        window.addEventListener('resize', () =>{
-
-        }); 
 
         return (
             <div>

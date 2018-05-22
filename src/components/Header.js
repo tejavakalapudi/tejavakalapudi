@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, NavItem, Container } from "reactstrap";
 import { NavLink } from "react-router-dom";
-import logoImage from "../../public/images/Logo7.png";
+import logoImage from "../../public/images/Logo5.png";
 
 const HeaderComponent = ( props ) => (
     
@@ -9,7 +9,7 @@ const HeaderComponent = ( props ) => (
         <div className = "row justify-content-between">         
             <div className = "" >
                 <NavLink to = "/" >
-                    <img src = { props.activeTab === "projectinfo" ? "../" + logoImage : logoImage } className = "logo projects_logo" ></img>
+                    <img src = { props.activeTab === "projectinfo" ? "../" + logoImage : logoImage } className = "projects_logo" ></img>
                 </NavLink>
             </div>
 

@@ -11,7 +11,7 @@ import {
     ModalFooter
 } from "reactstrap";
 
-import welcomeModal from "../../public/images/WelcomeModal.png"
+import welcomeModal from "../../public/images/WelcomeModal.jpg";
 
 class WelcomeScreen extends React.Component{
 
@@ -60,7 +60,7 @@ class WelcomeScreen extends React.Component{
             <div className = {`welcome-image-div ${this.state.hideWelcomeImageClass}`}>
         
                 <Container fluid = {true} className = "overlay-containter">
-    
+
                     <Row className = "justify-content-center overlay-row">
                         
                         <div className = {`mobile__overlay ${this.state.activeClass}`}>
@@ -113,7 +113,9 @@ class WelcomeScreen extends React.Component{
                             />
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={ this.toggleModal }>Cancel</Button>
+                            <button type="button" class="close" aria-label="Close" color="primary" onClick={ this.toggleModal } >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </ModalFooter>
                     </Modal>
     

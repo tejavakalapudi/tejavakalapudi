@@ -10,6 +10,8 @@
     background-attachment: fixed;
     position: relative;
     transition: 1.5s ease;
+    background-image: url(../../public/images/CornerBG.jpg);
+
 }
 
 .overlay-containter{
@@ -65,7 +67,6 @@
 
 .learn-more-button{
     border: white 1px solid;
-    padding: 1rem;
     background-color:rgba(253, 253, 251, 0.52);
     font-weight: bold;
     font-size: 1.5rem;
@@ -142,7 +143,6 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .welcome-image-div{
-        background-image: url(../../public/images/CementBG.png);
         min-height: 823px;
         background-attachment: local;
     }
@@ -158,12 +158,15 @@
     .learn-more-div{
         color: rgb(10, 155, 225);
     }
+
+    .learn-more-button{
+        padding: 1rem;
+    }
 } 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     .welcome-image-div{
-        background-image: url(../../public/images/CementBG.png);
         min-height: 1024px;
         background-attachment: local;
     }
@@ -178,22 +181,33 @@
     .learn-more-div{
         color: rgb(10, 155, 225);
     }
+
+    .learn-more-button{
+        padding: 1rem;
+    }
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .welcome-image-div{
         min-height: 1024px;
-        background-image: url(../../public/images/CementBG1.png);
         background-attachment: fixed;
     }
 
     .mobile__overlay{
+        visibility: visible;
+    }
+
+    .mobile__overlay.hide-welcome-screen{
         visibility: hidden;
     }
 
     .learn-more-div{
         color: white;
+    }
+
+    .learn-more-button{
+        padding: 1rem 2rem;
     }
 
 } 
@@ -202,16 +216,32 @@
 @media only screen and (min-width: 992px) {
     .welcome-image-div{
         min-height: 768px;
-        background-image: url(../../public/images/CementBG1.png);
         background-attachment: fixed;
     }
 
     .mobile__overlay{
+        visibility: visible;
+    }
+
+    .mobile__overlay.hide-welcome-screen{
         visibility: hidden;
     }
 
     .learn-more-div{
         color: white;
+        padding-top: 50rem !important;
+    }
+
+    .learn-more-button{
+        padding: 1rem 2rem;
+    }
+
+    .mobile__overlay-title{
+        font-size: 10rem;
+    }
+    
+    .mobile__overlay-subtitle{
+        font-size: 2rem;
     }
 } 
 
@@ -219,15 +249,31 @@
 @media only screen and (min-width: 1200px) {
     .welcome-image-div{
         min-height: 726px;
-        background-image: url(../../public/images/CementBG1.png);
         background-attachment: fixed;
     }
 
     .mobile__overlay{
+        visibility: visible;
+    }
+
+    .mobile__overlay.hide-welcome-screen{
         visibility: hidden;
     }
     
     .learn-more-div{
         color: white;
+        padding-top: 50rem !important;
+    }
+
+    .learn-more-button{
+        padding: 1rem 2rem;
+    }
+
+    .mobile__overlay-title{
+        font-size: 10rem;
+    }
+    
+    .mobile__overlay-subtitle{
+        font-size: 2rem;
     }
 }

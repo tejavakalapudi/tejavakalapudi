@@ -3,7 +3,6 @@
 //https://firebase.google.com/docs/reference/
 
 import * as firebase from "firebase";
-import welcomeModalImg from "../../public/images/WelcomeModal.png";
 
 const config = {
     apiKey: "AIzaSyBOp-bYuMy8VXxF13PdVCv0mudnbWb1xVI",
