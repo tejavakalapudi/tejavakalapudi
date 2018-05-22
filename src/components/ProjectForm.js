@@ -23,7 +23,7 @@ class ProjectForm extends React.Component {
         status: this.props.project && this.props.project.status ? this.props.project.status : "ongoing"
     };
 
-    storageRefId = uuid();
+    storageRefId = this.props.project && this.props.project.storageRefId ? this.props.project.storageRefId : uuid();
 
     projectRef = storageRef.child( `projects/${ this.storageRefId }` );
 

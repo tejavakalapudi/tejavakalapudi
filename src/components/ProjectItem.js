@@ -17,7 +17,6 @@ const ProjectItem = ( props ) => (
                     alt= { props.project.title }
                     width=  { props.project.status === "ongoing" ? "320px" : "272px" }  
                     height= { props.project.status === "ongoing" ? "227px" : "193px" }
-                    onClick = { props.onClick }
                     className = "project-item_image"
                 />
                 <div class="imageOverlay">
