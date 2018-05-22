@@ -3,6 +3,7 @@
 //https://firebase.google.com/docs/reference/
 
 import * as firebase from "firebase";
+import welcomeModalImg from "../../public/images/WelcomeModal.png";
 
 const config = {
     apiKey: "AIzaSyBOp-bYuMy8VXxF13PdVCv0mudnbWb1xVI",
@@ -16,5 +17,9 @@ const config = {
 firebase.initializeApp( config );
 
 const database = firebase.database();
+const storageRef = firebase.storage().ref();
 
-export { firebase, database as default };
+export { firebase, database, storageRef };
+
+//storage.ref().child("projects");
+//storageRef.child('images/welcomeModal').put( "/images/WelcomeModal.png" );

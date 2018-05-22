@@ -3,6 +3,7 @@ import React from "react";
 import { Button, Form, FormGroup, Label, Input, FormText, Row, Container, Col } from 'reactstrap';
 import Header from "./Header";
 import uuid from "uuid";
+import { storageRef } from "../firebase/firebase";
 
 class ProjectForm extends React.Component {
 
@@ -22,46 +23,73 @@ class ProjectForm extends React.Component {
         status: this.props.project && this.props.project.status ? this.props.project.status : "ongoing"
     };
 
+    storageRefId = uuid();
+
+    projectRef = storageRef.child( `projects/${ this.storageRefId }` );
+
     handleSubmit = ( e ) =>  {
 
         e.preventDefault();
 
         if( this.state.title.length !== 0 ){
-            this.props.onSubmit({ 
-                title: this.state.title, 
-                subTitle: this.state.subTitle,
-                overview: this.state.overview,
-                thumbnailLocation: this.state.thumbnailLocation,
-                imageLocation: this.state.imageLocation,
-                brochure: this.state.brochure,
-                status: this.state.status,
-                address: this.state.address,
-                createdOn: Date.now(),
-                specs: this.state.specs,
-                locationMapInfo: this.state.locationMapInfo,
-                floorPlans: this.state.floorPlans
-            });
+            this.props.onSubmit(
+                { 
+                    title: this.state.title, 
+                    subTitle: this.state.subTitle,
+                    overview: this.state.overview,
+                    brochure: this.state.brochure,
+                    status: this.state.status,
+                    address: this.state.address,
+                    createdOn: this.state.createdOn || Date.now(),
+                    specs: this.state.specs,
+                    locationMapInfo: this.state.locationMapInfo,
+                    thumbnailLocation: this.state.thumbnailLocation,
+                    imageLocation : this.state.imageLocation,
+                    floorPlans : this.state.floorPlans,
+                    storageRefId : this.storageRefId
+                }
+            );
         }
 
         //https://pdfobject.com/static.html        
 
     };
 
-    handleThumbnailImgUpload = (e) => {
+    fileUploadToStorage = ( image, childname, callback ) => {
 
-        e.preventDefault();
-        const reader = new FileReader();
-        const image = e.target.files[0];
-    
-        reader.onloadend = () => {
+        console.log( `${childname} upload request` );
 
-            this.setState({
-                thumbnailLocation: reader.result
+        this.projectRef.child( childname ).put( image ).then( ( snapshot ) => {
+
+            console.log( `${childname} upload request - Completed` );
+
+            snapshot.ref.getDownloadURL().then( function( downloadURL ) {
+                
+                console.log( `${childname} upload request - setting downloadURL` );
+
+                callback( downloadURL );
+
             });
 
-        }
+        }).catch( (err) => {
 
-        reader.readAsDataURL( image );
+            console.log( "Thumbnail Image Uploaded failed ", err );
+
+        });
+
+    };
+
+    handleThumbnailImgUpload = ( e ) => {
+
+        e.preventDefault();
+
+        const image = e.target.files[0];
+
+        this.fileUploadToStorage( image, "Thumbnail-Image", ( url ) => {
+            this.setState({
+                thumbnailLocation: url
+            });
+        });
 
     };
 
@@ -70,16 +98,11 @@ class ProjectForm extends React.Component {
         e.preventDefault();
         const image = e.target.files[0];
 
-        const reader = new FileReader();
-    
-        reader.onloadend = () => {
-          this.setState({
-            imageLocation : reader.result
-          });
-
-        }
-
-        reader.readAsDataURL( image );
+        this.fileUploadToStorage( image, "Landscape-Image", ( url ) => {
+            this.setState({
+                imageLocation: url
+            });
+        });
 
     };
 
@@ -92,19 +115,16 @@ class ProjectForm extends React.Component {
 
             if ( /\.(jpe?g|png|gif)$/i.test( files[ file ].name ) ) {
                 
-                const reader = new FileReader();
+                const uniqueId = uuid();
 
-                reader.onloadend = () => {
-
-                    const floorPlanObj = { floorPlanImg : reader.result, id : uuid() }
-
+                this.fileUploadToStorage( files[ file ], `floorPlan-${ uniqueId }`, ( url ) => {
+                    
+                    const floorPlanObj = { floorPlanImg : url, id : `floorPlan-${ uniqueId }` }
                     this.setState({
                         floorPlans : [ ...this.state.floorPlans, floorPlanObj ]
                     });
-          
-                }
-          
-                reader.readAsDataURL( files[ file ] );
+
+                });
 
             } 
 
@@ -125,15 +145,12 @@ class ProjectForm extends React.Component {
         e.preventDefault();
         const reader = new FileReader();
         const pdfFile = e.target.files[0];
-    
-        reader.onload = () => {
-            const base64 = reader.result.replace(/^[^,]*,/, '');
-            this.setState({
-                brochure: base64
-            });
-        }
 
-        reader.readAsDataURL( pdfFile );
+        this.fileUploadToStorage( pdfFile, "Brochure", ( url ) => {
+            this.setState({
+                brochure: url
+            });
+        });
 
     };
 

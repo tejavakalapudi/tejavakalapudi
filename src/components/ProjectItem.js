@@ -43,7 +43,7 @@ const ProjectItem = ( props ) => (
                         onClick = { 
                             ( e ) => {
                                 props.dispatch( 
-                                    startRemoveProject( { id : props.project.id } ) 
+                                    startRemoveProject( { id : props.project.id, storageRefId : props.project.storageRefId } ) 
                                 ) 
                             } 
                         }

@@ -1,12 +1,12 @@
 import uuid from "uuid";
-import database from "../firebase/firebase";
+import { database, storageRef } from "../firebase/firebase";
 
 export const addProject = ( project ) => ({
     type : "ADD_PROJECT",
     project
 });
 
-export const startAddProject = ( projectData = {} ) => {
+export const startAddProject = ( projectData = {}, projectStorage = {} ) => {
     
     return ( dispatch ) => {
         const {
@@ -14,24 +14,33 @@ export const startAddProject = ( projectData = {} ) => {
             title = "",
             subTitle = "",
             overview = "", 
-            floorPlans = "",  
             locationMapInfo = "",
             address = "",  
             specs = "",
             amenities = "",
             brochure = "", 
             createdOn = 0,
-            imageLocation = "",
+            status = "",
             thumbnailLocation = "",
-            status = "" 
+            imageLocation = "",
+            floorPlans = "",
+            storageRefId = ""
         } = projectData;
 
-        return database.ref( "projects" ).push( projectData ).then((ref) => {
+        return database.ref( "projects" ).push( projectData ).then( (ref) => {
+
             dispatch( addProject({
                 id : ref.key,
                 ...projectData
             }));
+
+        })
+        .catch( ( error ) => {
+
+            console.log( "Add Project failed: " + error.message );
+
         });
+
     }
 };
 
@@ -40,16 +49,32 @@ export const removeProject= ( { id } = {} ) => ({
     id    
 });
 
-export const startRemoveProject = ( { id } = {} ) => {
+export const startRemoveProject = ( { id, storageRefId } = {} ) => {
 
     return ( dispatch ) => {
 
         return database.ref( `projects/${id}` ).remove().then(() => {
 
-            console.log("Successfully removed a project");
-
             dispatch( removeProject({ id }));
-            
+
+            console.log("Successfully removed a project" );
+/*
+            const projectsRef = storageRef.child( "projects" );
+
+            console.log("Successfully removed a project", projectsRef );
+
+            const deleteRef = projectsRef.child( storageRefId );
+            // Delete the file
+            deleteRef.delete().then(function() {
+                
+                console.log( "Project removed from storage!" );
+
+            }).catch(function(error) {
+                
+                console.log( "Project removal from storage failed with ", error );
+
+            });
+*/           
         })
         .catch( (error) => {
 

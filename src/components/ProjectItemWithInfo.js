@@ -26,7 +26,9 @@ class ProjectItemWithInfo extends React.Component {
         showSpecs : false, 
         showBrochure : false,
         showFloorPlans : false,
-        brochureDiv : {}
+        brochureDiv : {
+            __html: `<object data=${ this.props.project.brochure } width="100%" height="100%" type="application/pdf" ></object>`
+        }
     }
 
     toggle( tab ) {
@@ -45,39 +47,6 @@ class ProjectItemWithInfo extends React.Component {
         });        
     }
 
-    convertBase64ToBlob = () =>{
-
-        if( this.props.project.brochure ){
-
-            const byteString = atob( this.props.project.brochure );
-
-            // Convert that text into a byte array.
-            const ab = new ArrayBuffer( byteString.length );
-            const ia = new Uint8Array(ab);
-    
-            for ( let i = 0; i < byteString.length; i++ ) {
-    
-                ia[ i ] = byteString.charCodeAt( i );
-    
-            }
-    
-            // Blob for saving.
-            const blob = new Blob( [ ia ], { type: "application/pdf" } );
-
-            this.setState({
-                brochureDiv: {
-                    __html: `<object data=${ window.URL.createObjectURL( blob ) } width="100%" height="100%" type="application/pdf" ></object>`
-                }
-            }); 
-    
-        }
-
-    }
-
-    componentDidMount() {
-        this.convertBase64ToBlob();
-    }
-
     render(){
 
         return (
@@ -94,7 +63,7 @@ class ProjectItemWithInfo extends React.Component {
                                     onClick = { 
                                         ( e ) => {
                                             this.props.dispatch( 
-                                                startRemoveProject( { id : this.props.project.id } ) 
+                                                startRemoveProject( { id : this.props.project.id, storageRefId : this.props.project.storageRefId } ) 
                                             ) 
                                         } 
                                     }
