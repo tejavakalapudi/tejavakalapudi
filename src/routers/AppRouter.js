@@ -8,19 +8,17 @@ import AboutUsPage from "../components/AboutUsPage";
 import ProjectsPage from "../components/ProjectsPage";
 import ContactUsPage from "../components/ContactUsPage";
 import BuyersGuidePage from "../components/BuyersGuidePage";
-import AkurthiApp from "../components/Template";
 import AdminPage from "../components/AdminPage";
 import NotFound from "../components/NotFoundPage";
 import ProjectItemWithInfo from "../components/ProjectItemWithInfo";
 import AddProjectPage from "../components/AddProjectPage";
 import EditProjectPage from "../components/EditProjectPage";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 const AppRouter = () => (
     <BrowserRouter>
         <div>
-            <AkurthiApp/>
+            <Header />
             <Switch>
                 <Route path = "/" component = { HomePage } exact={true}/>
                 <Route path = "/home" component = { HomePage }/>
@@ -34,7 +32,6 @@ const AppRouter = () => (
                 <Route path = "/admin" component = { AdminPage } /> 
                 <Route component = { NotFound } />
             </Switch>
-            <Footer/>
         </div>
     </BrowserRouter>
 );

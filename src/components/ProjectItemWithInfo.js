@@ -51,10 +51,9 @@ class ProjectItemWithInfo extends React.Component {
 
         return (
             <div>
-                <div className = "projects-container mx-auto">
+                <div className = "body-container mx-auto">
 
                     <Container>
-                        <Header activeTab = "projectinfo"/>
 
                         { this.props.authInfo.isAuthorized && 
 

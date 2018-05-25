@@ -1,4 +1,9 @@
 import React from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+import AppRouter from "../routers/AppRouter";
+import WelcomeScreen from "./WelcomeScreen";
+import { Provider } from "react-redux";
 
 class AkruthiApp extends React.Component {
 
@@ -10,7 +15,15 @@ class AkruthiApp extends React.Component {
 
         return(
             <div>
-                
+
+                <WelcomeScreen />
+
+                <Provider store = { this.props.store } >
+                    <AppRouter/>
+                </Provider>
+
+                <Footer />
+
             </div>
         );
     }

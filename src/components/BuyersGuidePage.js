@@ -49,11 +49,9 @@ class BuyersGuidePage extends React.Component {
         return(
 
             <div> 
-                <div className = "buyers-guide-container mx-auto">
+                <div className = "body-container mx-auto">
                             
                     <Container>
-                        
-                        <Header activeTab = "buyersguide"/>
                         
                         <Row className = "justify-content-center">
     

@@ -50,11 +50,9 @@ class ProjectsPage extends React.Component {
     render(){
         return (
             <div>
-                <div className = "projects-container mx-auto">
+                <div className = "body-container mx-auto">
                 
                     <Container>
-                        
-                        <Header activeTab = "projects"/>
 
                         <Row className = "justify-content-center projects_body">
    
@@ -133,17 +131,6 @@ class ProjectsPage extends React.Component {
 
                     </Container>                            
                 </div>
-
-                {
-                    /*
-                    //To have background behind
-                    <div className = "background-image">
-                        <img src = {backgroundImage}></img>
-                    </div>
-                    */
-                }
-
-            {/*</div>*/}
             </div>
         );
 

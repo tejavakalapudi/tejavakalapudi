@@ -6,6 +6,8 @@ import { startAddProject, startSetProjects } from "./actions/projects";
 import { checkUserAuth } from "./actions/auth";
 
 import { Provider } from "react-redux";
+
+import AkruthiApp from "./components/Template";
 import LoadingScreen from "./components/LoadingPage";
 
 //http://www.tgnickel.com/ (For Scroll bar and header) <3 <3
@@ -153,22 +155,14 @@ store.dispatch( startAddProject({
 } ) );
 */
 
-const state = store.getState();
-
-const jsx = (
-    <div>
-        <Provider store = { store } >
-            <AppRouter/>
-        </Provider>
-    </div>
-);
+//const state = store.getState();
 
 store.dispatch( startSetProjects() ).then(() => {
 
-    ReactDOM.render( jsx, document.getElementById("app") );
+    ReactDOM.render( <AkruthiApp store = { store } />, document.getElementById("app") );
     
 });
 
-ReactDOM.render( <LoadingScreen />, document.getElementById("app") );
+ReactDOM.render( <LoadingScreen /> , document.getElementById("app") );
 
 

@@ -30,19 +30,19 @@ class HeaderComponent extends React.Component{
                         </DropdownToggle>
                         <DropdownMenu right>
                             <DropdownItem>
-                                <NavLink to = "/" exact={true} className = "navlink dropdown-navlink">Home</NavLink>
+                                <NavLink to = "/" exact={true} activeClassName = "is-active" className = "navlink dropdown-navlink">Home</NavLink>
                             </DropdownItem>
                             <DropdownItem>
-                                <NavLink to = "/projects" className = "navlink dropdown-navlink">Projects</NavLink>
+                                <NavLink to = "/projects" activeClassName = "is-active" className = "navlink dropdown-navlink">Projects</NavLink>
                             </DropdownItem>
                             <DropdownItem>
-                                <NavLink to = "/buyersguide" className = "navlink dropdown-navlink">Buyers Guide</NavLink>
+                                <NavLink to = "/buyersguide" activeClassName = "is-active" className = "navlink dropdown-navlink">Buyers Guide</NavLink>
                             </DropdownItem>
                             <DropdownItem>
-                                <NavLink to = "/contactus" className = "navlink dropdown-navlink" >Contact</NavLink>
+                                <NavLink to = "/contactus" activeClassName = "is-active" className = "navlink dropdown-navlink" >Contact</NavLink>
                             </DropdownItem>
                             <DropdownItem>
-                                <NavLink to = "/admin" className = "navlink dropdown-navlink" >Admin</NavLink>
+                                <NavLink to = "/admin" activeClassName = "is-active" className = "navlink dropdown-navlink" >Admin</NavLink>
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
@@ -54,19 +54,19 @@ class HeaderComponent extends React.Component{
             return(
                 <Nav>
                     <NavItem className = "projects_navitem">
-                        <NavLink to = "/" exact={true} className = "navlink navlink-right">Home</NavLink>
+                        <NavLink to = "/" exact={true} activeClassName = "is-active" className = "navlink navlink-right">Home</NavLink>
                     </NavItem>
                     <NavItem className = "projects_navitem">
-                        <NavLink to = "/projects" className = "navlink navlink-right">Projects</NavLink>
+                        <NavLink to = "/projects" activeClassName = "is-active" className = "navlink navlink-right">Projects</NavLink>
                     </NavItem>
                     <NavItem className = "projects_navitem">
-                        <NavLink to = "/buyersguide" className = "navlink navlink-right">Buyers Guide</NavLink>
+                        <NavLink to = "/buyersguide" activeClassName = "is-active" className = "navlink navlink-right">Buyers Guide</NavLink>
                     </NavItem>
                     <NavItem className = "projects_navitem">
-                        <NavLink to = "/contactus" className = "navlink navlink-right" >Contact</NavLink>
+                        <NavLink to = "/contactus" activeClassName = "is-active" className = "navlink navlink-right" >Contact</NavLink>
                     </NavItem>
                     <NavItem className = "projects_navitem">
-                        <NavLink to = "/admin" className = "navlink navlink-right" >Admin</NavLink>
+                        <NavLink to = "/admin" activeClassName = "is-active" className = "navlink navlink-right" >Admin</NavLink>
                     </NavItem>
                 </Nav>
             );
@@ -77,18 +77,22 @@ class HeaderComponent extends React.Component{
 
     render(){
         return(
-            <div className = "buyers-guide-container mx-auto">
+            <div className = "header-container mx-auto">
                 <Container>
-                    <div className = "row justify-content-between">         
-                        <div className = "" >
-                            <NavLink to = "/" >
-                                <img src = { this.props.activeTab === "projectinfo" ? "../" + logoImage : logoImage } className = "projects_logo" ></img>
-                            </NavLink>
+                    <Container>
+                        <div className = "row justify-content-between">         
+                            <div className = "" >
+                                <NavLink to = "/" >
+                                    <img src = { this.props.activeTab === "projectinfo" ? "../" + logoImage : logoImage } className = "projects_logo" ></img>
+                                </NavLink>
+                            </div>
+                            <div className = "" >
+                                <Navbar color="faded" dark className = "header__navbar">
+                                    {this.renderNavs()}
+                                </Navbar>  
+                            </div>                       
                         </div>
-                        <Navbar color="faded" dark className = "header__navbar">
-                            {this.renderNavs()}
-                        </Navbar>                         
-                    </div>
+                    </Container>
                 </Container>
             </div>
         )

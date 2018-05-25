@@ -282,12 +282,10 @@ class ProjectForm extends React.Component {
 
             <div>
 
-                <div className = "buyers-guide-container mx-auto">
+                <div className = "body-container mx-auto">
                                     
                     <Container>
-                        
-                        <Header activeTab = { this.props.project ? "projectinfo" : "buyersguide" }/>
-                        
+                    
                         <Row className = "justify-content-center">
 
                             <div className = "col-lg-12 col-md-12">

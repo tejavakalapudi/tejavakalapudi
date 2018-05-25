@@ -23,15 +23,9 @@ class ContactUsPage extends React.Component {
         return(
 
             <div> 
-                <div className = "buyers-guide-container mx-auto">
+                <div className = "body-container mx-auto">
                             
                     <Container>
-                        
-                        {
-                            this.props.isHome !== true &&
-                            <Header activeTab = "contact"/>
-
-                        }
                         
                         <Row className = "justify-content-center">
     

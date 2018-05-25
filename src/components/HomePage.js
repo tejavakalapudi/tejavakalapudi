@@ -33,12 +33,10 @@ class HomePage extends React.Component {
 
         return (
             <div>
-                <WelcomeScreen />
-                <div className = "buyers-guide-container mx-auto">
+            
+                <div className = "body-container mx-auto">
 
                     <Container>
-
-                        <Header activeTab = "home"/>
                         
                         <GridComponent centerGrid = {true} push = { this.props.history.push }/>
                         <div className = "home-section_divider" ></div>
