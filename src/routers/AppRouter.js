@@ -15,6 +15,7 @@ import ProjectItemWithInfo from "../components/ProjectItemWithInfo";
 import AddProjectPage from "../components/AddProjectPage";
 import EditProjectPage from "../components/EditProjectPage";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 const AppRouter = () => (
     <BrowserRouter>

@@ -33,9 +33,7 @@ class HomePage extends React.Component {
 
         return (
             <div>
-                
                 <WelcomeScreen />
-                
                 <div className = "buyers-guide-container mx-auto">
 
                     <Container>

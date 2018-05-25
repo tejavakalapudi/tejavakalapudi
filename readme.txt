@@ -41,7 +41,6 @@
 //Things to do:
 ##IMPORTANT : CONSISTENTLY CHECKING IF THERE"S A WAY TO BUNDLE BOOTSTRAP BEFORE CUSTOM CSS THROUGH WEBPACK ##
 a. Should generate latest 3 projects in home grid. DONE
-b. Ongoing projects should change size based on projects Count.
 c. Customize Admin Page
 d. Restrict editPage and addPage for only admin access
 e. Change min-width of website to support all screen sizes.

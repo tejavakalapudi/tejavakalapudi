@@ -6,8 +6,32 @@
     padding-right: 0;
 }
 
+.projects_navitem{
+    padding-left: 3rem;
+}
+
+.navlink{
+    color: black;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.navlink-right{
+    float: left;
+}
+
+.dropdown-navlink{
+    float: right;
+    margin: 0.5rem;
+}
+
+.dropdown-navitem{
+    padding-left: 3rem;
+}
+
 .projects_logo{
-    margin-top: 2rem;
+    //margin-top: 2rem;
     width: 18.3rem;
     height: 6rem;
 }
