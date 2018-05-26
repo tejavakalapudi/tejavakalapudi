@@ -10,7 +10,9 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: 'tejavakalapudi@gmail.com',
-      pass: '09401a04b3'
+      pass: '09401a04b3',
+      clientId : "867658258327-kr821rif2jd0leqi6fsu0f4pdjp41d3h.apps.googleusercontent.com",
+      clientSecret : "v2uXRayI8FPclH7gyPi0-1E2"
     }
 });
 
