@@ -29,4 +29,12 @@
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     color: black;
     font-size: 1.4rem;
+    visibility: hidden;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 750px) {
+    .icon_text_format{
+        visibility: visible;
+    }
+} 

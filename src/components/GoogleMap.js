@@ -16,7 +16,7 @@ const MapsComponent = ( localProps ) => {
                 >
                     {   
                         <InfoWindow>
-                            <div>
+                            <div style={{width:"200px",fontSize:"1rem"}}>
                                 <p>{ localProps.title }</p>
                                 <p>{ localProps.address }</p>
                             </div>

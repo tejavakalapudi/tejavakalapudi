@@ -49,12 +49,6 @@ class Specifications extends React.Component {
                             }
                         </tbody>
                     </Table>
-
-                    {
-                        /*
-                            <button onClick = { this.updateSpecs } disabled = { this.state.disabled }>Show Specs!</button>
-                        */
-                    }
                 </Col>
             </Col> 
         );

@@ -14,6 +14,7 @@
     "heroku-postbuild": "yarn run build:prod"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
@@ -34,6 +35,7 @@
     "firebase": "^5.0.0",
     "live-server": "^1.2.0",
     "node-sass": "^4.7.2",
+    "nodemailer": "^4.6.5",
     "normalize.css": "^8.0.0",
     "react": "^16.2.0",
     "react-burger-menu": "^2.4.4",

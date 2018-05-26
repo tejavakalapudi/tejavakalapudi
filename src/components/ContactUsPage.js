@@ -12,11 +12,23 @@ import {
     FormText 
 } from "reactstrap";
 import Header from "./Header";
+import axios from "axios";
 
-import { MdRateReview, MdInfo, MdBusinessCenter, MdEventAvailable, MdEmail, MdLocationOn, MdLocalPhone } from "react-icons/lib/md";
+import { MdRateReview, MdInfo, MdPeople, MdEventAvailable, MdEmail, MdLocationOn, MdLocalPhone } from "react-icons/lib/md";
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/lib/fa";
 
 class ContactUsPage extends React.Component {
+
+    sendEmail = (e) => {
+
+        e.preventDefault();
+
+        axios.get(`./sendemail`)
+        .then(res => {
+            console.log( "Response after sending email", res );
+        });
+
+    }
     
     render(){
         
@@ -43,17 +55,17 @@ class ContactUsPage extends React.Component {
 
                                 <Row className = "justify-content-center icon_bar" >
 
-                                    <Col lg = "3" className = "icon_div">
-                                        <MdRateReview size={100}  color ="#da4d3c"/>
+                                    <Col xs = "3" className = "icon_div">
+                                        <MdRateReview size={ 70 }  color ="#da4d3c"/>
                                         <p className = "icon_text_format">Testimonials/Suggestions/Complaints</p>
                                     </Col>
 
-                                    <Col lg = "3" className = "icon_div">
-                                        <MdBusinessCenter size={100} color ="#da4d3c"/>
+                                    <Col xs = "3" className = "icon_div">
+                                        <MdPeople size={ 70 } color ="#da4d3c"/>
                                         <p className = "icon_text_format">Talk Business</p>
                                     </Col>
-                                    <Col lg = "3" className = "icon_div">
-                                        <MdEventAvailable size={100} color ="#da4d3c"/>
+                                    <Col xs = "3" className = "icon_div">
+                                        <MdEventAvailable size={ 70 } color ="#da4d3c"/>
                                         <p className = "icon_text_format" >Schedule a visit</p>
                                     </Col>
 
@@ -94,7 +106,7 @@ class ContactUsPage extends React.Component {
                                             <Row className = "justify-content-center">
                                                 <FormGroup>
                                                     <Col>
-                                                        <Button color="danger" size="lg" className="contact_text_format" >Submit</Button>
+                                                        <Button color="danger" size="lg" className="contact_text_format" onClick = {this.sendEmail} >Submit</Button>
                                                     </Col>
                                                 </FormGroup>
                                             </Row>
