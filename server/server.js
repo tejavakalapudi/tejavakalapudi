@@ -1,6 +1,6 @@
 //http://expressjs.com/
 const express = require( "express" );
-const nodemailer = require("nodemailer");
+const nodemailer = require( "nodemailer" );
 const app  = express();
 const path = require( "path" );
 const publicPath = path.join( __dirname, "..", "public" );
@@ -18,14 +18,16 @@ const transporter = nodemailer.createTransport({
 
 var mailOptions = {
     from: 'tejavakalapudi@gmail.com',
-    to: 'ravitejavakalapudi@yahoo.com',
-    subject: 'Sending Email using Node.js',
+    to: 'ravitejavakalapudi@gmail.com',
+    subject: 'Customer wrote something!',
     text: 'That was easy!'
 };
 
 app.use( express.static( publicPath ) );
 
 app.get( "/sendemail", ( req, res ) => {
+
+//sendEmail = () =>{
 
     console.log("Making post request to send email");
     
@@ -34,11 +36,12 @@ app.get( "/sendemail", ( req, res ) => {
         if ( error)  {
           console.log("Nodemailer failed with ", error );
         } else {
-          console.log('Email sent: ' + info.response);
+          console.log('Email sent: ', info.response);
         }
         
     });
-    // node mailer code
+
+//}
 });
 
 app.get( "*", ( req, res ) => {
@@ -49,3 +52,5 @@ app.get( "*", ( req, res ) => {
 app.listen( port, () => {
     console.log( "Server is up!" );
 });
+
+sendEmail();

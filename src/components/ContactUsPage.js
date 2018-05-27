@@ -22,10 +22,14 @@ class ContactUsPage extends React.Component {
     sendEmail = (e) => {
 
         e.preventDefault();
+        console.log( "Making axios request to sendemail route" );
 
         axios.get(`./sendemail`)
-        .then(res => {
-            console.log( "Response after sending email", res );
+        .then( response => { 
+            console.log( "Response from sendEmail route ",response );
+        })
+        .catch(error => {
+            console.log( "sendemail app failed with ", error.response);
         });
 
     }
