@@ -34,12 +34,19 @@ app.get( "/sendemail", ( req, res ) => {
 
     console.log("Making post request to send email");
     
-    transporter.sendMail(mailOptions, (error, info) => {
+    transporter.sendMail( mailOptions, (error, info) => {
 
         if ( error)  {
+
           console.log("Nodemailer failed with ", error );
+
+          res.status( 500 ).send({ error: 'Something failed!' })
+
         } else {
-          console.log('Email sent: ', info.response);
+
+          res
+            .status( 200 )
+            .send("Email has been sent successfully");
         }
         
     });
