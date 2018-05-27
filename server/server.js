@@ -6,14 +6,16 @@ const path = require( "path" );
 const publicPath = path.join( __dirname, "..", "public" );
 const port = process.env.PORT || 3000;
 
+//http://masashi-k.blogspot.com.br/2013/06/sending-mail-with-gmail-using-xoauth2.html
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'tejavakalapudi@gmail.com',
-      pass: '09401a04b3',
-      clientId : "867658258327-kr821rif2jd0leqi6fsu0f4pdjp41d3h.apps.googleusercontent.com",
-      clientSecret : "Gk8VO3IetNgkw0HfqjO0z2nN",
-      refreshToken : "1/0mp3pne6r3MHzQUJ7A06k6DDeEY54zAcoTa0_cJ3ZOA"
+        type : "OAuth2",
+        user: 'tejavakalapudi@gmail.com',
+        pass: '09401a04b3',
+        clientId : "867658258327-kr821rif2jd0leqi6fsu0f4pdjp41d3h.apps.googleusercontent.com",
+        clientSecret : "Gk8VO3IetNgkw0HfqjO0z2nN",
+        refreshToken : "1/0mp3pne6r3MHzQUJ7A06k6DDeEY54zAcoTa0_cJ3ZOA"
     }
 });
 
