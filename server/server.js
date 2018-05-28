@@ -23,19 +23,18 @@ app.use( express.static( publicPath ) );
 
 app.get( "/sendemail", ( req, res ) => {
 
-    console.log("Making post request to send email", req );
-    console.log("Request params", req.params );
+    console.log("Making post request to send email", req.query );
 
-    const messageString = `<h1>${req.params.name} wrote: </h1><br>
-    <p><i>${req.params.message}<i></p><br>
-    <h3>Customer Details:</h3><br>
-    <p><b>Phone:</b> ${req.params.phone}</p><br>
-    <p><b>Email:</b> ${req.params.email}</p>`;
+    const messageString = `<h3>${req.query.name} wrote: </h3>
+    <p><i>"${req.query.message}"<i></p>
+    <div><b>Customer Details:</b></div>
+    <div><b>Phone:</b> ${req.query.phone}</div>
+    <div><b>Email:</b> ${req.query.email}</div>`;
 
     const mailOptions = {
         from: 'tejavakalapudi@gmail.com',
         to: 'ravitejavakalapudi@gmail.com',
-        subject: `Message from ${req.params.name}`,
+        subject: `Message from ${req.query.name}`,
         html: messageString
     };
     
