@@ -19,19 +19,66 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/lib/
 
 class ContactUsPage extends React.Component {
 
+    state = {
+        customerName : "",
+        customerPhone : "",
+        customerEmail : "",
+        customerMessage : ""
+    }
+
     sendEmail = (e) => {
 
         e.preventDefault();
         console.log( "Making axios request to sendemail route" );
 
-        axios.get(`./sendemail`)
-        .then( response => { 
-            console.log( "Response from sendEmail route ",response );
+        const messageString = `<h1>${this.state.customerName} wrote: </h1><br>
+                                <p><i>${this.state.customerMessage}<i></p><br>
+                                <h3>Customer Details:</h3><br>
+                                <p><b>Phone:</b> ${this.state.customerPhone}</p><br>
+                                <p><b>Email:</b> ${this.state.customerEmail}</p>`;
+
+        axios.get( "./sendemail",{
+            params: {
+              emailSubject: `Message from ${this.state.customerName}`,
+              emailContent : messageString
+            }
         })
-        .catch(error => {
-            console.log( "sendemail app failed with ", error.response);
+        .then( response => { 
+
+            console.log( "Email sent successfully!" );
+
+        })
+        .catch( error => {
+
+            console.log( "Something went wrong while sending an email!" );
+
         });
 
+    }
+
+    handleCustomerName = (e) => {
+        e,preventDefault();
+        e.persist();
+       
+        this.setState( () => ( { customerName : e.target.value } ) );
+    }
+    handleCustomerEmail = (e) => {
+        e,preventDefault();
+        e.persist();
+       
+        this.setState( () => ( { customerEmail : e.target.value } ) );
+    }
+    handleCustomerPhone = (e) => {
+        e,preventDefault();
+        e.persist();
+       
+        this.setState( () => ( { customerPhone : e.target.value } ) );
+    }
+    handleCustomerMessage= (e) => {
+        e,preventDefault();
+        e.persist();
+       
+        this.setState( () => ( { customerMessage : e.target.value } ) );
     }
     
     render(){
@@ -82,25 +129,25 @@ class ContactUsPage extends React.Component {
                                                 <FormText color="warning" className="contact_text_format" >
                                                     Name:
                                                 </FormText>
-                                                <Input type="text" name="text" id="examplename" placeholder="John Doe" className = "contact_input" />
+                                                <Input type="text" name="text" id="examplename" placeholder="John Doe" className = "contact_input" onChange = { this.handleCustomerName }/>
                                             </FormGroup>
                                             <FormGroup>
                                                 <FormText color="warning" className="contact_text_format" >
                                                     Email:
                                                 </FormText>
-                                                <Input type="email" name="email" id="exampleEmail" placeholder="youremail@company.com" className = "contact_input"/>
+                                                <Input type="email" name="email" id="exampleEmail" placeholder="youremail@company.com" className = "contact_input" onChange = { this.handleCustomerEmail }/>
                                             </FormGroup>
                                             <FormGroup>
                                                 <FormText color="warning" className="contact_text_format" >
                                                     Contact No:
                                                 </FormText>
-                                                <Input type="text" name="text" id="examplePassword" placeholder="+91-0000000000" className = "contact_input"/>
+                                                <Input type="text" name="text" id="examplePassword" placeholder="+91-0000000000" className = "contact_input" onChange = { this.handleCustomerPhone }/>
                                             </FormGroup>
                                             <FormGroup>
                                                 <FormText color="warning" className="contact_text_format" >
                                                     Message:
                                                 </FormText>
-                                                <Input type="textarea" name="text" id="exampleText" placeholder="Enter your message here" className = "contact_input_textarea"/>
+                                                <Input type="textarea" name="text" id="exampleText" placeholder="Enter your message here" className = "contact_input_textarea" onChange = { this.handleCustomerMessage }/>
                                             </FormGroup>
                                             <p>
                                                 <FormText color="muted">
@@ -110,7 +157,7 @@ class ContactUsPage extends React.Component {
                                             <Row className = "justify-content-center">
                                                 <FormGroup>
                                                     <Col>
-                                                        <Button color="danger" size="lg" className="contact_text_format" onClick = {this.sendEmail} >Submit</Button>
+                                                        <Button color="danger" size="lg" className="contact_text_format" onClick = { this.sendEmail } >Submit</Button>
                                                     </Col>
                                                 </FormGroup>
                                             </Row>

@@ -19,30 +19,30 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-var mailOptions = {
-    from: 'tejavakalapudi@gmail.com',
-    to: 'ravitejavakalapudi@gmail.com',
-    subject: 'Customer wrote something!',
-    text: 'That was easy!'
-};
-
 app.use( express.static( publicPath ) );
 
 app.get( "/sendemail", ( req, res ) => {
 
-//sendEmail = () =>{
-
     console.log("Making post request to send email");
+
+    var mailOptions = {
+        from: 'tejavakalapudi@gmail.com',
+        to: 'ravitejavakalapudi@gmail.com',
+        subject: req.params.emailSubject,
+        html: req.params.emailContent
+    };
     
-    transporter.sendMail( mailOptions, (error, info) => {
+    transporter.sendMail( mailOptions, ( error, info ) => {
 
         if ( error)  {
 
-          console.log("Nodemailer failed with ", error );
+          console.log( "Nodemailer failed with ", error );
 
-          res.status( 500 ).send({ error: 'Something failed!' })
+          res.status( 500 ).send( { error: 'Something failed!' } );
 
         } else {
+
+        console.log( "Nodemailer successfully sent an email" );
 
           res
             .status( 200 )
@@ -51,7 +51,6 @@ app.get( "/sendemail", ( req, res ) => {
         
     });
 
-//}
 });
 
 app.get( "*", ( req, res ) => {
