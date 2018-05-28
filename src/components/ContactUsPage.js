@@ -31,16 +31,12 @@ class ContactUsPage extends React.Component {
         e.preventDefault();
         console.log( "Making axios request to sendemail route" );
 
-        const messageString = `<h1>${this.state.customerName} wrote: </h1><br>
-                                <p><i>${this.state.customerMessage}<i></p><br>
-                                <h3>Customer Details:</h3><br>
-                                <p><b>Phone:</b> ${this.state.customerPhone}</p><br>
-                                <p><b>Email:</b> ${this.state.customerEmail}</p>`;
-
         axios.get( "./sendemail",{
             params: {
-              emailSubject: `Message from ${this.state.customerName}`,
-              emailContent : messageString
+              name: this.state.customerName,
+              message : this.state.customerMessage,
+              phone: this.state.customerPhone,
+              email : this.state.customerEmail
             }
         })
         .then( response => { 

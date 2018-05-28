@@ -23,13 +23,20 @@ app.use( express.static( publicPath ) );
 
 app.get( "/sendemail", ( req, res ) => {
 
-    console.log("Making post request to send email");
+    console.log("Making post request to send email", req );
+    console.log("Request params", req.params );
 
-    var mailOptions = {
+    const messageString = `<h1>${req.params.name} wrote: </h1><br>
+    <p><i>${req.params.message}<i></p><br>
+    <h3>Customer Details:</h3><br>
+    <p><b>Phone:</b> ${req.params.phone}</p><br>
+    <p><b>Email:</b> ${req.params.email}</p>`;
+
+    const mailOptions = {
         from: 'tejavakalapudi@gmail.com',
         to: 'ravitejavakalapudi@gmail.com',
-        subject: req.params.emailSubject,
-        html: req.params.emailContent
+        subject: `Message from ${req.params.name}`,
+        html: messageString
     };
     
     transporter.sendMail( mailOptions, ( error, info ) => {
