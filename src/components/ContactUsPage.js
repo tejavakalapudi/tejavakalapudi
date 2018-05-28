@@ -57,25 +57,25 @@ class ContactUsPage extends React.Component {
     }
 
     handleCustomerName = (e) => {
-        e,preventDefault();
+        e.preventDefault();
         e.persist();
        
         this.setState( () => ( { customerName : e.target.value } ) );
     }
     handleCustomerEmail = (e) => {
-        e,preventDefault();
+        e.preventDefault();
         e.persist();
        
         this.setState( () => ( { customerEmail : e.target.value } ) );
     }
     handleCustomerPhone = (e) => {
-        e,preventDefault();
+        e.preventDefault();
         e.persist();
        
         this.setState( () => ( { customerPhone : e.target.value } ) );
     }
     handleCustomerMessage= (e) => {
-        e,preventDefault();
+        e.preventDefault();
         e.persist();
        
         this.setState( () => ( { customerMessage : e.target.value } ) );
