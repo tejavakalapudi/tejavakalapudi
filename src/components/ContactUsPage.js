@@ -313,7 +313,7 @@ class ContactUsPage extends React.Component {
 
                             <Modal isOpen={ this.state.isOpen } toggle={ this.closeModal } className = "modal-dialog modal-sm">
                                 <ModalHeader toggle={ this.closeModal }>Thank you for contacting us!</ModalHeader>
-                                <ModalBody className = "mx-auto contact_text_format" >
+                                <ModalBody className = "mx-auto modal_text_format" >
                                     { this.state.modalMessage }
                                 </ModalBody>
                                 <ModalFooter>
