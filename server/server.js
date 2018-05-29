@@ -26,7 +26,7 @@ app.get( "/sendemail", ( req, res ) => {
     console.log("Making post request to send email", req.query );
 
     const messageString = `<h3>${req.query.name} wrote: </h3>
-    <p><i>"${req.query.message}"<i></p>
+    <p><i>"${req.query.message}"</i></p>
     <div><b>Customer Details:</b></div>
     <div><b>Phone:</b> ${req.query.phone}</div>
     <div><b>Email:</b> ${req.query.email}</div>`;

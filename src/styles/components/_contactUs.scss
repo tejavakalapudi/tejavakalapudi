@@ -30,10 +30,18 @@
     color: black;
     font-size: 1.4rem;
     visibility: hidden;
+    display: none;
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (min-width: 750px) {
+/* Small devices (phones, 770 and down) */
+@media only screen and (min-width: 550px) {
+    .icon_text_format{
+        display: block;
+    }
+} 
+
+/* Small devices (phones, 770 and down) */
+@media only screen and (min-width: 770px) {
     .icon_text_format{
         visibility: visible;
     }

@@ -9,7 +9,11 @@ import {
     FormGroup, 
     Input,
     Label,
-    FormText 
+    FormText,
+    Modal, 
+    ModalHeader, 
+    ModalBody, 
+    ModalFooter  
 } from "reactstrap";
 import Header from "./Header";
 import axios from "axios";
@@ -20,10 +24,15 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/lib/
 class ContactUsPage extends React.Component {
 
     state = {
-        customerName : "",
-        customerPhone : "",
-        customerEmail : "",
-        customerMessage : ""
+        name : "",
+        phone : "",
+        email : "",
+        message : "",
+        isOpen : false,
+        modalMessage : "",
+        nameRegexWarn : "",
+        emailRegexWarn : "",
+        phoneRegexWarn : ""
     }
 
     sendEmail = (e) => {
@@ -31,22 +40,47 @@ class ContactUsPage extends React.Component {
         e.preventDefault();
         console.log( "Making axios request to sendemail route" );
 
-        axios.get( "./sendemail",{
+        this.setState( () => ({ 
+            isOpen : true,
+            modalMessage : "Please wait while we are sending an email on behalf of you!"
+        }));
+
+        axios.get( "./sendemail", {
             params: {
-              name: this.state.customerName,
-              message : this.state.customerMessage,
-              phone: this.state.customerPhone,
-              email : this.state.customerEmail
+              name: this.state.name,
+              message : this.state.message,
+              phone: this.state.phone,
+              email : this.state.email
             }
         })
         .then( response => { 
 
             console.log( "Email sent successfully!" );
 
+            this.setState( () => ({ 
+                isOpen : true,
+                modalMessage : "Email sent successfully, we will get back to you ASAP!"
+            }));
+
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("phone").value = "";
+            document.getElementById("message").value = "";
+
         })
         .catch( error => {
 
             console.log( "Something went wrong while sending an email!" );
+
+            this.setState( () => ({ 
+                isOpen : true,
+                modalMessage : "Something went wrong while sending an email. Please contact us on +91-9966565411"
+            }));
+
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("phone").value = "";
+            document.getElementById("message").value = "";
 
         });
 
@@ -55,26 +89,90 @@ class ContactUsPage extends React.Component {
     handleCustomerName = (e) => {
         e.preventDefault();
         e.persist();
-       
-        this.setState( () => ( { customerName : e.target.value } ) );
+
+        const nameRegex = /^[a-zA-Z ]*$/;
+        const inputValue = e.target.value;
+
+        if( nameRegex.test( inputValue ) ){
+
+            this.setState( () => ({ 
+                name : e.target.value,
+                nameRegexWarn : ""
+            }));
+
+        } else {
+
+            this.setState( () => ( { nameRegexWarn : "Please use only alphabets" } ) );
+
+        }
+        
     }
     handleCustomerEmail = (e) => {
         e.preventDefault();
         e.persist();
+
+        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const inputValue = e.target.value;
+
+        if( emailRegex.test( String( inputValue ).toLowerCase() ) ){
+            
+            this.setState( () => ({ 
+                email : inputValue,
+                emailRegexWarn : "" 
+            }));
+
+        } else {
+
+            this.setState( () => ( { emailRegexWarn : "Please follow the universal email format!" } ) );
+
+        }
        
-        this.setState( () => ( { customerEmail : e.target.value } ) );
+        
     }
     handleCustomerPhone = (e) => {
         e.preventDefault();
         e.persist();
        
-        this.setState( () => ( { customerPhone : e.target.value } ) );
+        const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+        const inputValue = e.target.value;
+
+        if( phoneRegex.test( inputValue ) ){
+
+            this.setState( () => ({ 
+                phone : inputValue,
+                phoneRegexWarn : ""
+            }));
+
+        } else {
+
+            this.setState( () => ( { phoneRegexWarn : "Please use the '+(code)**********' format! Ex: +919999999999 or +19876543210" } ) );
+
+        }
+
+        
     }
     handleCustomerMessage= (e) => {
         e.preventDefault();
         e.persist();
        
-        this.setState( () => ( { customerMessage : e.target.value } ) );
+        this.setState( () => ( { message : e.target.value } ) );
+    }
+
+    closeModal = () => {
+        this.setState( () => ( { isOpen : false } ) );
+    }
+
+    enableSubmitButton = () => {
+        
+        if( ( this.state.name.length > 0 && this.state.nameRegexWarn.length === 0 ) &&
+            this.state.message.length > 0 && 
+            (( this.state.phone.length > 0 && this.state.phoneRegexWarn.length === 0 ) || ( this.state.email.length > 0 && this.state.emailRegexWarn.length === 0 )) 
+        ){
+            return true;
+        }
+
+        return false;
+
     }
     
     render(){
@@ -102,16 +200,16 @@ class ContactUsPage extends React.Component {
 
                                 <Row className = "justify-content-center icon_bar" >
 
-                                    <Col xs = "3" className = "icon_div">
+                                    <Col xs = "4" lg="3" className = "icon_div">
                                         <MdRateReview size={ 70 }  color ="#da4d3c"/>
                                         <p className = "icon_text_format">Testimonials/Suggestions/Complaints</p>
                                     </Col>
 
-                                    <Col xs = "3" className = "icon_div">
+                                    <Col xs = "4" lg="3" className = "icon_div">
                                         <MdPeople size={ 70 } color ="#da4d3c"/>
                                         <p className = "icon_text_format">Talk Business</p>
                                     </Col>
-                                    <Col xs = "3" className = "icon_div">
+                                    <Col xs = "4" lg="3" className = "icon_div">
                                         <MdEventAvailable size={ 70 } color ="#da4d3c"/>
                                         <p className = "icon_text_format" >Schedule a visit</p>
                                     </Col>
@@ -125,25 +223,34 @@ class ContactUsPage extends React.Component {
                                                 <FormText color="warning" className="contact_text_format" >
                                                     Name:
                                                 </FormText>
-                                                <Input type="text" name="text" id="examplename" placeholder="John Doe" className = "contact_input" onChange = { this.handleCustomerName }/>
+                                                <Input type="text" name="text" id="name" placeholder="John Doe" className = "contact_input" onChange = { this.handleCustomerName }/>
+                                                <FormText color="danger">
+                                                    {this.state.nameRegexWarn}
+                                                </FormText>
                                             </FormGroup>
                                             <FormGroup>
                                                 <FormText color="warning" className="contact_text_format" >
                                                     Email:
                                                 </FormText>
-                                                <Input type="email" name="email" id="exampleEmail" placeholder="youremail@company.com" className = "contact_input" onChange = { this.handleCustomerEmail }/>
+                                                <Input type="email" name="email" id="email" placeholder="youremail@company.com" className = "contact_input" onChange = { this.handleCustomerEmail }/>
+                                                <FormText color="danger">
+                                                    {this.state.emailRegexWarn}
+                                                </FormText>
                                             </FormGroup>
                                             <FormGroup>
                                                 <FormText color="warning" className="contact_text_format" >
                                                     Contact No:
                                                 </FormText>
-                                                <Input type="text" name="text" id="examplePassword" placeholder="+91-0000000000" className = "contact_input" onChange = { this.handleCustomerPhone }/>
+                                                <Input type="text" name="text" id="phone" placeholder="+910000000000" className = "contact_input" onChange = { this.handleCustomerPhone }/>
+                                                <FormText color="danger">
+                                                    {this.state.phoneRegexWarn}
+                                                </FormText>                                            
                                             </FormGroup>
                                             <FormGroup>
                                                 <FormText color="warning" className="contact_text_format" >
                                                     Message:
                                                 </FormText>
-                                                <Input type="textarea" name="text" id="exampleText" placeholder="Enter your message here" className = "contact_input_textarea" onChange = { this.handleCustomerMessage }/>
+                                                <Input type="textarea" name="text" id="message" placeholder="Enter your message here" className = "contact_input_textarea" onChange = { this.handleCustomerMessage }/>
                                             </FormGroup>
                                             <p>
                                                 <FormText color="muted">
@@ -153,7 +260,15 @@ class ContactUsPage extends React.Component {
                                             <Row className = "justify-content-center">
                                                 <FormGroup>
                                                     <Col>
-                                                        <Button color="danger" size="lg" className="contact_text_format" onClick = { this.sendEmail } >Submit</Button>
+                                                        <Button 
+                                                            color="danger" 
+                                                            size="lg" 
+                                                            className="contact_text_format" 
+                                                            onClick = { this.sendEmail }
+                                                            disabled = { !this.enableSubmitButton() }
+                                                        >
+                                                            Submit
+                                                        </Button>
                                                     </Col>
                                                 </FormGroup>
                                             </Row>
@@ -195,6 +310,16 @@ class ContactUsPage extends React.Component {
                                 </Row>
 
                             </div>
+
+                            <Modal isOpen={ this.state.isOpen } toggle={ this.closeModal } className = "modal-dialog modal-sm">
+                                <ModalHeader toggle={ this.closeModal }>Thank you for contacting us!</ModalHeader>
+                                <ModalBody className = "mx-auto contact_text_format" >
+                                    { this.state.modalMessage }
+                                </ModalBody>
+                                <ModalFooter>
+                                    <Button color="primary" onClick={ this.closeModal }>Close</Button>
+                                </ModalFooter>
+                            </Modal>
                         
                         </Row>
     

@@ -98,12 +98,11 @@ class BuyersGuidePage extends React.Component {
                                                         NRI Loans
                                                     </a>
                                                 </NavItem>
-
                                             </Nav>
                                         </Row>
                                     </Col>
 
-                                    <Col lg="9">
+                                    <Col lg="9" className = "buyersguide__content">
                                         <Row className = "justify-content-center">
                                             <TabContent activeTab={this.state.activeTab}>
                                                 <TabPane tabId="1">

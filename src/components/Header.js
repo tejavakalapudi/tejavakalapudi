@@ -30,19 +30,19 @@ class HeaderComponent extends React.Component{
                         </DropdownToggle>
                         <DropdownMenu right>
                             <DropdownItem>
-                                <NavLink to = "/" exact={true} activeClassName = "is-active" className = "navlink dropdown-navlink">Home</NavLink>
+                                <NavLink to = "/" exact={true} activeClassName = "is-active" className = "dropdown-navlink">Home</NavLink>
                             </DropdownItem>
                             <DropdownItem>
-                                <NavLink to = "/projects" activeClassName = "is-active" className = "navlink dropdown-navlink">Projects</NavLink>
+                                <NavLink to = "/projects" activeClassName = "is-active" className = "dropdown-navlink">Projects</NavLink>
                             </DropdownItem>
                             <DropdownItem>
-                                <NavLink to = "/buyersguide" activeClassName = "is-active" className = "navlink dropdown-navlink">Buyers Guide</NavLink>
+                                <NavLink to = "/buyersguide" activeClassName = "is-active" className = "dropdown-navlink">Buyers Guide</NavLink>
                             </DropdownItem>
                             <DropdownItem>
-                                <NavLink to = "/contactus" activeClassName = "is-active" className = "navlink dropdown-navlink" >Contact</NavLink>
+                                <NavLink to = "/contactus" activeClassName = "is-active" className = "dropdown-navlink" >Contact</NavLink>
                             </DropdownItem>
                             <DropdownItem>
-                                <NavLink to = "/admin" activeClassName = "is-active" className = "navlink dropdown-navlink" >Admin</NavLink>
+                                <NavLink to = "/admin" activeClassName = "is-active" className = "dropdown-navlink" >Admin</NavLink>
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>

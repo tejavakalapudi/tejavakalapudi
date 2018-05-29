@@ -1,5 +1,5 @@
 import React from "react";
-import { Jumbotron, Row, Col, ul, li, Button, Collapse, Card, CardBody } from "reactstrap";
+import { Jumbotron, Row, Col, ul, li, Button, Collapse, Card, CardBody, ButtonGroup } from "reactstrap";
 
 class VastuTab extends React.Component {
 
@@ -31,7 +31,7 @@ class VastuTab extends React.Component {
                             <p className = "buyersguide_description">
                                 Why the North East (Eesanya) is the sacred most in Vastu? Why the people consider South West (Nairuti ) as the worst direction? Is the Vastu merely a blind belief?
                             </p>
-    
+
                             <Button size="lg" color="light" block onClick = {() => { this.renderActiveTab("1"); }} className = "buyersguide_heading">
                                 Principles of Vastu:
                             </Button>{' '}
