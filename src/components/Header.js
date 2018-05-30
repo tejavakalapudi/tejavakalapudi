@@ -14,6 +14,10 @@ import logoImage from "../../public/images/Logo5.png";
 
 class HeaderComponent extends React.Component{
 
+    state = {
+        headerClass : "header-container mx-auto"
+    }
+
     isMobileDevice = () => {
         return ( typeof window.orientation !== "undefined" ) || ( navigator.userAgent.indexOf( 'IEMobile' ) !== -1 );
     };
@@ -76,8 +80,30 @@ class HeaderComponent extends React.Component{
     }
 
     render(){
+        
+        window.onscroll = () => {
+
+            var header = document.getElementById("myHeader");
+            var sticky = header && header.offsetTop;
+    
+            if ( window.pageYOffset > sticky) {
+    
+                this.setState({
+                    headerClass : "header-container mx-auto sticky"
+                });
+    
+            } else {
+    
+                this.setState({
+                    headerClass : "header-container mx-auto"
+                });
+    
+            }
+
+        };
+
         return(
-            <div className = "header-container mx-auto">
+            <div id="myHeader" className = {this.state.headerClass}>
                 <Container>
                     <Container>
                         <div className = "row justify-content-between">         

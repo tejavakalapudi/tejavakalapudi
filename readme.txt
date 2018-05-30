@@ -40,17 +40,10 @@
 
 //Things to do:
 ##IMPORTANT : CONSISTENTLY CHECKING IF THERE"S A WAY TO BUNDLE BOOTSTRAP BEFORE CUSTOM CSS THROUGH WEBPACK ##
-a. Should generate latest 3 projects in home grid. DONE
-c. Customize Admin Page
 d. Restrict editPage and addPage for only admin access
-e. Change min-width of website to support all screen sizes.
-f. edit project should have 'EDIT PROJECT' as title.
-e. Improve buyer's guide
-f. Setup cookie for welcome screen and admin access
 
 1. Have sticky header and apply z-index during scroll
 2. Contact us (Clicking on icons should dynamically modify the contact us form)
-3. Should toggle font size and background color
 4. Somehow set up a bot
 5. Learn tests section and have library test driven
 6. Make sure we watch test related videos in firebase-with-redux section

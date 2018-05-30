@@ -20,6 +20,7 @@ import axios from "axios";
 
 import { MdRateReview, MdInfo, MdPeople, MdEventAvailable, MdEmail, MdLocationOn, MdLocalPhone } from "react-icons/lib/md";
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/lib/fa";
+import ScrollToTop from "./ScrollToTop";
 
 class ContactUsPage extends React.Component {
 
@@ -180,6 +181,7 @@ class ContactUsPage extends React.Component {
         return(
 
             <div> 
+                <ScrollToTop />
                 <div className = "body-container mx-auto">
                         
                     <Container>

@@ -7,6 +7,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Container
 import Header from "./Header";
 import { FaPlusSquare } from "react-icons/lib/fa";
 import sortProjectsByOrder from "../selectors/projects";
+import ScrollToTop from "./ScrollToTop";
 
 //http://www.flintlockllc.com/ refer for hover state
 
@@ -50,6 +51,7 @@ class ProjectsPage extends React.Component {
     render(){
         return (
             <div>
+                <ScrollToTop />
                 <div className = "body-container mx-auto">
                 
                     <Container>

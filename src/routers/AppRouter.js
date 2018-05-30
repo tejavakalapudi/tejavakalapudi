@@ -16,7 +16,7 @@ import EditProjectPage from "../components/EditProjectPage";
 import Header from "../components/Header";
 
 const AppRouter = () => (
-    <BrowserRouter>
+    <BrowserRouter onUpdate={() => window.scrollTo(0, 0)} >
         <div>
             <Header />
             <Switch>

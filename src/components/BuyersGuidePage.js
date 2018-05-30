@@ -15,6 +15,7 @@ import HomeLoansTab from "./HomeLoans";
 import VastuTab from "./VastuSection";
 import NriLoansTab from "./NRILoans";
 import Header from "./Header";
+import ScrollToTop from "./ScrollToTop";
 
 class BuyersGuidePage extends React.Component {
     
@@ -49,6 +50,7 @@ class BuyersGuidePage extends React.Component {
         return(
 
             <div> 
+                <ScrollToTop />
                 <div className = "body-container mx-auto">
                             
                     <Container>
@@ -129,7 +131,6 @@ class BuyersGuidePage extends React.Component {
                     </Container>
     
                 </div>
-    
             </div>
     
         );

@@ -15,6 +15,7 @@ import {
     FormText, 
     Input 
 } from "reactstrap";
+import ScrollToTop from "./ScrollToTop";
 
 class AdminPage extends React.Component {
 
@@ -72,6 +73,7 @@ class AdminPage extends React.Component {
         return ( 
             <div className = "body-container" >
 
+                <ScrollToTop />
                 <Container>
                     <Container>
                         <Row className = "justify-content-center">

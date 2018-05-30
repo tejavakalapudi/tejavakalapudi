@@ -41,6 +41,14 @@
     height: 7rem;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    opacity: 0.8;
+}
+
 //BEM - Block Element Modifier naming convention (getbem.com)
 
 @media( min-width : $desktop-breakpoint ){

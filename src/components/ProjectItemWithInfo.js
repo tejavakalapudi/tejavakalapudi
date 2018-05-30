@@ -18,6 +18,7 @@ import Specifications from "./Specifications";
 import Header from "./Header";
 import GoogleMapComponent from "./GoogleMap";
 import { FaMinusSquare, FaEdit } from "react-icons/lib/fa";
+import ScrollToTop from "./ScrollToTop";
 
 class ProjectItemWithInfo extends React.Component {
 
@@ -51,6 +52,7 @@ class ProjectItemWithInfo extends React.Component {
 
         return (
             <div>
+                <ScrollToTop />
                 <div className = "body-container mx-auto">
 
                     <Container>
