@@ -70,7 +70,7 @@ class BuyersGuidePage extends React.Component {
                                 </Row>
                                 
                                 <Row className = "justify-content-center buyersguide_box">
-                                    <Col lg="3" className = "buyersguide_sidebar">
+                                    <Col md="3" className = "buyersguide_sidebar">
                                         <Row className = "justify-content-center">
                                             <Nav tabs vertical className = "buyersguide_navbar">
 
@@ -104,7 +104,7 @@ class BuyersGuidePage extends React.Component {
                                         </Row>
                                     </Col>
 
-                                    <Col lg="9" className = "buyersguide__content">
+                                    <Col md="9" className = "buyersguide__content">
                                         <Row className = "justify-content-center">
                                             <TabContent activeTab={this.state.activeTab}>
                                                 <TabPane tabId="1">

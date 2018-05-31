@@ -14,7 +14,6 @@ import GridComponent from "./Grid";
 import Header from "./Header";
 import Contact from "./ContactUsPage";
 import GoogleMapComponent from "./GoogleMap";
-import WelcomeScreen from "./WelcomeScreen";
 import ScrollToTop from "./ScrollToTop";
 
 class HomePage extends React.Component {
@@ -35,7 +34,7 @@ class HomePage extends React.Component {
         return (
             <div>
                 <ScrollToTop />
-                <div className = "body-container mx-auto">
+                <div className = "body-container mx-auto" id = "home__page">
 
                     <Container>
                         

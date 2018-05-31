@@ -81,7 +81,7 @@ class AdminPage extends React.Component {
                             <div className = "col-lg-12 col-md-12">
 
                                 <Row className = "justify-content-center">
-                                    <h3 className = "project-item_overview"> Please login to get access to Admin Rights!</h3>
+                                    <h3 className = "project-item_overview"> Admin Access</h3>
                                 </Row>
 
                                 <Row className = "justify-content-center">
