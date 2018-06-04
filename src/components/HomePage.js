@@ -18,17 +18,6 @@ import ScrollToTop from "./ScrollToTop";
 
 class HomePage extends React.Component {
 
-    state = {
-        activeclass: ""
-    }
-
-    toggle = () => {
-        
-        this.setState({
-            //activeclass: "fade"
-        });
-    }
-
     render(){
 
         return (

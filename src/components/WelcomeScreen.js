@@ -19,15 +19,12 @@ class WelcomeScreen extends React.Component{
 
         activeClass : "",
         isOpen : false,
-        hideWelcomeImageClass : ""
+        hideWelcomeImageClass : "",
+        imageScrolled : false
 
     }
 
     toggleDisplay = () => {
-
-        const learnMoreButton = document.getElementsByClassName( "learn-more-button" )[0];
-        
-        //learnMoreButton.style.visibility = "hidden";
 
         this.setState( {
             activeClass : "hide-welcome-screen"
@@ -53,11 +50,57 @@ class WelcomeScreen extends React.Component{
         this.toggleModal();
     }
     
+    elementInViewport ( el ) {
+        var top = el.offsetTop;
+        var left = el.offsetLeft;
+        var width = el.offsetWidth;
+        var height = el.offsetHeight;
+      
+        while(el.offsetParent) {
+            el = el.offsetParent;
+            top += el.offsetTop;
+            left += el.offsetLeft;
+        }
+      
+        return (
+            top < (window.pageYOffset + window.innerHeight) &&
+            left < (window.pageXOffset + window.innerWidth) &&
+            (top + height) > window.pageYOffset &&
+            (left + width) > window.pageXOffset
+        );
+    }
+
+    disableWelcomeScreenWhenScrolled = () => {
+
+        const welcomeDiv = document.getElementById( "welcomeImgDiv" );
+
+        console.log("scrolling");
+
+        if( welcomeDiv && !this.elementInViewport( welcomeDiv ) ){
+
+            this.setState( {
+                activeClass : "hide-welcome-screen",
+                hideWelcomeImageClass : "hide-welcome-screen",
+                imageScrolled : true
+            });
+
+        }
+
+    }
+
     render(){
+
+        window.addEventListener( 'scroll', this.disableWelcomeScreenWhenScrolled );
+
+        if( this.state.imageScrolled ){
+
+            window.removeEventListener( 'scroll', this.disableWelcomeScreenWhenScrolled );
+
+        }
 
         return(
 
-            <div className = {`welcome-image-div ${this.state.hideWelcomeImageClass}`}>
+            <div className = {`welcome-image-div ${this.state.hideWelcomeImageClass}`} id="welcomeImgDiv" >
         
                 <Container fluid = {true} className = "overlay-containter">
 
