@@ -13,6 +13,7 @@ import {
 } from "reactstrap";
 import welcomeModal from "../../public/images/WelcomeModal.jpg";
 import sortProjectsByOrder from "../selectors/projects";
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/lib/fa";
 
 class WelcomeScreen extends React.Component{
 
@@ -118,20 +119,45 @@ class WelcomeScreen extends React.Component{
                     <Row className = "justify-content-center overlay-row">
                         
                         <div className = {`mobile__overlay ${this.state.activeClass}`}>
+
                             <div className = "home-content-table" >
 
                                 <div className = "mobile-content-tablecell">
-
                                     <Container>
                                         <Row className = "justify-content-center" >
                                             <Col xs = "12" className = "mobile__overlay-title" >Akruthi</Col>
                                             <Col xs = "12" className = "mobile__overlay-subtitle" >BUILDING IT BETTER IN CONCRETE!</Col>
                                         </Row>
-                                    </Container>
-                                    
+                                    </Container>                           
+                                </div>
+
+                                <div className = "home-content-social">
+                                    <Row className = "justify-content-center">
+                                        <Col className = "home-content-social-icon" md="12" xs="2" >
+                                            <a target="_blank" href="https://www.facebook.com/akruthiconstructions/" className = "social-icon">
+                                                <FaFacebook size={40} />
+                                            </a>                                    
+                                        </Col>
+                                        <Col className = "home-content-social-icon" md="12" xs="2">
+                                            <a target="_blank" href="https://twitter.com/VakalapudiRavi1" className = "social-icon">
+                                                <FaTwitter size={40} />
+                                            </a>                                  
+                                        </Col>
+                                        <Col className = "home-content-social-icon" md="12" xs="2" >
+                                            <a target="_blank" href="https://www.linkedin.com/in/akruthi-constructions-developers-a6b58491/" className = "social-icon">
+                                                <FaLinkedin size={40} />
+                                            </a>                                 
+                                        </Col>
+                                        <Col className = "home-content-social-icon" md="12" xs="2">
+                                            <a target="_blank" href="https://www.instagram.com/vakalapudiravikiran/" className = "social-icon">
+                                                <FaInstagram size={40} />
+                                            </a>                                   
+                                        </Col>
+                                    </Row>
                                 </div>
                                 
                             </div>
+
                         </div>
 
                         <Col xs="4" className = {`columnText overlay-column1 ${this.state.activeClass}`}>

@@ -63,7 +63,7 @@ class Grid extends React.Component {
                                     </div>
                                 </div>
                             </Card>
-        
+    
                             <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className = { this.props.centerGrid && "cardBody" }>
                                 <CardTitle>Prompt Delivery</CardTitle>
                                 <CardText className = "card__zoom" >By employing the modernist technology, our extremely enthusiastic employees be sure that projects extradite on time. </CardText>
