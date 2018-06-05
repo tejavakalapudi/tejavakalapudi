@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { 
     Container, 
     Jumbotron,
@@ -10,8 +11,8 @@ import {
     ModalBody, 
     ModalFooter
 } from "reactstrap";
-
 import welcomeModal from "../../public/images/WelcomeModal.jpg";
+import sortProjectsByOrder from "../selectors/projects";
 
 class WelcomeScreen extends React.Component{
 
@@ -20,7 +21,8 @@ class WelcomeScreen extends React.Component{
         activeClass : "",
         isOpen : false,
         hideWelcomeImageClass : "",
-        imageScrolled : false
+        imageScrolled : false,
+        minHeight : window.innerHeight
 
     }
 
@@ -74,16 +76,23 @@ class WelcomeScreen extends React.Component{
 
         const welcomeDiv = document.getElementById( "welcomeImgDiv" );
 
-        console.log("scrolling");
-
-        if( welcomeDiv && !this.elementInViewport( welcomeDiv ) ){
+        if ( welcomeDiv && !this.elementInViewport( welcomeDiv ) ){
 
             this.setState( {
-                activeClass : "hide-welcome-screen",
-                hideWelcomeImageClass : "hide-welcome-screen",
                 imageScrolled : true
-            });
+            }); 
+            
+        }
+    }
 
+    resizeWelcomeDiv = () =>{
+
+        const welcomeDiv = document.getElementById( "welcomeImgDiv" );
+
+        if ( welcomeDiv ){
+            this.setState( {
+                minHeight: window.innerHeight
+            });     
         }
 
     }
@@ -91,16 +100,18 @@ class WelcomeScreen extends React.Component{
     render(){
 
         window.addEventListener( 'scroll', this.disableWelcomeScreenWhenScrolled );
+        window.addEventListener( 'resize', this.resizeWelcomeDiv );
 
         if( this.state.imageScrolled ){
 
             window.removeEventListener( 'scroll', this.disableWelcomeScreenWhenScrolled );
+            window.removeEventListener( 'resize', this.resizeWelcomeDiv );
 
         }
 
         return(
 
-            <div className = {`welcome-image-div ${this.state.hideWelcomeImageClass}`} id="welcomeImgDiv" >
+            <div className = {`welcome-image-div ${this.state.hideWelcomeImageClass}`} id="welcomeImgDiv" style={{ minHeight: this.state.minHeight }} >
         
                 <Container fluid = {true} className = "overlay-containter">
 
@@ -143,6 +154,112 @@ class WelcomeScreen extends React.Component{
                         </Col>
 
                         <Col xs="4" className = {`columnText overlay-column3 ${this.state.activeClass}`}>
+                            {
+                                /*
+                                <div className = "home-content-table" >
+
+                                    <div className = "home-content-projects">
+
+                                        <Row className = "" >
+                                            <Col xs="8"></Col>
+                                            <Col xs="3">        
+                                                <img 
+                                                    width=  "50px"
+                                                    height= "50px"
+                                                    src={ this.props.projects[ 0 ].thumbnailLocation} 
+                                                />
+                                            </Col>
+                                            <Col xs="1"></Col>
+                                        </Row>
+
+                                        <Row className = "" >
+                                            <Col xs="7"></Col>
+                                            <Col xs="3">
+                                                <img 
+                                                    width=  "50px"
+                                                    height= "50px"
+                                                    src={ this.props.projects[ 1 ].thumbnailLocation} 
+                                                />
+                                            </Col>
+                                            <Col xs="2"></Col>
+                                        </Row>
+
+                                        <Row className = "" >
+                                            <Col xs="8"></Col>
+                                            <Col xs="3">
+                                                <img 
+                                                    width=  "50px"
+                                                    height= "50px"
+                                                    src={ this.props.projects[ 2 ].thumbnailLocation} 
+                                                />
+                                            </Col>
+                                            <Col xs="1"></Col>
+                                        </Row>
+
+                                        <Row className = "" >
+                                            <Col xs="7"></Col>
+                                            <Col xs="3">
+                                                <img 
+                                                    width=  "50px"
+                                                    height= "50px"
+                                                    src={ this.props.projects[ 3 ].thumbnailLocation} 
+                                                />
+                                            </Col>
+                                            <Col xs="2"></Col>
+                                        </Row>
+
+                                        <Row className = "" >
+                                            <Col xs="8"></Col>
+                                            <Col xs="3">        
+                                                <img 
+                                                    width=  "50px"
+                                                    height= "50px"
+                                                    src={ this.props.projects[ 4 ].thumbnailLocation} 
+                                                />
+                                            </Col>
+                                            <Col xs="1"></Col>
+                                        </Row>
+
+                                        <Row className = "" >
+                                            <Col xs="7"></Col>
+                                            <Col xs="3">
+                                                <img 
+                                                    width=  "50px"
+                                                    height= "50px"
+                                                    src={ this.props.projects[ 5 ].thumbnailLocation} 
+                                                />
+                                            </Col>
+                                            <Col xs="2"></Col>
+                                        </Row>
+
+                                        <Row className = "" >
+                                            <Col xs="8"></Col>
+                                            <Col xs="3">
+                                                <img 
+                                                    width=  "50px"
+                                                    height= "50px"
+                                                    src={ this.props.projects[ 6 ].thumbnailLocation} 
+                                                />
+                                            </Col>
+                                            <Col xs="1"></Col>
+                                        </Row>
+                                        
+                                        <Row className = "" >
+                                            <Col xs="7"></Col>
+                                            <Col xs="3">
+                                                <img 
+                                                    width=  "50px"
+                                                    height= "50px"
+                                                    src={ this.props.projects[ 7 ].thumbnailLocation} 
+                                                />
+                                            </Col>
+                                            <Col xs="2"></Col>
+                                        </Row>
+                                    </div>
+
+                                </div>                                
+                                */
+                            }
                         </Col>
 
                     </Row>
@@ -171,5 +288,13 @@ class WelcomeScreen extends React.Component{
     }
 
 };
+
+/*
+const mapStateToProps = ( store ) => {
+    return { projects : sortProjectsByOrder( store.projects ) };
+};
+
+export default connect( mapStateToProps )( WelcomeScreen );
+*/
 
 export default WelcomeScreen;

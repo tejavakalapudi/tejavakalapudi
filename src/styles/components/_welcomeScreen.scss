@@ -34,10 +34,6 @@
     visibility: visible;
 }
 
-.mobile__overlay.hide-welcome-screen{
-    visibility: hidden;
-}
-
 .overlay-column1{
     border-right: white 0.5px solid;
     height: 100%;
@@ -85,12 +81,13 @@
 }
 
 .welcome-image-div.hide-welcome-screen{
-    min-height: 0; 
-    visibility: hidden;
+    min-height: 0 !important;   
 }
 
 .learn-more-button.hide-welcome-screen{
-    visibility: hidden;
+}
+
+.mobile__overlay.hide-welcome-screen{
 }
 
 .home-content-table{
@@ -105,6 +102,13 @@
     display: table-cell;
     vertical-align: middle;
     z-index: 500;
+}
+
+.home-content-projects {
+    display: table-cell;
+    z-index: 500;
+    vertical-align: middle;
+    padding-top: 10rem;
 }
 
 .home-content-tablecell .row {
@@ -141,7 +145,7 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .welcome-image-div{
-        min-height: 823px;
+        //min-height: 823px;
     }
 
     .learn-more-div{
@@ -156,7 +160,7 @@
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     .welcome-image-div{
-        min-height: 1024px;
+        //min-height: 1024px;
     }
 
     .learn-more-div{
@@ -171,7 +175,7 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .welcome-image-div{
-        min-height: 1024px;
+        //min-height: 1024px;
     }
 
     .learn-more-div{
@@ -187,7 +191,7 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .welcome-image-div{
-        min-height: 768px;
+        //min-height: 768px;
     }
 
     .learn-more-div{
@@ -211,7 +215,7 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1300px) {
     .welcome-image-div{
-        min-height: 826px;
+        //min-height: 826px;
     }
 
     .learn-more-div{
@@ -240,7 +244,7 @@
   and (-webkit-min-device-pixel-ratio: 2) {
 
     .welcome-image-div{
-        min-height: 1370px;
+        //min-height: 1370px;
     }
 
 }
@@ -253,7 +257,7 @@
   and (-webkit-min-device-pixel-ratio: 2) {
 
     .welcome-image-div{
-        min-height: 1024px;
+        //min-height: 1024px;
     }
 
 }
@@ -266,7 +270,7 @@
   and (-webkit-min-device-pixel-ratio: 2) {
 
     .welcome-image-div{
-        min-height: 768px;
+        //min-height: 768px;
     }
 
 }
