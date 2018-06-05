@@ -52,6 +52,7 @@ class SwitchComponent extends React.Component {
                     <Route path = "/editproject/:id" component = { EditProjectPage } />
                     <Route path = "/buyersguide" component = { BuyersGuidePage } />
                     <Route path = "/contactus" component = { ContactUsPage } />
+                    <Route path = "/contact/:title" component = { ContactUsPage } />
                     <Route path = "/admin" component = { AdminPage } /> 
                     <Route component = { NotFound } />
                 </Switch>

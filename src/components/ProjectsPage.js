@@ -84,13 +84,9 @@ class ProjectsPage extends React.Component {
                                     <Row className = "justify-content-center">
                                     
                                         {   
-                                            this.props.projects.map( ( project ) => {
+                                            this.props.onGoingProjects.map( ( project ) => {
 
-                                                if( project.status === "ongoing" ){
-
-                                                    return this.renderProjectItem( project );
-                                                    
-                                                }
+                                                return this.renderProjectItem( project );
 
                                             })
                                         }
@@ -113,13 +109,9 @@ class ProjectsPage extends React.Component {
 
                                     <Row className = "justify-content-center">
                                         { 
-                                            this.props.projects.map( ( project ) => {
+                                            this.props.completedProjects.map( ( project ) => {
 
-                                                if( project.status === "completed" ){
-
-                                                    return this.renderProjectItem( project );
-                                                            
-                                                }
+                                                return this.renderProjectItem( project );
 
                                             })
                                         }
@@ -141,7 +133,8 @@ class ProjectsPage extends React.Component {
 
 const mapStateToProps = ( store ) => {
     return { 
-        projects : sortProjectsByOrder( store.projects ),
+        onGoingProjects : sortProjectsByOrder( store.projects, "ongoing" ),
+        completedProjects : sortProjectsByOrder( store.projects, "completed" ),
         authInfo : store.authInfo
     };
 };

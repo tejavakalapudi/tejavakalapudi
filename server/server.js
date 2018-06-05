@@ -29,7 +29,8 @@ app.get( "/sendemail", ( req, res ) => {
     <p><i>"${req.query.message}"</i></p>
     <div><b>Customer Details:</b></div>
     <div><b>Phone:</b> ${req.query.phone}</div>
-    <div><b>Email:</b> ${req.query.email}</div>`;
+    <div><b>Email:</b> ${req.query.email}</div>
+    <div><b>Interested Project:</b> ${req.query.interestedProject}</div>`;
 
     const mailOptions = {
         from: 'tejavakalapudi@gmail.com',

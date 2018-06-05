@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { 
     Button, 
     Row, 
@@ -21,6 +22,7 @@ import axios from "axios";
 import { MdRateReview, MdInfo, MdPeople, MdEventAvailable, MdEmail, MdLocationOn, MdLocalPhone } from "react-icons/lib/md";
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/lib/fa";
 import ScrollToTop from "./ScrollToTop";
+import sortProjectsByOrder from "../selectors/projects";
 
 class ContactUsPage extends React.Component {
 
@@ -33,7 +35,8 @@ class ContactUsPage extends React.Component {
         modalMessage : "",
         nameRegexWarn : "",
         emailRegexWarn : "",
-        phoneRegexWarn : ""
+        phoneRegexWarn : "",
+        interestedProject : this.props.match && this.props.match.params && this.props.match.params.title ? this.props.match.params.title : "None"
     }
 
     sendEmail = (e) => {
@@ -51,7 +54,8 @@ class ContactUsPage extends React.Component {
               name: this.state.name,
               message : this.state.message,
               phone: this.state.phone,
-              email : this.state.email
+              email : this.state.email,
+              interestedProject : this.state.interestedProject
             }
         })
         .then( response => { 
@@ -67,6 +71,7 @@ class ContactUsPage extends React.Component {
             document.getElementById("email").value = "";
             document.getElementById("phone").value = "";
             document.getElementById("message").value = "";
+            document.getElementById("interestedProject").value = "None";
 
         })
         .catch( error => {
@@ -82,6 +87,7 @@ class ContactUsPage extends React.Component {
             document.getElementById("email").value = "";
             document.getElementById("phone").value = "";
             document.getElementById("message").value = "";
+            document.getElementById("interestedProject").value = "None";
 
         });
 
@@ -152,6 +158,17 @@ class ContactUsPage extends React.Component {
 
         
     }
+
+    handleProjectInterest = (e) => {
+        e.preventDefault();
+        e.persist();
+
+        this.setState({
+            interestedProject : e.target.value
+        });
+
+    }
+
     handleCustomerMessage= (e) => {
         e.preventDefault();
         e.persist();
@@ -211,6 +228,7 @@ class ContactUsPage extends React.Component {
                                         <MdPeople size={ 70 } color ="#da4d3c"/>
                                         <p className = "icon_text_format">Talk Business</p>
                                     </Col>
+
                                     <Col xs = "4" lg="3" className = "icon_div">
                                         <MdEventAvailable size={ 70 } color ="#da4d3c"/>
                                         <p className = "icon_text_format" >Schedule a visit</p>
@@ -247,6 +265,29 @@ class ContactUsPage extends React.Component {
                                                 <FormText color="danger">
                                                     {this.state.phoneRegexWarn}
                                                 </FormText>                                            
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <FormText color="warning" className="contact_text_format">
+                                                    Interested Project:
+                                                </FormText>
+                                                <Input 
+                                                    type="select" 
+                                                    name="projectName" 
+                                                    id="interestedProject"
+                                                    value = { this.state.interestedProject }  
+                                                    onChange = { this.handleProjectInterest } 
+                                                    className = "contact_input-select"
+                                                >
+                                                <option value = "None">None</option>
+                                                {
+                                                    this.props.onGoingProjects.map( ( project ) => {
+                                                        
+                                                        return ( <option value = { project.title }>{project.title}</option> );
+
+                                                    })
+
+                                                }
+                                                </Input>
                                             </FormGroup>
                                             <FormGroup>
                                                 <FormText color="warning" className="contact_text_format" >
@@ -335,4 +376,8 @@ class ContactUsPage extends React.Component {
     };
 };
 
-export default ContactUsPage;
+const mapStateToProps = ( store ) => {
+    return { onGoingProjects : sortProjectsByOrder( store.projects, "ongoing" ) };
+};
+
+export default connect( mapStateToProps )( ContactUsPage );

@@ -48,6 +48,13 @@ class ProjectItemWithInfo extends React.Component {
         });        
     }
 
+    directToContactPage = ( e ) => {
+        e.preventDefault();
+
+        this.props.history.push( `/contact/${ this.props.project.title }` );
+
+    }
+
     render(){
 
         return (
@@ -239,7 +246,7 @@ class ProjectItemWithInfo extends React.Component {
                                     <h3 className = "project-item_title"> Interested ? </h3>
                                 </Row>
                                 <Row className = "justify-content-center">
-                                    <Button color="danger" size="lg">Contact Us</Button>
+                                    <Button color="danger" size="lg" onClick = {this.directToContactPage} >Contact Us</Button>
                                 </Row>
                             </div>
                         </Row>
