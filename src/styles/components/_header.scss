@@ -64,7 +64,11 @@
     }
 
     .sticky {
-        all: unset;
+        position: static;
+        top: auto;
+        width: auto;
+        z-index: auto;
+        opacity: 1;
     }
 } 
 
