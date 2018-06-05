@@ -134,22 +134,22 @@ class WelcomeScreen extends React.Component{
                                 <div className = "home-content-social">
                                     <Row className = "justify-content-center">
                                         <Col className = "home-content-social-icon" md="12" xs="2" >
-                                            <a target="_blank" href="https://www.facebook.com/akruthiconstructions/" className = "social-icon">
+                                            <a target="_blank" href="https://www.facebook.com/akruthiconstructions/" className = "social-icon-anchor-tag">
                                                 <FaFacebook size={40} />
                                             </a>                                    
                                         </Col>
                                         <Col className = "home-content-social-icon" md="12" xs="2">
-                                            <a target="_blank" href="https://twitter.com/VakalapudiRavi1" className = "social-icon">
+                                            <a target="_blank" href="https://twitter.com/VakalapudiRavi1" className = "social-icon-anchor-tag">
                                                 <FaTwitter size={40} />
                                             </a>                                  
                                         </Col>
                                         <Col className = "home-content-social-icon" md="12" xs="2" >
-                                            <a target="_blank" href="https://www.linkedin.com/in/akruthi-constructions-developers-a6b58491/" className = "social-icon">
+                                            <a target="_blank" href="https://www.linkedin.com/in/akruthi-constructions-developers-a6b58491/" className = "social-icon-anchor-tag">
                                                 <FaLinkedin size={40} />
                                             </a>                                 
                                         </Col>
                                         <Col className = "home-content-social-icon" md="12" xs="2">
-                                            <a target="_blank" href="https://www.instagram.com/vakalapudiravikiran/" className = "social-icon">
+                                            <a target="_blank" href="https://www.instagram.com/vakalapudiravikiran/" className = "social-icon-anchor-tag">
                                                 <FaInstagram size={40} />
                                             </a>                                   
                                         </Col>

@@ -120,11 +120,11 @@
     padding: 0 3rem; 
 }
 
-.social-icon svg{
+.social-icon-anchor-tag svg{
     color: white !important;
 }
 
-.social-icon svg:hover{
+.social-icon-anchor-tag svg:hover{
     color: #4998ec !important;
 }
 
@@ -217,7 +217,7 @@
         font-size: 2rem;
     }
 
-    .social-icon svg{
+    .social-icon-anchor-tag svg{
         color: black !important;
     }
 } 
@@ -242,10 +242,6 @@
     
     .mobile__overlay-subtitle{
         font-size: 2rem;
-    }
-
-    .social-icon svg{
-        color: black !important;
     }
 }
 
