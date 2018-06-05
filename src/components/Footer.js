@@ -25,7 +25,7 @@ const FooterPage = () => (
                 <div className = "footer__copyright-company" > Developed & Designed by</div>
                 <div>
                     <a target="_blank" href="https://www.linkedin.com/in/raviteja-vakalapudi-b511b3139/" style={{color: "black"}}> 
-                        Some random jobless Software developer
+                        Just another Software developer
                     </a>
                     <a target="_blank" href="https://www.linkedin.com/in/raviteja-vakalapudi-b511b3139/" className = "footer__linkedin">
                         <FaLinkedin size={20} color="#0077B5" />
