@@ -81,18 +81,23 @@
     text-align: center;
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-weight: bold;
-    font-size: 2.4rem;
-    
-    &.grid_overlay{
-        font-size: 1.5rem;
-    }
+    font-size: 1.5rem;
 }
 
 .project-item_overview{
     text-align: center;
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-weight: 100;
-    font-size: 2.4rem;    
+    font-size: 1.5rem;    
+}
+
+.project-item_status{
+    text-align: center;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 100;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    margin-bottom: 0rem;
 }
 
 .project-item_navbar{
@@ -106,7 +111,7 @@
     text-align: center;
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-weight: 100;
-    font-size: 2.4rem;
+    font-size: 1.5rem;
     text-decoration: underline;
 }
 
@@ -128,7 +133,7 @@
 
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-weight: 100;
-    font-size: 2.4rem;
+    font-size: 1.5rem;
 
 }
 
@@ -159,5 +164,27 @@
 @media only screen and (min-width: 992px) {
     .project-item_title{
         font-size: 3.6rem;
+    }
+
+    .project-item_subtitle{
+        font-size: 2.4rem;
+        
+        &.grid_overlay{
+            font-size: 1.5rem;
+        }
+    }
+    
+    .project-item_overview{
+        font-size: 2.4rem;    
+    }
+
+    .project-item_navbarTab{
+        font-size: 2.4rem;
+    }
+    
+    .project-item_amenities{
+
+        font-size: 2.4rem;
+    
     }
 } 

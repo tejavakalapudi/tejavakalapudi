@@ -24,6 +24,11 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/lib/
 import ScrollToTop from "./ScrollToTop";
 import sortProjectsByOrder from "../selectors/projects";
 
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+ 
+import 'react-datepicker/dist/react-datepicker.css';
+
 class ContactUsPage extends React.Component {
 
     state = {
@@ -36,7 +41,8 @@ class ContactUsPage extends React.Component {
         nameRegexWarn : "",
         emailRegexWarn : "",
         phoneRegexWarn : "",
-        interestedProject : this.props.match && this.props.match.params && this.props.match.params.title ? this.props.match.params.title : "None"
+        interestedProject : this.props.match && this.props.match.params && this.props.match.params.title ? this.props.match.params.title : "None",
+        preferredDate : ""
     }
 
     sendEmail = (e) => {
@@ -55,7 +61,8 @@ class ContactUsPage extends React.Component {
               message : this.state.message,
               phone: this.state.phone,
               email : this.state.email,
-              interestedProject : this.state.interestedProject
+              interestedProject : this.state.interestedProject,
+              preferredDate : typeof this.state.preferredDate === "object" ? this.state.preferredDate.format("MMM Do YYYY") : "No date selected"
             }
         })
         .then( response => { 
@@ -192,7 +199,15 @@ class ContactUsPage extends React.Component {
         return false;
 
     }
-    
+     
+    handleDateChange = ( date ) => {
+
+        this.setState({
+            preferredDate: date
+        });
+
+    }
+
     render(){
         
         return(
@@ -266,40 +281,62 @@ class ContactUsPage extends React.Component {
                                                     {this.state.phoneRegexWarn}
                                                 </FormText>                                            
                                             </FormGroup>
-                                            <FormGroup>
-                                                <FormText color="warning" className="contact_text_format">
-                                                    Interested Project:
-                                                </FormText>
-                                                <Input 
-                                                    type="select" 
-                                                    name="projectName" 
-                                                    id="interestedProject"
-                                                    value = { this.state.interestedProject }  
-                                                    onChange = { this.handleProjectInterest } 
-                                                    className = "contact_input-select"
-                                                >
-                                                <option value = "None">None</option>
-                                                {
-                                                    this.props.onGoingProjects.map( ( project ) => {
-                                                        
-                                                        return ( <option value = { project.title }>{project.title}</option> );
 
-                                                    })
+                                            <Row>
+                                                <Col md="8" xs="12">
+                                                    <FormGroup>
+                                                        <FormText color="warning" className="contact_text_format">
+                                                            Interested Project:
+                                                        </FormText>
+                                                        <Input 
+                                                            type="select" 
+                                                            name="projectName" 
+                                                            id="interestedProject"
+                                                            value = { this.state.interestedProject }  
+                                                            onChange = { this.handleProjectInterest } 
+                                                            className = "contact_input-select"
+                                                        >
+                                                        <option value = "None">None</option>
+                                                        {
+                                                            this.props.onGoingProjects.map( ( project ) => {
+                                                                
+                                                                return ( <option value = { project.title }>{project.title}</option> );
 
-                                                }
-                                                </Input>
-                                            </FormGroup>
+                                                            })
+
+                                                        }
+                                                        </Input>
+                                                    </FormGroup>
+                                                </Col>
+                                                <Col md="4" xs="12">
+                                                    <FormGroup>
+                                                        <FormText color="warning" className="contact_text_format" >
+                                                            Preferred Date:
+                                                        </FormText>
+                                                        <DatePicker
+                                                            selected={this.state.preferredDate}
+                                                            onChange={this.handleDateChange}
+                                                            todayButton={"Today"}
+                                                            locale="en-in"
+                                                            placeholderText="Click to select a date"
+                                                        />
+                                                    </FormGroup>
+                                                </Col>
+                                            </Row>
+
                                             <FormGroup>
                                                 <FormText color="warning" className="contact_text_format" >
                                                     Message:
                                                 </FormText>
                                                 <Input type="textarea" name="text" id="message" placeholder="Enter your message here" className = "contact_input_textarea" onChange = { this.handleCustomerMessage }/>
                                             </FormGroup>
+
                                             <p>
                                                 <FormText color="muted">
                                                     We promise we won't share your information with anyone!
                                                 </FormText>
                                             </p>
+
                                             <Row className = "justify-content-center">
                                                 <FormGroup>
                                                     <Col>
@@ -318,7 +355,7 @@ class ContactUsPage extends React.Component {
 
                                         </Form> 
                                     </Col>
-                                    <Col lg="4" >
+                                    <Col lg="4" className="contact_info" >
                                         <Col className = "icon_div">
                                             <MdLocationOn size={40} color ="#ffc107"/>
                                             <p className = "contact_text_format">Panchayati Road, Reddy Avenues Colony, Nizampet Village, Hyderabad - 500090</p>

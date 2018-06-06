@@ -98,6 +98,15 @@ class ProjectItemWithInfo extends React.Component {
                                 <Row className = "justify-content-center">
                                     <h3 className = "project-item_title"> { this.props.project.title } </h3>
                                 </Row>
+
+                                <p className = "project-item_status"> 
+                                    Status :
+                                    <span 
+                                        className = { this.props.project.status === "ongoing" ? "text-success" : "text-danger"}
+                                    > 
+                                        {` ${ this.props.project.status }`}
+                                    </span>
+                                </p>
                                 
                                 <Row className = "justify-content-center">
                                     <Col lg="10" className = "project-item-info_imageContainer">
@@ -163,7 +172,7 @@ class ProjectItemWithInfo extends React.Component {
 
                     { this.state.showBrochure && this.props.project.brochure &&
                         <Row className = "justify-content-center project-item_specs_section" >
-                            <Col xs = "12">
+                            <Col md="9" xs = "12">
                                 <Collapse isOpen={ this.state.showBrochure } >
                                     <div dangerouslySetInnerHTML={ this.state.brochureDiv } className = "project-item_brochure"/>
                                 </Collapse>
@@ -173,7 +182,7 @@ class ProjectItemWithInfo extends React.Component {
 
                     { this.state.showFloorPlans &&
                         <Row className = "justify-content-center project-item_specs_section" >
-                            <Col xs = "12">
+                            <Col md="9" xs = "12">
                                 <Collapse isOpen={ this.state.showFloorPlans } >
                                     {
                                         this.props.project.floorPlans && this.props.project.floorPlans.map( ( floorPlanObj ) => {

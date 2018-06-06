@@ -6,6 +6,10 @@
     margin: 2rem 0;
 }
 
+.contact_info{
+    padding-top: 5rem;
+}
+
 .contact_input{
     padding: 1rem;
 }
@@ -41,6 +45,17 @@
     font-size: 1.4rem;
     visibility: hidden;
     display: none;
+}
+
+.react-datepicker__input-container input{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 1rem;
+    padding: 1rem;
+    height: 4rem !important;
+}
+
+.react-datepicker-wrapper, .react-datepicker__input-container, .react-datepicker__input-container input{
+    width : 100%;
 }
 
 /* Small devices (phones, 770 and down) */
