@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 
 import AkruthiApp from "./components/Template";
 import LoadingScreen from "./components/LoadingPage";
+import { database, storageRef } from "./firebase/firebase";
 
 //http://www.tgnickel.com/ (For Scroll bar and header) <3 <3
 //http://moncon.com/#projects (For Projects single page)

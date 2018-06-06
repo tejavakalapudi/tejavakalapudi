@@ -293,7 +293,7 @@ class WelcomeScreen extends React.Component{
                     <Modal isOpen={ this.state.isOpen } toggle={ this.toggleModal } className = "modal-dialog" size="lg">
                         <ModalBody className = "mx-auto" >
                             <img 
-                                src= { welcomeModal } 
+                                src= "https://firebasestorage.googleapis.com/v0/b/akruthi-4d551.appspot.com/o/greetingModal%2Fgreeting-img.jpg?alt=media&token=9f6f82d6-7000-44be-9b58-58fb3f47fe28"
                                 alt= "welcome-modal"
                                 style={{width : "100%"}}
                             />
