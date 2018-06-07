@@ -370,19 +370,19 @@ class ContactUsPage extends React.Component {
                                         </Col>
 
                                         <Col className = "icon_div">
-                                            <a target="_blank" href="https://www.facebook.com/akruthiconstructions/">
+                                            <a target="_blank" href="https://www.facebook.com/akruthiconstructions/" className="social-anchor-tag">
                                                 <FaFacebook size={40} color="#3B5998" />
                                             </a>
                         
-                                            <a target="_blank" href="https://twitter.com/VakalapudiRavi1">
+                                            <a target="_blank" href="https://twitter.com/VakalapudiRavi1" className="social-anchor-tag">
                                                 <FaTwitter size={40} color="#1DA1F2" />
                                             </a>
                         
-                                            <a target="_blank" href="https://www.linkedin.com/in/akruthi-constructions-developers-a6b58491/">
+                                            <a target="_blank" href="https://www.linkedin.com/in/akruthi-constructions-developers-a6b58491/" className="social-anchor-tag">
                                                 <FaLinkedin size={40} color="#0077B5" />
                                             </a>
                         
-                                            <a target="_blank" href="https://www.instagram.com/vakalapudiravikiran/">
+                                            <a target="_blank" href="https://www.instagram.com/vakalapudiravikiran/" className="social-anchor-tag">
                                                 <FaInstagram size={40} color="#4c68d7" />
                                             </a>
                                         </Col>
@@ -390,7 +390,7 @@ class ContactUsPage extends React.Component {
                                 </Row>
 
                             </div>
-
+                            
                             <Modal isOpen={ this.state.isOpen } toggle={ this.closeModal } className = "modal-dialog modal-sm">
                                 <ModalHeader toggle={ this.closeModal }>Thank you for contacting us!</ModalHeader>
                                 <ModalBody className = "mx-auto modal_text_format" >

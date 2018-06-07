@@ -71,19 +71,19 @@ class Grid extends React.Component {
                             
                             <Card>
                                 <CardText className = "card__social">
-                                    <a target="_blank" href="https://www.facebook.com/akruthiconstructions/">
+                                    <a target="_blank" href="https://www.facebook.com/akruthiconstructions/" className="social-anchor-tag">
                                         <FaFacebook size={40} color="#3B5998" />
                                     </a>
         
-                                    <a target="_blank" href="https://twitter.com/VakalapudiRavi1">
+                                    <a target="_blank" href="https://twitter.com/VakalapudiRavi1" className="social-anchor-tag">
                                         <FaTwitter size={40} color="#1DA1F2" />
                                     </a>
         
-                                    <a target="_blank" href="https://www.linkedin.com/in/akruthi-constructions-developers-a6b58491/">
+                                    <a target="_blank" href="https://www.linkedin.com/in/akruthi-constructions-developers-a6b58491/" className="social-anchor-tag">
                                         <FaLinkedin size={40} color="#0077B5" />
                                     </a>
         
-                                    <a target="_blank" href="https://www.instagram.com/vakalapudiravikiran/">
+                                    <a target="_blank" href="https://www.instagram.com/vakalapudiravikiran/" className="social-anchor-tag">
                                         <FaInstagram size={40} color="#262626" />
                                     </a>
                                 </CardText>

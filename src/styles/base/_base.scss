@@ -37,6 +37,12 @@ hr{
     margin-bottom: 0.3rem;
 }
 
+.social-anchor-tag svg:hover{
+    color: #505649 !important;
+    //color: rgb(38, 38, 38) !important;
+    //filter: invert(75%);
+}
+
 @media (min-width: 1200px){
     .container {
         max-width: 1171px;

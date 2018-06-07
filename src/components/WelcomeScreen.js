@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 import welcomeModal from "../../public/images/WelcomeModal.jpg";
 import sortProjectsByOrder from "../selectors/projects";
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/lib/fa";
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutubeSquare } from "react-icons/lib/fa";
 
 class WelcomeScreen extends React.Component{
 
@@ -289,7 +289,7 @@ class WelcomeScreen extends React.Component{
                         </Col>
 
                     </Row>
-
+ 
                     <Modal isOpen={ this.state.isOpen } toggle={ this.toggleModal } className = "modal-dialog" size="lg">
                         <ModalBody className = "mx-auto" >
                             <img 
@@ -298,7 +298,13 @@ class WelcomeScreen extends React.Component{
                                 style={{width : "100%"}}
                             />
                         </ModalBody>
-                        <ModalFooter>
+                        <ModalFooter className="greeting__footer">
+                            <div> 
+                                <span> If it's your first time, please take a minute to explore all our features here! </span>
+                                <a target="_blank" href="https://www.youtube.com/playlist?list=PLw7BwfNnUQTKpK6fhbMBCvpicN6pnM2wW" className = "youtube-icon-anchor-tag">
+                                    <FaYoutubeSquare size={25} />
+                                </a> 
+                            </div>
                             <button type="button" class="close" aria-label="Close" color="primary" onClick={ this.toggleModal } >
                                 <span aria-hidden="true">&times;</span>
                             </button>

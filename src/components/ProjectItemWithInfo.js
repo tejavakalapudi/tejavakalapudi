@@ -29,7 +29,8 @@ class ProjectItemWithInfo extends React.Component {
         showFloorPlans : false,
         brochureDiv : {
             __html: `<object data=${ this.props.project.brochure } width="100%" height="100%" type="application/pdf" ></object>`
-        }
+        },
+        isOpen : false
     }
 
     toggle( tab ) {
@@ -55,6 +56,21 @@ class ProjectItemWithInfo extends React.Component {
 
     }
 
+    closeModal = () => {
+        this.setState( () => ( { isOpen : false } ) );
+    }
+
+    openModal = () => {
+        this.setState( () => ( { isOpen : true } ) );
+    }
+
+    removeProject = ( e ) => {
+        this.props.dispatch( 
+            startRemoveProject( { id : this.props.project.id, storageRefId : this.props.project.storageRefId } ) 
+        );
+        this.closeModal(); 
+    }
+
     render(){
 
         return (
@@ -67,16 +83,7 @@ class ProjectItemWithInfo extends React.Component {
                         { this.props.authInfo.isAuthorized && 
 
                             <Row className = "justify-content-between"> 
-                                <Button 
-                                    onClick = { 
-                                        ( e ) => {
-                                            this.props.dispatch( 
-                                                startRemoveProject( { id : this.props.project.id, storageRefId : this.props.project.storageRefId } ) 
-                                            ) 
-                                        } 
-                                    }
-                                    
-                                > 
+                                <Button onClick = {this.openModal}> 
                                     <FaMinusSquare size={30} />
                                 </Button>
             
@@ -261,6 +268,15 @@ class ProjectItemWithInfo extends React.Component {
                         </Row>
                         
                     </Container>
+
+                    <Modal isOpen={ this.state.isOpen } toggle={ this.closeModal } className = "modal-dialog modal-sm">
+                        <ModalBody className = "mx-auto modal_text_format" >
+                            Are you sure you want to remove { this.props.project.title } from the list of projects? This can't be Undone!
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="danger" onClick={ this.removeProject }>Yes, go for it</Button>
+                        </ModalFooter>
+                    </Modal>
                     
                 </div>
             </div> 
