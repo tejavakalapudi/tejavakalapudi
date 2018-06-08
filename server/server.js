@@ -35,7 +35,7 @@ app.get( "/sendemail", ( req, res ) => {
 
     const mailOptions = {
         from: 'akruthiiconstructions@gmail.com',
-        to: 'ravitejavakalapudi@gmail.com',
+        to: 'vakalapudi.ravikiran@gmail.com',
         subject: `Message from ${req.query.name}`,
         html: messageString
     };
