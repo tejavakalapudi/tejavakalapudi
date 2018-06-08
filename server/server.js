@@ -11,11 +11,11 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         type : "OAuth2",
-        user: 'tejavakalapudi@gmail.com',
-        pass: '09401a04b3',
-        clientId : "867658258327-kr821rif2jd0leqi6fsu0f4pdjp41d3h.apps.googleusercontent.com",
-        clientSecret : "Gk8VO3IetNgkw0HfqjO0z2nN",
-        refreshToken : "1/0mp3pne6r3MHzQUJ7A06k6DDeEY54zAcoTa0_cJ3ZOA"
+        user: 'akruthiiconstructions@gmail.com',
+        pass: 'akruthi@9',
+        clientId : "972811879269-422bs9d6bbspqgoedspotjj8gbbdu14c.apps.googleusercontent.com",
+        clientSecret : "JYpxFm3KkgJ19sJog1XgpQQd",
+        refreshToken : "1/87V5aJHYlksZQfhHDTXr4DiAWAyDSUBHgjyyX-o9YC6MTqAJO7rSbwRzaqKY3xxy"
     }
 });
 
@@ -34,7 +34,7 @@ app.get( "/sendemail", ( req, res ) => {
     <div><b>Preferred Date:</b> ${req.query.preferredDate}</div>`;
 
     const mailOptions = {
-        from: 'tejavakalapudi@gmail.com',
+        from: 'akruthiiconstructions@gmail.com',
         to: 'ravitejavakalapudi@gmail.com',
         subject: `Message from ${req.query.name}`,
         html: messageString
