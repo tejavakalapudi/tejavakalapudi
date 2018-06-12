@@ -103,7 +103,7 @@ class VastuTab extends React.Component {
                             <Collapse isOpen={this.state.activeTab === "3"}>
                                 <Card>
                                     <CardBody>
-                                        <p>
+                                        <p className = "buyersguide_description">
                                             There is a sub sect in Vastu called Jyotir Vastu, which means, Vastu based on Astrology. Jyotir Vastu prescribes different oriented houses for different zodiac signs. According to this, the following are advised:
                                         </p>
                                         <p>
@@ -111,14 +111,14 @@ class VastuTab extends React.Component {
                                                 <li >Vrischika, Meena (Pisces), karkataka: : East Facing</li>
                                                 <li >Midhuna (Gemini), Makara (Capricorn) Kanya (Virgo): South Facing</li>
                                                 <li >Tula (Libra) Vrishabha (Taurus), Kumbha (Aquarius): West Facing</li>
-                                                <li >Mesha (Aries) Simha (Leo), Dhanu (Sagittarius): North Facing4</li>
+                                                <li >Mesha (Aries) Simha (Leo), Dhanu (Sagittarius): North Facing</li>
                                             </ul>
                                         </p>
 
-                                        <p>
+                                        <p className = "buyersguide_description">
                                             Jyotir Vastu also prescribes favourable orientations based on the first Telugu (or Sanskrit) letter of the owner. All the letters are divided in to eight Vargus. These are called Ashtha Vargus 
                                         </p>
-                                        <p>
+                                        <p className = "buyersguide_description">
                                             <ul className = "buyersguide_description">
                                                 <li >A Vargu - a, aa, e, ee ru.</li>
                                                 <li >KA Vargu - ka, kha, ga, gha, jna</li>
@@ -131,7 +131,7 @@ class VastuTab extends React.Component {
                                             </ul>
                                         </p>
 
-                                        <p>
+                                        <p className = "buyersguide_description">
                                             The following are the favorable orientations for the each Vargu.
                                         </p>
                                         <p>

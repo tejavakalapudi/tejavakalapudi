@@ -120,10 +120,6 @@ class BuyersGuidePage extends React.Component {
                                         </Row>
                                     </Col>
                                 </Row>
-                                {
-                                    //https://getbootstrap.com/docs/4.0/components/collapse/#accordion-example
-                                }
-    
                             </div>
     
                         </Row>

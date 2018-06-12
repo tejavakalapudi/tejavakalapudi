@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { 
     Navbar, 
     Nav, 
@@ -117,7 +118,7 @@ class HeaderComponent extends React.Component{
                         <div className = "row justify-content-between">         
                             <div className = "" >
                                 <NavLink to = "/" >
-                                    <img src = { this.props.activeTab === "projectinfo" ? "../" + logoImage : logoImage } className = "projects_logo" ></img>
+                                    <img src = { this.props.projectInfoPage ? "../" + logoImage : logoImage } className = "projects_logo" ></img>
                                 </NavLink>
                             </div>
                             <div className = "" >
@@ -134,7 +135,6 @@ class HeaderComponent extends React.Component{
 
 }
     
-
 export default HeaderComponent;
 
 

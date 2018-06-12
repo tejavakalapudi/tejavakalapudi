@@ -30,17 +30,17 @@ const HomeLoansTab = () => (
 
                     <h5 className = "buyersguide_heading" >Home Loan Offer Letter</h5>
                     <p className = "buyersguide_description" >
-                        It contains loan amount , rate of interest , tenure, EMI per month and other terms and conditions If you agree with the details mentioned in the home loan offer letter, you will have to sign a duplicate letter of the same for the bank's records.
+                        It contains loan amount, rate of interest, tenure, EMI per month and other terms and conditions. If you agree with the details mentioned in home loan offer letter, you will have to sign a duplicate letter of the same for the purpose of bank's records.
                     </p>
 
                     <h5 className = "buyersguide_heading" >Signing The Home Loan Agreement</h5>
                     <p className = "buyersguide_description" >
-                        You are requested to signing the agreement of bank also need to submit post-dated cheques as required by the banker. This agreement will contain a condition binding on the builder to hand over the documents after the Registration.
+                        In this phase, you will be requested to sign the  bank agreement and also will have to submit post-dated cheques as required by the banker. This agreement will contain a condition binding on the builder to hand over the documents after the Registration.
                     </p>
 
                     <h5 className = "buyersguide_heading" >Disbursement</h5>
                     <p className = "buyersguide_description" >
-                        At this stage, the banker will disburse the loan amount based up on the demand raised by the builder as per the construction stage with the supporting report which the bank technical officer already submitted.
+                        At this stage, the banker will disburse the required loan amount based on the pricing information given by the builder as per the construction stage along with the supporting report which will already been submitted by the bank technical officer.
                     </p>
 
                     <h5 className = "buyersguide_heading" >Personal Documents</h5>
@@ -61,3 +61,4 @@ export default HomeLoansTab;
 //https://github.com/nkbt/react-collapse
 //https://github.com/springload/react-accessible-accordion
 //https://www.giken.com/en/vision/five_construction_principles/
+

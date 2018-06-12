@@ -36,12 +36,13 @@ class SwitchComponent extends React.Component {
     }
     
     render(){
+
         return(
             <div id = "bodyDiv">
                 {
                     !this.state.routeChanged && <WelcomeScreen />
                 }
-                <Header />
+                <Header projectInfoPage = { this.props.location.pathname.search("projectinfo") > -1 && true }/>
                 <Switch>
                     <Route path = "/" component = { HomePage } exact={true}/>
                     <Route path = "/home" component = { HomePage }/>
