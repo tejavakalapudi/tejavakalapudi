@@ -1,13 +1,13 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
 
-const Header = () => ( 
+const AboutMePage = () => ( 
     <div>
-        This is Header page!
+        This is About me page!
     </div> 
 );
 
-export default Header;
+export default AboutMePage;
 
 //https://github.com/nkbt/react-collapse
 //https://github.com/springload/react-accessible-accordion
