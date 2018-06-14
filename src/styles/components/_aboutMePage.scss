@@ -1,0 +1,50 @@
+.about__container{
+    padding-bottom: 1rem;
+}
+
+.about__image-rounded{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.about__title{
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 2rem 0;
+}
+
+.about__description{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Large devices and tabs (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    .about__title{
+        font-size: 6.4rem;
+    }
+    
+    .about__description{
+        font-size: 3.4rem;
+    }
+
+    .about__image-rounded{
+        position: relative;
+        top: 30%;
+        width: 200px;
+        height: 200px;
+        margin: 2rem 0;
+    }
+
+    .about__container{
+        padding: 3rem 0;
+    }
+
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+} 
