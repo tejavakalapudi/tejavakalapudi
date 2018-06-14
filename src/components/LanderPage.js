@@ -7,6 +7,10 @@ class LanderPage extends React.Component {
         minHeight : window.innerHeight
     }
 
+    isMobileDevice = () => {
+        return ( typeof window.orientation !== "undefined" ) || ( navigator.userAgent.indexOf( 'IEMobile' ) !== -1 );
+    };
+
     resizeWelcomeDiv = () =>{
 
         const welcomeDiv = document.getElementById( "landingDiv" );
@@ -21,7 +25,9 @@ class LanderPage extends React.Component {
 
     render(){
 
-        window.addEventListener( 'resize', this.resizeWelcomeDiv );
+        if( !this.isMobileDevice() ){
+            window.addEventListener( 'resize', this.resizeWelcomeDiv );
+        }
 
         return (
             <div className = "lander__container" id = "landingDiv" style={{ minHeight: this.state.minHeight }}>
