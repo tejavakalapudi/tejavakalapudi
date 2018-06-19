@@ -1,0 +1,17 @@
+.travel__container{
+    background-color: #edeeef;
+}
+
+.travel__image-container{
+    margin: 3rem 0;
+}
+
+/* Large devices and tabs (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    .travel__image{
+       //width: 350px;
+        // height: 350px;
+    }
+
+} 

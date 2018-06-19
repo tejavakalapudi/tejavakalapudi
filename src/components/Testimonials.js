@@ -17,7 +17,7 @@ class Testimonials extends React.Component {
     renderLearnMoreButton = () => {
 
         if( this.props && this.props.isHomePage ){
-            return(<LearnMore redirect = "testimonials" />);
+            return(<LearnMore redirect = "testimonials" darkBackground="true"/>);
         }
 
     }

@@ -18,6 +18,8 @@ import ScrollToTop from "./ScrollToTop";
 import LanderPage from  "./LanderPage";
 import AboutMePage from "./AboutMePage";
 import Testimonials from "./Testimonials";
+import Travel from "./TravelDiaries";
+import Connect from "./Contact";
 
 //https://gist.github.com/benjaminfisher/2757473
 
@@ -30,6 +32,8 @@ class HomePage extends React.Component {
                 <LanderPage />
                 <AboutMePage />
                 <Testimonials isHomePage = "true" />
+                <Travel isHomePage = "true" />
+                <Connect isHomePage = "true" />
             </div>
         );
     }

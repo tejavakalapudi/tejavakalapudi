@@ -10,12 +10,23 @@
     border-color: #272727;
     border-width: 2px;
     border-style: solid;
+
+    &.dark__background{
+        color: white !important;
+        border-color: white;
+    }
 }
 
 .more__navlink:hover{
     color: white !important;
     background-color: #272727;
     text-decoration: none;
+
+    &.dark__background{
+        color: #272727 !important;
+        border-color: white;
+        background-color: white;
+    }
 }
 
 .more__link-container{
