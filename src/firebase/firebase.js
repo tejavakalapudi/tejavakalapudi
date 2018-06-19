@@ -5,20 +5,16 @@
 import * as firebase from "firebase";
 
 const config = {
-    apiKey: "AIzaSyBOp-bYuMy8VXxF13PdVCv0mudnbWb1xVI",
-    authDomain: "akruthi-4d551.firebaseapp.com",
-    databaseURL: "https://akruthi-4d551.firebaseio.com",
-    projectId: "akruthi-4d551",
-    storageBucket: "akruthi-4d551.appspot.com",
-    messagingSenderId: "867658258327"
+    apiKey: "AIzaSyBdLoA4k_jlRaSZDH5Qs9NjW8eReHEDeQ4",
+    authDomain: "tejavakalapudi-2a65b.firebaseapp.com",
+    databaseURL: "https://tejavakalapudi-2a65b.firebaseio.com",
+    projectId: "tejavakalapudi-2a65b",
+    storageBucket: "tejavakalapudi-2a65b.appspot.com",
+    messagingSenderId: "9717763484"
 };
 
 firebase.initializeApp( config );
-
 const database = firebase.database();
 const storageRef = firebase.storage().ref();
 
 export { firebase, database, storageRef };
-
-//storage.ref().child("projects");
-//storageRef.child('images/welcomeModal').put( "/images/WelcomeModal.png" );

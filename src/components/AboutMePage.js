@@ -12,34 +12,37 @@ class AboutMePage extends React.Component{
             return;
         }
 
-        return(<LearnMore redirect = "about" />)
+        return(<LearnMore redirect = "about" />);
 
     }
 
     render(){
 
-        console.log("Props", this.props);
-
         return(
-            <Container className = "home__section" >
+        
+            <div className = "about__container">
 
-                <Row className = "about__container justify-content-center">
-                    <Col xs="11" lg="3" className="text__align-center" >
-                        <img src = { AboutMeImage } className="about__image-rounded"/>
-                    </Col>
-                    <Col xs="11" lg="9" className="text__align-center" >
-                        <div className="about__title">
-                            About me.
-                        </div>
-                        <div className="about__description">
-                            Experienced Software Engineer with a demonstrated history of working in an entertainment industry. Skilled in front end development and familiar in integrating 3rd party ads & analytics frameworks like Freewheel, DoubleClick, Omniture and Comscore. Hands on experience with latest web technologies like React JS, Redux, Bootstrap-4, Firebase Database/Storage.
-                        </div>
-                    </Col>
-                </Row>
+                <Container className = "about__container-padding" >
 
-                {this.renderLearnMoreButton()}
+                    <Row className = "about__section justify-content-center">
+                        <Col xs="11" lg="3" className="text__align-center" >
+                            <img src = { AboutMeImage } className="about__image-rounded"/>
+                        </Col>
+                        <Col xs="11" lg="9" className="text__align-center" >
+                            <div className="about__title">
+                                About me.
+                            </div>
+                            <div className="about__description">
+                                Experienced Software Engineer with a demonstrated history of working in an entertainment industry. Skilled in front end development and familiar in integrating 3rd party ads & analytics frameworks like Freewheel, DoubleClick, Omniture and Comscore. Hands on experience with latest web technologies like React JS, Redux, Bootstrap-4, Firebase Database/Storage.
+                            </div>
+                        </Col>
+                    </Row>
 
-            </Container>
+                    {this.renderLearnMoreButton()}
+
+                </Container>
+
+            </div>
         );
 
     }

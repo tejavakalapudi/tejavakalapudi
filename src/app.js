@@ -4,6 +4,7 @@ import AppRouter from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
 import MySite from "./components/Template";
+import { fetchWebContent } from "./actions/webdata";
 
 // Use normalize to have same styling format across cross browser
 
@@ -24,12 +25,13 @@ import "./styles/styles.scss";
 const store = configureStore();
 //const state = store.getState();
 
-//store.dispatch( startSetProjects() ).then(() => {
+store.dispatch( fetchWebContent() ).then(() => {
 
-    ReactDOM.render( <MySite store = { store } />, document.getElementById("app") );
+    ReactDOM.render( <MySite store = { store } />, document.getElementById( "app" ) );
     
-//});
+});
 
 //ReactDOM.render( <LoadingScreen /> , document.getElementById("app") );
+
 
 

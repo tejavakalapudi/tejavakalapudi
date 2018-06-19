@@ -17,6 +17,7 @@ import GoogleMapComponent from "./GoogleMap";
 import ScrollToTop from "./ScrollToTop";
 import LanderPage from  "./LanderPage";
 import AboutMePage from "./AboutMePage";
+import Testimonials from "./Testimonials";
 
 //https://gist.github.com/benjaminfisher/2757473
 
@@ -28,6 +29,7 @@ class HomePage extends React.Component {
                 <ScrollToTop />
                 <LanderPage />
                 <AboutMePage />
+                <Testimonials isHomePage = "true" />
             </div>
         );
     }

@@ -1,20 +1,76 @@
 import React from "react";
+import { connect } from "react-redux";
 
-// For all supported HTML attributes in JSX https://reactjs.org/docs/dom-elements.html
-// For all event handlers https://reactjs.org/docs/events.html
-// For component lifecycles https://reactjs.org/docs/react-component.html
+import { Row, Col, Container } from "reactstrap";
+import { NavLink } from "react-router-dom";
+import LearnMore from "./LearnMore";
+
+//https://www.loginradius.com/engineering/extended-linkedin-api-usage/
 
 class Testimonials extends React.Component {
+
+    state = {
+        itemsToView : this.props && !this.props.isHomePage && this.props.testimonials ? this.props.testimonials.length : 2
+    }
+
+    renderLearnMoreButton = () => {
+
+        if( this.props && this.props.isHomePage ){
+            return(<LearnMore redirect = "testimonials" />);
+        }
+
+    }
 
     render(){
 
         return(
-            <div>
-                This is Testimonials page!
+            <div className = "testimonial__container">
+
+                <Container className = "testimonial__container-padding" >
+
+                    <Row className = "about__section justify-content-between">
+                        <Col className="testimonial__title text__align-center">
+                            What’s it like to work with me.
+                        </Col>
+                    </Row>
+
+                    {   this.props.testimonials.length > 0 &&
+                        this.props.testimonials.slice( 0, this.state.itemsToView ).map( ( testimonial ) => {
+
+                            return( 
+                            <Row className = "justify-content-between testimonial_row">
+                                <Col xs="12" lg="3" className = "testimonial__image text__align-center">
+                                    <img src = { testimonial.imageUrl } className="testimonial__image-rounded"/>
+                                    <div className="testimonial__name" >
+                                        { testimonial.name }
+                                    </div>
+                                    <div>
+                                        { testimonial.title } 
+                                    </div>
+                                </Col>
+                                <Col xs="12" lg="9" className = "testimonial__content text__align-center">
+                                    {` "${ testimonial.testimonial }" `}
+                                </Col>
+                            </Row>
+                            );
+
+                        })
+                    }
+
+                    { this.renderLearnMoreButton() }
+
+                </Container>
+
             </div>
         );
     }
 
 };
 
-export default Testimonials; 
+const mapStateToProps = ( store ) => {
+    return { 
+        testimonials : store.testimonials
+    };
+};
+
+export default connect( mapStateToProps )( Testimonials ); 

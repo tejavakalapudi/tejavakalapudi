@@ -1,0 +1,55 @@
+.testimonial__container{
+
+}
+
+.testimonial__container-padding{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.testimonial__title{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 2rem 0;
+}
+
+.testimonial__content{
+
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.9rem;
+    font-style: italic;
+    margin-bottom: 3rem;
+
+}
+
+.testimonial__image{
+    margin-bottom: 3rem;
+}
+
+.testimonial__image-rounded{
+
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+
+}
+
+.testimonial__name{
+    font-weight: bold;
+}
+
+/* Large devices and tabs (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    .testimonial_row{
+        margin-bottom: 4rem; 
+    }
+
+    .testimonial__title{
+        font-size: 4rem;
+    }
+    
+    .testimonial__content{
+        font-size: 2.4rem;
+    }
+} 
