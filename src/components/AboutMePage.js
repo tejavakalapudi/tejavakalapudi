@@ -4,6 +4,8 @@ import AboutMeImage from "../../public/images/AboutImage.jpg";
 import { NavLink } from "react-router-dom";
 import LearnMore from "./LearnMore";
 
+//http://www.pascalvangemert.nl/#/projects for tiles
+
 class AboutMePage extends React.Component{
 
     renderLearnMoreButton = () => {
@@ -29,11 +31,11 @@ class AboutMePage extends React.Component{
                             <img src = { AboutMeImage } className="about__image-rounded"/>
                         </Col>
                         <Col xs="11" lg="9" className="text__align-center" >
-                            <div className="about__title">
+                            <div className="section__title">
                                 About me.
                             </div>
                             <div className="about__description">
-                                Experienced Software Engineer with a demonstrated history of working in an entertainment industry. Skilled in front end development and familiar in integrating 3rd party ads & analytics frameworks like Freewheel, DoubleClick, Omniture and Comscore. Hands on experience with latest web technologies like React JS, Redux, Bootstrap-4, Firebase Database/Storage.
+                                <div className="about__description-content"> Experienced Software Engineer with a demonstrated history of working in an entertainment industry. Skilled in front end development and familiar in integrating 3rd party ads & analytics frameworks like Freewheel, DoubleClick, Omniture and Comscore. Hands on experience with latest web technologies like React JS, Redux, Bootstrap-4, Firebase Database/Storage.</div> 
                             </div>
                         </Col>
                     </Row>

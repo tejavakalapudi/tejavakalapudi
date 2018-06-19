@@ -15,7 +15,7 @@ class LearnMore extends React.Component {
         return (
             <Row className = "justify-content-end more__link-container" >
                 <Col lg="2" md="4" xs="12" className="text__align-center">
-                    <NavLink to = {`/${this.state.activeRoute}`} className="more__navlink"> Learn More </NavLink>
+                    <NavLink to = {`/${this.state.activeRoute}`} className="more__navlink"> More →</NavLink>
                 </Col>
             </Row>
         );
