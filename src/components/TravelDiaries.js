@@ -42,32 +42,46 @@ class TravelDiaries extends React.Component {
                             #travelDiaries.
                         </Col>
                         <Col xs="12" md="6" lg="4" className="text__align-center travel__image-container">
-                            <Card>
+                            <Card className = "travel__card">
                                 <CardImg top src = { UAE } alt="Card image cap" />
-                                <CardBody>
-                                    <CardTitle>U.A.E</CardTitle>
-                                    <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                                </CardBody>
+                                <div className = "travel__card-overlay"></div>
+                                <div class="travel__card-text">
+                                    <p className = "travel__card-title"> U.A.E </p>
+                                    <p className = "travel__card-description"> Some quick example text to build on the card title and make up the bulk of the card's content. </p>
+                                </div>
                             </Card>
                         </Col>
                         <Col xs="12" md="6" lg="4" className="text__align-center travel__image-container">
-                            <Card>
+                            <Card className = "travel__card">
                                 <CardImg top src = { Nevada } alt="Card image cap" />
-                                <CardBody>
-                                    <CardTitle>Nevada</CardTitle>
-                                    <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                                </CardBody>
+                                <div className = "travel__card-overlay"></div>
+                                <div class="travel__card-text">
+                                    <p className = "travel__card-title"> Nevada </p>
+                                    <p className = "travel__card-description"> Some quick example text to build on the card title and make up the bulk of the card's content. </p>
+                                </div>
                             </Card>
                         </Col>
                         <Col xs="12" md="6" lg="4" className="text__align-center travel__image-container">
-                            <Card>
+                            <Card className = "travel__card">
                                 <CardImg top src = { Florida } alt="Card image cap" />
-                                <CardBody>
-                                    <CardTitle>Florida</CardTitle>
-                                    <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                                </CardBody>
+                                <div className = "travel__card-overlay"></div>
+                                <div class="travel__card-text">
+                                    <p className = "travel__card-title"> Florida </p>
+                                    <p className = "travel__card-description"> Some quick example text to build on the card title and make up the bulk of the card's content. </p>
+                                </div>
                             </Card>
                         </Col>
+                        {/*
+                            <Col xs="12" md="6" lg="4" className="text__align-center travel__image-container">
+                                <Card>
+                                    <CardImg top src = { Florida } alt="Card image cap" />
+                                    <CardBody>
+                                        <CardTitle>Florida</CardTitle>
+                                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                                    </CardBody>
+                                </Card>
+                            </Col>                       
+                        */}
                     </Row>
 
                     { this.renderLearnMoreButton() }
