@@ -1,5 +1,9 @@
 .about__container{
-    background-color: #edeeef;
+
+    &.homepage{
+        background-color: #edeeef;
+    }
+
 }
 
 .about__container-padding{
@@ -19,31 +23,100 @@
 
 .about__description{
     font-size: 2rem;
+    font-style: italic;
+
+    &.homepage{
+        font-style: unset;
+        margin-bottom: 2rem;
+    }
+}
+
+.quote__symbol svg{
+    color: #282828 !important;
+    height : 10rem;
+    width: 10rem;
+}
+
+.quote__text{
+    font-size: 2rem;
+    font-weight: bold;
+    font-style: italic;
+    color: #265790;
     margin-bottom: 2rem;
+}
+
+.about__content{
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.about__segment-title{
+
+    font-size: 3rem;
+    font-weight: bold;
+
+}
+
+.about__segment-line{
+    border: 2px solid black;
+}
+
+.about__segment{
+    margin: 2rem 0;
+}
+
+.about__imageTile{
+    margin: 1rem 0;
 }
 
 /* Large devices and tabs (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
 
     .about__description{
-        font-size: 3.4rem;
+
+        font-size: 2.5rem;
+
+        &.homepage{
+            font-size: 3.4rem;
+        }
+
     }
 
     .about__image-rounded{
         position: relative;
-        top: 30%;
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
         margin: 2rem 0;
+
+        &.homepage{
+            top: 30%;
+            width: 200px;
+            height: 200px;
+        }
+
     }
 
-    .about__section{
-        //padding: 3rem 0;
+    .about__content{
+        font-size: 2rem;
+    }
+
+    .quote__text{
+        font-size: 3.2rem;
+    }
+
+    .about__segment-title{
+
+        font-size: 4rem;
+
     }
 
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+
+    .about__imageTile{
+        margin: 2rem 0;
+    }
 
 } 

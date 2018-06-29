@@ -13,7 +13,12 @@
 @media only screen and (min-width: 992px) {
 
     .section__title{
-        font-size: 6.4rem;
+
+        font-size: 5rem;
+
+        &.homepage{
+            font-size: 6.4rem;
+        }
     }
     
 } 

@@ -30,7 +30,7 @@ class HomePage extends React.Component {
             <div>
                 <ScrollToTop />
                 <LanderPage />
-                <AboutMePage />
+                <AboutMePage isHomePage = "true"/>
                 <Testimonials isHomePage = "true" />
                 <Travel isHomePage = "true" />
                 <Connect isHomePage = "true" />
