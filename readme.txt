@@ -40,15 +40,5 @@
 
 //Things to do:
 ##IMPORTANT : CONSISTENTLY CHECKING IF THERE"S A WAY TO BUNDLE BOOTSTRAP BEFORE CUSTOM CSS THROUGH WEBPACK ##
-d. Restrict editPage and addPage for only admin access
-
-1. Have sticky header and apply z-index during scroll
-2. Contact us (Clicking on icons should dynamically modify the contact us form)
-4. Somehow set up a bot
-5. Learn tests section and have library test driven
-6. Make sure we watch test related videos in firebase-with-redux section
-7. Also test database section
-8. Page should load from top always
-9. Transparent black background behind header nav bar 
 
 

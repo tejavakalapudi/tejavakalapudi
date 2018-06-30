@@ -1,11 +1,23 @@
 import React from "react";
-import { Row, Col, Container, Card, CardImg } from "reactstrap";
+import { 
+    Row, 
+    Col, 
+    Container, 
+    Card, 
+    CardImg,
+    Modal, 
+    ModalHeader, 
+    ModalBody, 
+    ModalFooter 
+} from "reactstrap";
 import AboutMeImage from "../../public/images/AboutImage.jpg";
 import { NavLink } from "react-router-dom";
 import LearnMore from "./LearnMore";
 import { MdFormatQuote } from 'react-icons/lib/md';
 import ViacomLogo from "../../public/images/ViacomLogo-Rectangle.jpg";
 import AkruthiLogo from "../../public/images/AkruthiLogo-Rectangle.jpg";
+import ResumePageOne from "../../public/images/Resume-1.jpg";
+import ResumePageTwo from "../../public/images/Resume-2.jpg";
 import ScrollToTop from "./ScrollToTop";
 
 //http://www.pascalvangemert.nl/#/projects for tiles
@@ -22,8 +34,9 @@ class AboutMePage extends React.Component{
 
         isAboutMePage : this.props && !this.props.isHomePage,
         homePageClass : this.props && !this.props.isHomePage ? "" : "homepage",
-        summaryContent : this.props && !this.props.isHomePage ? "Hi, I am Ravi. A Front End developer and a Web Enthusiast skilled in technologies like JavaScript, React JS, Bootstrap, HTML and CSS. I create clean, professional and functional websites." : "Experienced Software Engineer with a demonstrated history of working in an entertainment industry. Skilled in front end development and familiar in integrating 3rd party ads & analytics frameworks like Freewheel, DoubleClick, Omniture and Comscore. Hands on experience with latest web technologies like React JS, Redux, Bootstrap-4, Firebase Database/Storage."
-
+        summaryContent : this.props && !this.props.isHomePage ? "Hi, I am Ravi. A Front End developer and a Web Enthusiast skilled in technologies like JavaScript, React JS, Bootstrap, HTML and CSS. I create clean, professional and functional websites." : "Experienced Software Engineer with a demonstrated history of working in an entertainment industry. Skilled in front end development and familiar in integrating 3rd party ads & analytics frameworks like Freewheel, DoubleClick, Omniture and Comscore. Hands on experience with latest web technologies like React JS, Redux, Bootstrap-4, Firebase Database/Storage.",
+        enlargeResumePageOne : false,
+        enlargeResumePageTwo : false
     }
 
     renderLearnMoreButton = () => {
@@ -34,6 +47,27 @@ class AboutMePage extends React.Component{
         }
 
         return(<LearnMore redirect = "about" />);
+
+    }
+
+    enlargeResume = ( pageNum ) => {
+
+        if( pageNum === 1 ){
+            this.setState({ enlargeResumePageOne : true });
+        }
+        
+        if( pageNum === 2 ){
+            this.setState({ enlargeResumePageTwo : true });
+        }
+
+    }
+
+    toggleModal = () => {
+
+        this.setState({ 
+            enlargeResumePageOne : false,
+            enlargeResumePageTwo : false,
+        });
 
     }
 
@@ -122,6 +156,75 @@ class AboutMePage extends React.Component{
                                             </Card>
                                         </Col>
                                     </Row>
+
+                                    {/****** Work Segment ******/} 
+                                    <div className="about__segment">
+                                        <div className="about__segment-title" >
+                                            Tech Stack.
+                                        </div>
+                                        <hr className="about__segment-line"/>
+                                    </div>
+
+                                    <Row className = "justify-content-center">
+                                        <Col xs="11" md="4" className="about__techStack-list">
+                                            <ul>
+                                                <li>React JS</li>
+                                                <li>Redux</li>
+                                                <li>Bootstrap 4</li>
+                                                <li>Node JS</li>
+                                                <li>JavaScript</li>
+                                            </ul>  
+                                        </Col>
+                                        <Col xs="11" md="4" className="about__techStack-list">
+                                            <ul>
+                                                <li>DoubleClick by Google</li>
+                                                <li>FreeWheel</li>
+                                                <li>Adobe Analytics</li>
+                                                <li>Firebase Database/Storage</li>
+                                                <li>Heroku</li>
+                                            </ul>  
+                                        </Col>
+                                        <Col xs="11" md="4" className="about__techStack-list">
+                                            <ul>
+                                                <li>NPM</li>
+                                                <li>Yarn</li>
+                                                <li>Sass</li>
+                                                <li>CSS</li>
+                                                <li>HTML5</li>
+                                            </ul>  
+                                        </Col>
+                                    </Row>
+
+
+                                    {/****** Resume Segment ******/} 
+                                    <div className="about__segment">
+                                        <div className="about__segment-title" >
+                                            Resume.
+                                        </div>
+                                    </div>
+
+                                    <Row className = "justify-content-center about__resume">
+                                        <Col xs="12" md="6" lg="5" className="text__align-center about__resume-imageCol">
+                                            <Card>
+                                                <CardImg top src = { ResumePageOne } alt="Card image cap" className="about__resume-image" onClick = { () => { this.enlargeResume( 1 ) } }/>
+                                            </Card>
+                                        </Col>
+                                        <Col xs="12" md="6" lg="5" className="text__align-center about__resume-imageCol">
+                                            <Card>
+                                                <CardImg top src = { ResumePageTwo } alt="Card image cap" className="about__resume-image" onClick = { () => { this.enlargeResume( 2 ) } }/>
+                                            </Card>
+                                        </Col>
+                                    </Row>
+
+                                    <Modal isOpen={ this.state.enlargeResumePageOne || this.state.enlargeResumePageTwo } toggle={ this.toggleModal } className = "modal-dialog" size="lg">
+                                        <ModalBody className = "mx-auto" >
+                                            <img 
+                                                src= { this.state.enlargeResumePageTwo ? ResumePageTwo : ResumePageOne }
+                                                alt= "welcome-modal"
+                                                style={{width : "100%"}}
+                                            />
+                                        </ModalBody>
+                                    </Modal>
 
                                 </div>
                             }

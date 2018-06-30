@@ -45,6 +45,10 @@
     margin-bottom: 2rem;
 }
 
+.about__techStack-list{
+    font-size: 2rem;
+}
+
 .about__content{
     font-size: 1.5rem;
     margin: 1rem 0;
@@ -65,9 +69,23 @@
     margin: 2rem 0;
 }
 
-.about__imageTile{
+.about__resume-image{
+    border: 3px solid white;
+}
+
+.about__resume-image:hover{
+    cursor: pointer;
+}
+
+.about__imageTile, .about__resume-imageCol{
     margin: 1rem 0;
 }
+
+.about__resume{
+    background-color: black;
+}
+
+
 
 /* Large devices and tabs (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
@@ -105,9 +123,11 @@
     }
 
     .about__segment-title{
-
         font-size: 4rem;
+    }
 
+    .about__resume{
+        padding: 5rem 0;
     }
 
 } 
@@ -115,7 +135,7 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
 
-    .about__imageTile{
+    .about__imageTile, .about__techStack-list, .about__resume-imageCol{
         margin: 2rem 0;
     }
 
