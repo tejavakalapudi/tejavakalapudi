@@ -41,7 +41,7 @@ class SwitchComponent extends React.Component {
                     <Route path = "/about" component = { AboutMePage } />
                     <Route path = "/testimonials" component = { Testimonials } />
                     <Route path = "/traveldiaries" component = { TravelDiaries } />
-                    <Route path = "/contactus" component = { ContactUsPage } />
+                    <Route path = "/contact" component = { ContactUsPage } />
                     <Route component = { NotFound } />
                 </Switch>
                 {/*<Footer /> */}

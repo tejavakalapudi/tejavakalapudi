@@ -18,6 +18,9 @@ import ViacomLogo from "../../public/images/ViacomLogo-Rectangle.jpg";
 import AkruthiLogo from "../../public/images/AkruthiLogo-Rectangle.jpg";
 import ResumePageOne from "../../public/images/Resume-1.jpg";
 import ResumePageTwo from "../../public/images/Resume-2.jpg";
+import Travel from "../../public/images/Travel.jpg";
+import Testimonial from "../../public/images/Testimonial.jpg";
+import Contact from "../../public/images/Contact.jpg";
 import ScrollToTop from "./ScrollToTop";
 
 //http://www.pascalvangemert.nl/#/projects for tiles
@@ -68,6 +71,12 @@ class AboutMePage extends React.Component{
             enlargeResumePageOne : false,
             enlargeResumePageTwo : false,
         });
+
+    }
+
+    redirectToRoute = ( route ) => {
+
+        this.props.history.push( route );
 
     }
 
@@ -157,7 +166,7 @@ class AboutMePage extends React.Component{
                                         </Col>
                                     </Row>
 
-                                    {/****** Work Segment ******/} 
+                                    {/****** Tech Stack Segment ******/} 
                                     <div className="about__segment">
                                         <div className="about__segment-title" >
                                             Tech Stack.
@@ -220,11 +229,49 @@ class AboutMePage extends React.Component{
                                         <ModalBody className = "mx-auto" >
                                             <img 
                                                 src= { this.state.enlargeResumePageTwo ? ResumePageTwo : ResumePageOne }
-                                                alt= "welcome-modal"
+                                                alt= "Resume"
                                                 style={{width : "100%"}}
                                             />
                                         </ModalBody>
                                     </Modal>
+                                    
+                                    {/****** Others Segment ******/}
+                                    <div className="about__segment-others">
+                                        <div className="about__segment-title" >
+                                           Others.
+                                        </div>
+                                        <hr className="about__segment-line"/>
+                                    </div>
+
+                                    <Row className="justify-content-center about__others-row">
+                                        <Col xs="11" md="4" lg="4" className="text__align-center travel__image-container" onClick = { () => { this.redirectToRoute( "traveldiaries" ) } } >
+                                            <Card className = "travel__card">
+                                                <CardImg top src = { Travel } alt="Card image cap" />
+                                                <div className = "travel__card-overlay about__overlay" ></div>
+                                                <div class="travel__card-text about__overlay-text">
+                                                    <p className = "travel__card-title"> Travel </p>
+                                                </div>
+                                            </Card>
+                                        </Col>
+                                        <Col xs="11" md="4" lg="4" className="text__align-center travel__image-container" onClick = { () => { this.redirectToRoute( "testimonials" ) } } >
+                                            <Card className = "travel__card">
+                                                <CardImg top src = { Testimonial } alt="Card image cap" />
+                                                <div className = "travel__card-overlay about__overlay"></div>
+                                                <div class="travel__card-text about__overlay-text">
+                                                    <p className = "travel__card-title"> Testimonials </p>
+                                                </div>
+                                            </Card>
+                                        </Col>
+                                        <Col xs="11" md="4" lg="4" className="text__align-center travel__image-container" onClick = { () => { this.redirectToRoute( "contact" ) } } >
+                                            <Card className = "travel__card">
+                                                <CardImg top src = { Contact } alt="Card image cap" />
+                                                <div className = "travel__card-overlay about__overlay"></div>
+                                                <div class="travel__card-text about__overlay-text">
+                                                    <p className = "travel__card-title"> Contact </p>
+                                                </div>
+                                            </Card>
+                                        </Col>
+                                    </Row> 
 
                                 </div>
                             }

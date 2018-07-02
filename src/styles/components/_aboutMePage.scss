@@ -69,6 +69,14 @@
     margin: 2rem 0;
 }
 
+.about__segment-others{
+
+    margin-top : 3rem;
+    margin-bottom: 2rem;
+    margin-right: 0;
+    margin-right: 0;
+}
+
 .about__resume-image{
     border: 1px solid black;
 }
@@ -83,6 +91,15 @@
 
 .about__resume{
     background-color: black;
+}
+
+.about__card-title{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.about__others-row{
+    margin-bottom: 2rem;
 }
 
 
@@ -130,6 +147,18 @@
         padding: 5rem 0;
     }
 
+    .about__card-title{
+        font-size: 3rem;
+    }
+
+    .about__segment-others{
+        margin-top: 4rem;
+    }
+
+    .about__others-row{
+        margin-bottom: 4rem;
+    }
+
 } 
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -138,5 +167,6 @@
     .about__imageTile, .about__techStack-list, .about__resume-imageCol{
         margin: 2rem 0;
     }
+    
 
 } 

@@ -3,7 +3,7 @@
 }
 
 .travel__image-container{
-    margin: 3rem 0;
+    margin: 1rem 0;
 }
 
 .travel__card{
@@ -28,10 +28,19 @@
 .travel__card:hover .travel__card-overlay{
     opacity: 0.7;
     display: block;
+
+    &.about__overlay{
+        cursor: pointer;
+    }
+
 }
 
 .travel__card:hover .travel__card-text{
     visibility: visible;
+
+    &.about__overlay-text{
+        cursor: pointer;
+    }
 }
 
 .travel__card-text{
@@ -61,6 +70,10 @@
     .travel__image{
        //width: 350px;
         // height: 350px;
+    }
+
+    .travel__image-container{
+        margin: 3rem 0;
     }
 
 } 
