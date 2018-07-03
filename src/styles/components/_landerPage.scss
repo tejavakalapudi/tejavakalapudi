@@ -12,7 +12,7 @@
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: local;
     position: absolute;
     transition: 1.5s ease;
     background-image: url(../../public/images/WhiteMountains.jpg);
@@ -60,7 +60,17 @@
         font-size: 3rem;
     }
 
+}
+
+/* Large devices and tabs (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    .lander__container-image{
+        background-attachment: fixed;
+    }
+
 } 
+
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1300px) {
