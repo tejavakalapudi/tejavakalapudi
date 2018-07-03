@@ -7,6 +7,10 @@
     font-size: 4rem;
     font-weight: bold;
     margin: 2rem 0;
+
+    &.darkBackground{
+        color: white;
+    }
 }
 
 /* Large devices and tabs (laptops/desktops, 992px and up) */

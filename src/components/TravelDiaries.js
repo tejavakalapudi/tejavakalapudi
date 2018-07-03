@@ -5,7 +5,7 @@ import { Row, Col, Container, Card, CardImg, CardText, CardBody, CardTitle } fro
 import { NavLink } from "react-router-dom";
 import LearnMore from "./LearnMore";
 import ScrollToTop from "./ScrollToTop";
-import UAE from "../../public/images/UAE-color.jpg";
+import UAE from "../../public/images/UAE-NEW.jpg";
 import Nevada from "../../public/images/Nevada-color.jpg";
 import Florida from "../../public/images/Florida.jpg";
 // For all supported HTML attributes in JSX https://reactjs.org/docs/dom-elements.html
@@ -43,7 +43,7 @@ class TravelDiaries extends React.Component {
                         </Col>
                         <Col xs="12" md="6" lg="4" className="text__align-center travel__image-container">
                             <Card className = "travel__card">
-                                <CardImg top src = { UAE } alt="Card image cap" />
+                                <CardImg top src = { UAE } alt="Card image cap" className = "travel__card-image"/>
                                 <div className = "travel__card-overlay"></div>
                                 <div class="travel__card-text">
                                     <p className = "travel__card-title"> U.A.E </p>
@@ -53,7 +53,7 @@ class TravelDiaries extends React.Component {
                         </Col>
                         <Col xs="12" md="6" lg="4" className="text__align-center travel__image-container">
                             <Card className = "travel__card">
-                                <CardImg top src = { Nevada } alt="Card image cap" />
+                                <CardImg top src = { Nevada } alt="Card image cap" className = "travel__card-image"/>
                                 <div className = "travel__card-overlay"></div>
                                 <div class="travel__card-text">
                                     <p className = "travel__card-title"> Nevada </p>
@@ -63,7 +63,7 @@ class TravelDiaries extends React.Component {
                         </Col>
                         <Col xs="12" md="6" lg="4" className="text__align-center travel__image-container">
                             <Card className = "travel__card">
-                                <CardImg top src = { Florida } alt="Card image cap" />
+                                <CardImg top src = { Florida } alt="Card image cap" className = "travel__card-image"/>
                                 <div className = "travel__card-overlay"></div>
                                 <div class="travel__card-text">
                                     <p className = "travel__card-title"> Florida </p>

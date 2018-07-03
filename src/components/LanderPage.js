@@ -18,7 +18,7 @@ class LanderPage extends React.Component {
         if ( welcomeDiv ){
             this.setState( {
                 minHeight: window.innerHeight
-            });     
+            });    
         }
 
     }

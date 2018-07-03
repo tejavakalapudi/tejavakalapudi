@@ -1,5 +1,11 @@
 .travel__container{
-    
+    background-color: #D2D6D9;
+
+    //#9099A2
+    //#EFEFEF
+    //#E9E9E9
+    //#D2D6D9
+    //#CDCDCD
 }
 
 .travel__image-container{
@@ -13,6 +19,14 @@
     -ms-transition: all 1s ease; /* IE 9 */
     -o-transition: all 1s ease; /* Opera */
     transition: all 1s ease;
+}
+
+.travel__card-image{
+
+    border: 2px solid #455a71;
+    -webkit-filter: grayscale(0.3);
+    filter: grayscale(0.3);
+
 }
 
 .travel__card-overlay{
