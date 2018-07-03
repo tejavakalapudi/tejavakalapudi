@@ -1,11 +1,13 @@
 .travel__container{
-    background-color: #D2D6D9;
+    background-color: #edeeef;
 
     //#9099A2
     //#EFEFEF
     //#E9E9E9
     //#D2D6D9
     //#CDCDCD
+    //#edeeef
+    //#D2D6D9
 }
 
 .travel__image-container{
@@ -23,9 +25,9 @@
 
 .travel__card-image{
 
-    border: 2px solid #455a71;
-    -webkit-filter: grayscale(0.3);
-    filter: grayscale(0.3);
+    //border: 2px solid #455a71;
+    -webkit-filter: grayscale(0.5) brightness(0.8) contrast(1);
+    filter: grayscale(0.5) brightness(0.8) contrast(1);
 
 }
 
