@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import MySite from "./components/Template";
 import { fetchWebContent } from "./actions/webdata";
 
+
 // Use normalize to have same styling format across cross browser
 
 //import 'bootstrap/dist/css/bootstrap.min.css';

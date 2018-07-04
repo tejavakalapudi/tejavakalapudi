@@ -11,7 +11,13 @@ export const startAddTravelPage  = ( travelData = {} ) => {
         const {
             id = "",
             name = "",
-            description = ""
+            summary = "",
+            thumbnailLocation = "",
+            landscapeLocation = "",
+            travelImages = "",
+            note1 = "",
+            note2 = "",
+            note3 = ""
         } = travelData;
 
         return database.ref( "webinfo/travelDiaries" ).push( travelData ).then( (ref) => {
@@ -29,6 +35,36 @@ export const startAddTravelPage  = ( travelData = {} ) => {
         });
 
     }
+};
+
+export const fileUploadToStorage = ( uniqueId, image, childname, callback ) => {
+
+    return( dispatch ) => {
+
+        console.log( `${childname} upload request` );
+
+        const projectRef = storageRef.child( `travelDiaries/${ uniqueId }` );
+
+        return projectRef.child( childname ).put( image ).then( ( snapshot ) => {
+    
+            console.log( `${childname} upload request - Completed` );
+    
+            snapshot.ref.getDownloadURL().then( function( downloadURL ) {
+                
+                console.log( `${childname} upload request - setting downloadURL` );
+    
+                callback( downloadURL );
+    
+            });
+    
+        }).catch( (err) => {
+    
+            console.log( "Thumbnail Image Uploaded failed ", err );
+    
+        });
+
+    }
+
 };
 
 

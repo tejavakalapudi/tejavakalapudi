@@ -1,34 +1,46 @@
 import { database, storageRef } from "../firebase/firebase";
-import { startSetTestimonials } from "./testimonials";
-import { startSetTravelPages } from "./travelDiaries";
+import { setTestimonials } from "./testimonials";
+import { setTravelPages } from "./travelDiaries";
+import testimonials from "../reducers/testimonials";
 
 export const fetchWebContent = () => {
     
     return( dispatch ) => {
 
-        var event = new Date();
+        const event = new Date();
 
         console.log( "Fetching content from database at ", event.toTimeString());
 
-        return database.ref( "webinfo" ).once( "value" )
+        const ref = database.ref( "webinfo" );
 
-            .then((snapshot) => {
+        return ref.once( "value" )
 
-                    const webSections = [];
+            .then( ( snapshot ) => {
 
-                    /*snapshot.forEach(( section ) => {
-            
-                        webSections.push({
-                            id : section.key,
-                            ...section.val()
+                    const testimonials = [],
+                    travelDiaries = [];
+
+                    snapshot.child( "linkedinTestimonials" ).forEach( ( testimonial  ) => {
+
+                        testimonials.push({
+                            id : testimonial.key,
+                            ...testimonial.val()
                         })
-            
+
                     });
 
-                    console.log("Ravi web sections", webSections );*/
-            
-                    dispatch( startSetTestimonials() );
-                    dispatch( startSetTravelPages() );
+                    dispatch( setTestimonials( testimonials ) );
+
+                    snapshot.child( "travelDiaries" ).forEach( ( travel  ) => {
+
+                        travelDiaries.push({
+                            id : travel.key,
+                            ...travel.val()
+                        })
+
+                    });
+
+                    dispatch( setTravelPages( travelDiaries ) );
             
                 }
             )
