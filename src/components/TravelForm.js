@@ -157,7 +157,8 @@ class TravelForm extends React.Component {
                         id="placeName"
                         value = { this.state.placeName } 
                         placeholder="Ex: Hyderabad" 
-                        onChange={ this.submitName } 
+                        onChange={ this.submitName }
+                        className= "form__input" 
                     />
                 </FormGroup>                                
 
@@ -175,7 +176,8 @@ class TravelForm extends React.Component {
                         id="summary"
                         value = { this.state.summary } 
                         placeholder="Ex: Nawab's place" 
-                        onChange={ this.submitSummary } 
+                        onChange={ this.submitSummary }
+                        className= "form__input"  
                     />
                 </FormGroup> 
 
@@ -193,7 +195,8 @@ class TravelForm extends React.Component {
                         id="note1"
                         value = { this.state.note1 } 
                         placeholder="Ex: Nawab's place" 
-                        onChange={ this.submitNote1 } 
+                        onChange={ this.submitNote1 }
+                        className= "form__input"  
                     />
                 </FormGroup> 
 

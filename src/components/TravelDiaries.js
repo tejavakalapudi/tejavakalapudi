@@ -60,8 +60,16 @@ class TravelDiaries extends React.Component {
 
     learnMore = ( id ) => {
 
-        this.props.history.push( `/travel/${ id }` );
+        if( this.props && this.props.history && this.props.history.push ){
+            
+            this.props.history.push( `/travel/${ id }` );
 
+        } else {
+
+            this.props.push( `/travel/${ id }` );
+
+        }
+        
     }
 
     render(){
@@ -80,7 +88,7 @@ class TravelDiaries extends React.Component {
                     <Row className = "about__section justify-content-center">
 
                         {
-                            this.props && !this.props.isHomePage && !this.state.showForm &&
+                            this.props && this.props.authInfo.isAuthorized && !this.props.isHomePage && !this.state.showForm &&
                             <Col className="quote__symbol text__align-center" xs="12" >
                                 <MdNoteAdd onClick = { this.renderForm } />
                             </Col>
@@ -176,7 +184,8 @@ class TravelDiaries extends React.Component {
 
 const mapStateToProps = ( store ) => {
     return { 
-        travelDiaries : store.travelDiaries
+        travelDiaries : store.travelDiaries,
+        authInfo : store.authInfo
     };
 };
 

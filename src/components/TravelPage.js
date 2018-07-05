@@ -5,16 +5,12 @@ import {
     Col, 
     Container, 
     Card, 
-    CardImg, 
+    CardImg,
+    CardColumns, 
     CardText, 
     CardBody, 
     CardTitle,
-    Button, 
-    Form, 
-    FormGroup, 
-    Label, 
-    Input, 
-    FormText
+    Button
 } from "reactstrap";
 import ScrollToTop from "./ScrollToTop";
 // For all supported HTML attributes in JSX https://reactjs.org/docs/dom-elements.html
@@ -26,15 +22,71 @@ class TravelPage extends React.Component {
     render(){
 
         return(
-            <div className = "travel__container">
+            <div className = "">
 
                 <ScrollToTop />
 
                 <Container className = "testimonial__container-padding" >
 
-                    <Row className = "about__section justify-content-center">
+                    <Row className = "about__section justify-content-center text__align-center">
 
-                        { this.props.travel.name }
+                        <Col xs="11" md="6" className = "travel__landscape">
+                            <Card>
+                                <CardImg top src = { this.props.travel.landscapeLocation } alt="Card image cap" />
+                            </Card>
+                        </Col>
+
+                        <Col xs="11" className = "travel__title">
+                            { this.props.travel.name }
+                        </Col>
+
+                        <Col xs="11" className = "travel__summary text__align-center">
+                            { this.props.travel.summary }
+                        </Col>
+
+                        {
+                            this.props.travel.note1 && 
+                            <Col xs="11" className = "travel__note text__align-justify">
+                                { this.props.travel.note1 }
+                            </Col>
+
+                        }
+                        
+                        {
+                            this.props.travel.note2 && 
+                            <Col xs="11" className = "travel__note text__align-justify">
+                                { this.props.travel.note2 }
+                            </Col>
+                            
+                        }
+
+                        {
+                            this.props.travel.note2 && 
+                            <Col xs="11" className = "travel__note text__align-justify">
+                                { this.props.travel.note2 }
+                            </Col>
+                            
+                        }
+
+                        <Col xs="11" className = "travel__section-divider"></Col>
+
+                        <Col xs="11" md="12">
+                            <CardColumns>
+                                <Card>
+                                    <CardImg top src = { this.props.travel.thumbnailLocation } alt="Card image cap" />
+                                </Card>
+                                { this.props.travel.travelImages.map( ( travelImage ) => {
+                                    
+                                    return(
+                                        <Card>
+                                            <CardImg top src = { travelImage.travelImageUrl } alt="Card image cap" />
+                                        </Card>
+                                    );
+
+                                })}
+
+                            </CardColumns>
+                        </Col>
 
                     </Row>
 

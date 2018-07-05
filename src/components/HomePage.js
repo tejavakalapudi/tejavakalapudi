@@ -32,11 +32,11 @@ class HomePage extends React.Component {
                 <LanderPage />
                 <AboutMePage isHomePage = "true"/>
                 <Testimonials isHomePage = "true" />
-                <Travel isHomePage = "true" />
+                <Travel isHomePage = "true" push = { this.props.history.push }/>
                 <Connect isHomePage = "true" />
             </div>
         );
     }
 }; 
 
-export default HomePage;
+export default connect()( HomePage );

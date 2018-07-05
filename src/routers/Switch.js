@@ -12,6 +12,7 @@ import TravelPage from "../components/TravelPage";
 import ContactUsPage from "../components/Contact";
 import Footer from "../components/Footer";
 import NotFound from "../components/NotFoundPage";
+import AdminPage from "../components/AdminPage";
 
 class SwitchComponent extends React.Component {
 
@@ -44,6 +45,7 @@ class SwitchComponent extends React.Component {
                     <Route path = "/traveldiaries" component = { TravelDiaries } />
                     <Route path = "/travel/:id" component = { TravelPage } />
                     <Route path = "/contact" component = { ContactUsPage } />
+                    <Route path = "/me" component = { AdminPage } />
                     <Route component = { NotFound } />
                 </Switch>
                 {/*<Footer /> */}

@@ -30,6 +30,18 @@ button:disabled{
     text-align: right;
 }
 
+.text__align-left{
+    text-align: left;
+}
+
+.text__align-justify{
+    text-align: justify;
+}
+
+.form__input{
+    padding: 1.5rem;
+}
+
 @media ( min-width: 1200px ){
     .container {
         //max-width: 1171px;
