@@ -34,7 +34,7 @@ import { MdNoteAdd } from 'react-icons/lib/md';
 class TravelDiaries extends React.Component {
 
     state = {
-        itemsToView : this.props && !this.props.isHomePage && this.props.testimonials ? this.props.testimonials.length : 2,
+        itemsToView : this.props && !this.props.isHomePage && this.props.travelDiaries ? this.props.travelDiaries.length : 3,
         showForm : false
     }
 
@@ -104,51 +104,9 @@ class TravelDiaries extends React.Component {
                         <Col className="section__title text__align-center" xs="12">
                             #travelDiaries.
                         </Col>
-                        <Col xs="12" md="6" lg="4" className="text__align-center travel__image-container">
-                            <Card className = "travel__card">
-                                <CardImg top src = { UAE } alt="Card image cap" className = "travel__card-image"/>
-                                <div className = "travel__card-overlay"></div>
-                                <div class="travel__card-text">
-                                    <p className = "travel__card-title"> U.A.E </p>
-                                    <p className = "travel__card-description"> Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                                </div>
-                            </Card>
-                        </Col>
-                        <Col xs="12" md="6" lg="4" className="text__align-center travel__image-container">
-                            <Card className = "travel__card">
-                                <CardImg top src = { Nevada } alt="Card image cap" className = "travel__card-image"/>
-                                <div className = "travel__card-overlay"></div>
-                                <div class="travel__card-text">
-                                    <p className = "travel__card-title"> Nevada </p>
-                                    <p className = "travel__card-description"> Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                                </div>
-                            </Card>
-                        </Col>
-                        <Col xs="12" md="6" lg="4" className="text__align-center travel__image-container">
-                            <Card className = "travel__card">
-                                <CardImg top src = { Florida } alt="Card image cap" className = "travel__card-image"/>
-                                <div className = "travel__card-overlay"></div>
-                                <div class="travel__card-text">
-                                    <p className = "travel__card-title"> Florida </p>
-                                    <p className = "travel__card-description"> Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-                                </div>
-                            </Card>
-                        </Col>
-                        {/*
-                            <Col xs="12" md="6" lg="4" className="text__align-center travel__image-container">
-                                <Card>
-                                    <CardImg top src = { Florida } alt="Card image cap" />
-                                    <CardBody>
-                                        <CardTitle>Florida</CardTitle>
-                                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                                    </CardBody>
-                                </Card>
-                            </Col>  
-                                                 
-                        */}
 
                         {
-                            this.props.travelDiaries.map( ( travel ) => {
+                            this.props.travelDiaries.slice( 0, this.state.itemsToView ).map( ( travel ) => {
                                 
                                 if( travel.thumbnailLocation && travel.name && travel.summary ){
 
