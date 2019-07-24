@@ -4,51 +4,40 @@ import { setTravelPages } from "./travelDiaries";
 import testimonials from "../reducers/testimonials";
 
 export const fetchWebContent = () => {
-    
-    return( dispatch ) => {
+  return dispatch => {
+    const event = new Date();
 
-        const event = new Date();
+    console.log("Fetching content from database at ", event.toTimeString());
 
-        console.log( "Fetching content from database at ", event.toTimeString());
+    const ref = database.ref("webinfo");
 
-        const ref = database.ref( "webinfo" );
+    return ref
+      .once("value")
 
-        return ref.once( "value" )
+      .then(snapshot => {
+        const testimonials = [],
+          travelDiaries = [];
 
-            .then( ( snapshot ) => {
+        snapshot.child("linkedinTestimonials").forEach(testimonial => {
+          testimonials.push({
+            id: testimonial.key,
+            ...testimonial.val()
+          });
+        });
 
-                    const testimonials = [],
-                    travelDiaries = [];
+        dispatch(setTestimonials(testimonials));
 
-                    snapshot.child( "linkedinTestimonials" ).forEach( ( testimonial  ) => {
+        snapshot.child("travelDiaries").forEach(travel => {
+          travelDiaries.push({
+            id: travel.key,
+            ...travel.val()
+          });
+        });
 
-                        testimonials.push({
-                            id : testimonial.key,
-                            ...testimonial.val()
-                        })
-
-                    });
-
-                    dispatch( setTestimonials( testimonials ) );
-
-                    snapshot.child( "travelDiaries" ).forEach( ( travel  ) => {
-
-                        travelDiaries.push({
-                            id : travel.key,
-                            ...travel.val()
-                        })
-
-                    });
-
-                    dispatch( setTravelPages( travelDiaries ) );
-            
-                }
-            )
-            .catch( ( e ) => {
-
-                console.log( "Fetching testimonials data has failed with error ", e );
-                
-            });
-    };
-
+        dispatch(setTravelPages(travelDiaries));
+      })
+      .catch(e => {
+        console.log("Fetching testimonials data has failed with error ", e);
+      });
+  };
 };

@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import MySite from "./components/Template";
 import { fetchWebContent } from "./actions/webdata";
 
-
 // Use normalize to have same styling format across cross browser
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,13 +25,8 @@ import "./styles/styles.scss";
 const store = configureStore();
 //const state = store.getState();
 
-store.dispatch( fetchWebContent() ).then(() => {
-
-    ReactDOM.render( <MySite store = { store } />, document.getElementById( "app" ) );
-    
+store.dispatch(fetchWebContent()).then(() => {
+  ReactDOM.render(<MySite store={store} />, document.getElementById("app"));
 });
 
 //ReactDOM.render( <LoadingScreen /> , document.getElementById("app") );
-
-
-

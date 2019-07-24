@@ -7,18 +7,15 @@ import { Provider } from "react-redux";
 // For component lifecycles https://reactjs.org/docs/react-component.html
 
 class MySite extends React.Component {
+  render() {
+    return (
+      <div>
+        <Provider store={this.props.store}>
+          <AppRouter />
+        </Provider>
+      </div>
+    );
+  }
+}
 
-    render(){
-
-        return(
-            <div>
-                <Provider store = { this.props.store } >
-                    <AppRouter/>
-                </Provider>
-            </div>
-        );
-    }
-
-};
-
-export default MySite; 
+export default MySite;

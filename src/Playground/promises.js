@@ -1,7 +1,7 @@
-const promise = new Promise(( resolve, reject ) => {
-    resolve( "This is my resolved datea" );
+const promise = new Promise((resolve, reject) => {
+  resolve("This is my resolved datea");
 });
 
-promise.then( (data) => {
-    console.log(data)
-} )
+promise.then(data => {
+  console.log(data);
+});

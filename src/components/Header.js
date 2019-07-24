@@ -1,11 +1,7 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
 
-const Header = () => ( 
-    <div>
-        This is Header page!
-    </div> 
-);
+const Header = () => <div>This is Header page!</div>;
 
 export default Header;
 
